@@ -12,13 +12,45 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
         .glass-panel {
             background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .glow-effect:hover {
-            box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Continuous Pulse Animation for Flow Nodes */
+        @keyframes flowPulse {
+            0% { stroke-dashoffset: 24; }
+            100% { stroke-dashoffset: 0; }
+        }
+        .animate-flow {
+            stroke-dasharray: 6 6;
+            animation: flowPulse 1.2s linear infinite;
+        }
+
+        /* Bambu Lab A1 Mini Nozzle Animation */
+        @keyframes printHeadMove {
+            0% { transform: translate(0px, 0px); }
+            25% { transform: translate(50px, -10px); }
+            50% { transform: translate(100px, 0px); }
+            75% { transform: translate(30px, -20px); }
+            100% { transform: translate(0px, 0px); }
+        }
+        .animate-nozzle {
+            animation: printHeadMove 4s ease-in-out infinite;
+        }
+
+        /* 3D Bed Print Layer Glow */
+        @keyframes layerGrow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .animate-layer {
+            animation: layerGrow 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -77,16 +109,16 @@
             <span class="text-xs font-mono text-slate-500">SYSTEMS // LAB.LOG</span>
         </div>
 
-        <!-- Featured Project: CLOUDIO -->
-        <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800">
+        <!-- Featured Project 1: CLOUDIO -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <!-- Hardware Photo (cloudio.HEIC - lembre de converter para .jpg/.png caso o browser não suporte nativamente) -->
+                <!-- Hardware Photo (Square & Centered) -->
                 <div class="lg:col-span-5 space-y-3">
-                    <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl">
-                        <img src="cloudio.png" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500" onerror="this.src='cloudio.jpg';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
+                    <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl aspect-square flex items-center justify-center">
+                        <img src="cloudio.jpg" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500" onerror="this.src='cloudio.HEIC';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono z-10">
                             <span class="px-2 py-1 bg-slate-900/90 text-emerald-400 rounded border border-emerald-500/30" data-i18n="c-active">
                                 🟢 Active Hardware
                             </span>
@@ -166,30 +198,208 @@
                 </div>
 
             </div>
+
+            <!-- Animated Cloudio Network Architecture SVG Flow -->
+            <div class="pt-4 border-t border-slate-800/80">
+                <div class="text-xs font-mono text-slate-400 mb-3 flex items-center justify-between">
+                    <span>LIVE SYSTEM ARCHITECTURE FLOW</span>
+                    <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> TAILSCALE MESH ENCRYPTED</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
+                    <svg viewBox="0 0 800 120" class="w-full min-w-[650px] h-auto text-xs font-mono">
+                        <!-- Connectors with Flow Lines -->
+                        <path d="M 120 60 L 260 60" stroke="#334155" stroke-width="2"/>
+                        <path d="M 120 60 L 260 60" stroke="#10b981" stroke-width="2" class="animate-flow"/>
+
+                        <path d="M 380 60 L 520 25" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 60 L 520 25" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
+
+                        <path d="M 380 60 L 520 60" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 60 L 520 60" stroke="#a855f7" stroke-width="2" class="animate-flow"/>
+
+                        <path d="M 380 60 L 520 95" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 60 L 520 95" stroke="#f59e0b" stroke-width="2" class="animate-flow"/>
+
+                        <!-- Node 1: Incoming Traffic -->
+                        <g transform="translate(10, 35)">
+                            <rect width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+                            <text x="55" y="22" fill="#94a3b8" text-anchor="middle" font-weight="bold">Client Devices</text>
+                            <text x="55" y="38" fill="#64748b" text-anchor="middle">iOS / Mac / Web</text>
+                        </g>
+
+                        <!-- Node 2: Gateway & DNS -->
+                        <g transform="translate(260, 35)">
+                            <rect width="120" height="50" rx="10" fill="#0f172a" stroke="#10b981"/>
+                            <text x="60" y="22" fill="#34d399" text-anchor="middle" font-weight="bold">AdBlock & DNS</text>
+                            <text x="60" y="38" fill="#64748b" text-anchor="middle">Tailscale Core</text>
+                        </g>
+
+                        <!-- Node 3A: OMV NAS -->
+                        <g transform="translate(520, 5)">
+                            <rect width="150" height="40" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+                            <text x="75" y="24" fill="#60a5fa" text-anchor="middle" font-weight="bold">Smart NAS (OMV)</text>
+                        </g>
+
+                        <!-- Node 3B: OpenClaw AI -->
+                        <g transform="translate(520, 40)">
+                            <rect width="250" height="40" rx="8" fill="#0f172a" stroke="#a855f7"/>
+                            <text x="125" y="24" fill="#c084fc" text-anchor="middle" font-weight="bold">OpenClaw Agent (4-Way Fallback)</text>
+                        </g>
+
+                        <!-- Node 3C: Minecraft -->
+                        <g transform="translate(520, 75)">
+                            <rect width="150" height="40" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+                            <text x="75" y="24" fill="#fbbf24" text-anchor="middle" font-weight="bold">Minecraft Server</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
         </div>
 
-        <!-- Second Project: 3D Design & Maker Engineering -->
-        <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800">
-            <div class="flex flex-col md:flex-row gap-6 items-start justify-between">
-                <div class="space-y-3.5 max-w-4xl">
-                    <div class="flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/25 w-max" data-i18n="p2-badge">
-                        Advanced CAD & Fabrication
+        <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Text Content & CAD Specs -->
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <span class="px-3 py-1 text-xs font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/25" data-i18n="p2-badge">
+                                AI-Driven Engineering & CAD
+                            </span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/25">
+                                100+ Functional Parts Built
+                            </span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white" data-i18n="p2-title">
+                            Local Text-to-CAD Pipeline with OpenSCAD
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="p2-desc">
+                            Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.
+                        </p>
                     </div>
-                    <h3 class="text-2xl font-bold tracking-tight text-white" data-i18n="p2-title">
-                        Parametric 3D Design & Prototyping
-                    </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed" data-i18n="p2-desc">
-                        Development of functional mechanical parts, custom enclosures, and utility mounts using precise parametric modeling. Focused on material optimization (PLA, TPU) and structural assembly via OpenSCAD and FreeCAD.
-                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
+                            <span class="block text-orange-400 font-bold mb-1">Zero-Cost Stack</span>
+                            <span class="text-slate-400">Local foundational models running with absolute privacy and zero API overhead.</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
+                            <span class="block text-emerald-400 font-bold mb-1">Parametric Precision</span>
+                            <span class="text-slate-400">OpenSCAD code compilation tailored for exact mechanical constraints and tolerances.</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
+                            <span class="block text-blue-400 font-bold mb-1">Production Proven</span>
+                            <span class="text-slate-400">Over 100 custom utility components, enclosures, and orthotics successfully fabricated.</span>
+                        </div>
+                    </div>
+
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-1">
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">OpenSCAD</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">FreeCAD</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Local LLM</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Text-to-CAD</span>
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Bambu Lab A1 Mini</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800" data-i18n="p2-tag">Rapid Prototyping</span>
                     </div>
                 </div>
-                <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 text-orange-400 text-3xl shrink-0 flex items-center justify-center">
-                    <i class="fa-solid fa-cube"></i>
+
+                <!-- Animated Interactive Bambu Lab A1 Mini Visualizer -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                    <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-2xl">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 border-b border-slate-800/80 pb-2">
+                            <span class="text-orange-400 font-bold flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> BAMBU A1 MINI
+                            </span>
+                            <span class="text-emerald-400">PRINTING // 180mm/s</span>
+                        </div>
+
+                        <!-- Vector SVG Animation of Bambu Lab A1 Mini -->
+                        <svg viewBox="0 0 300 220" class="w-full h-auto">
+                            <!-- Printer Frame & Base -->
+                            <rect x="30" y="180" width="240" height="20" rx="4" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                            <!-- Cantilever Z-Axis Pillar -->
+                            <rect x="45" y="30" width="22" height="150" rx="3" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+                            <!-- Z-Axis Screw Line -->
+                            <line x1="56" y1="35" x2="56" y2="175" stroke="#f97316" stroke-width="2" stroke-dasharray="2 2"/>
+                            
+                            <!-- Heated Print Bed -->
+                            <rect x="80" y="165" width="160" height="12" rx="2" fill="#334155" stroke="#64748b"/>
+                            <!-- Printed Part Layers (Glowing) -->
+                            <path d="M 120 165 L 200 165 L 180 135 L 140 135 Z" fill="#f97316" class="animate-layer"/>
+
+                            <!-- X-Axis Arm Moving Rail -->
+                            <rect x="40" y="80" width="210" height="14" rx="2" fill="#1e293b" stroke="#475569"/>
+
+                            <!-- Moving Extruder Toolhead Assembly -->
+                            <g class="animate-nozzle">
+                                <!-- Toolhead Body -->
+                                <rect x="95" y="65" width="40" height="40" rx="4" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
+                                <!-- Hotend Nozzle Tip -->
+                                <polygon points="110,105 120,105 115,115" fill="#e2e8f0"/>
+                                <!-- Filament Glow Line -->
+                                <line x1="115" y1="115" x2="115" y2="135" stroke="#f97316" stroke-width="2" class="animate-pulse"/>
+                                <!-- Toolhead Status LED -->
+                                <circle cx="103" cy="73" r="2" fill="#10b981"/>
+                            </g>
+                        </svg>
+
+                        <div class="mt-2 grid grid-cols-2 gap-2 text-center text-[10px] font-mono text-slate-400">
+                            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
+                                HOTEND: <span class="text-orange-400">220°C</span>
+                            </div>
+                            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
+                                MATERIAL: <span class="text-emerald-400">PLA / TPU</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Text-to-CAD Pipeline Flowchart -->
+            <div class="pt-4 border-t border-slate-800/80">
+                <div class="text-xs font-mono text-slate-400 mb-3 flex items-center justify-between">
+                    <span>ZERO-COST TEXT-TO-CAD COMPILATION PIPELINE</span>
+                    <span class="text-orange-400">PROMPT ➔ PARAMETRIC CODE ➔ FABRICATION</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
+                    <svg viewBox="0 0 800 100" class="w-full min-w-[650px] h-auto text-xs font-mono">
+                        <!-- Connectors -->
+                        <path d="M 160 50 L 260 50" stroke="#334155" stroke-width="2"/>
+                        <path d="M 160 50 L 260 50" stroke="#f97316" stroke-width="2" class="animate-flow"/>
+
+                        <path d="M 400 50 L 500 50" stroke="#334155" stroke-width="2"/>
+                        <path d="M 400 50 L 500 50" stroke="#10b981" stroke-width="2" class="animate-flow"/>
+
+                        <path d="M 640 50 L 710 50" stroke="#334155" stroke-width="2"/>
+                        <path d="M 640 50 L 710 50" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
+
+                        <!-- Step 1: Natural Language -->
+                        <g transform="translate(10, 25)">
+                            <rect width="150" height="50" rx="10" fill="#0f172a" stroke="#ea580c"/>
+                            <text x="75" y="22" fill="#fdba74" text-anchor="middle" font-weight="bold">Natural Language</text>
+                            <text x="75" y="38" fill="#64748b" text-anchor="middle">Part Specifications</text>
+                        </g>
+
+                        <!-- Step 2: Local LLM -->
+                        <g transform="translate(260, 25)">
+                            <rect width="140" height="50" rx="10" fill="#0f172a" stroke="#f97316"/>
+                            <text x="70" y="22" fill="#fed7aa" text-anchor="middle" font-weight="bold">Local LLM</text>
+                            <text x="70" y="38" fill="#64748b" text-anchor="middle">Zero-Cost Inference</text>
+                        </g>
+
+                        <!-- Step 3: OpenSCAD Script -->
+                        <g transform="translate(500, 25)">
+                            <rect width="140" height="50" rx="10" fill="#0f172a" stroke="#10b981"/>
+                            <text x="70" y="22" fill="#6ee7b7" text-anchor="middle" font-weight="bold">OpenSCAD Engine</text>
+                            <text x="70" y="38" fill="#64748b" text-anchor="middle">Parametric Code</text>
+                        </g>
+
+                        <!-- Step 4: Physical Part -->
+                        <g transform="translate(710, 25)">
+                            <circle cx="25" cy="25" r="22" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+                            <text x="25" y="30" fill="#60a5fa" text-anchor="middle" font-size="16">🖨️</text>
+                        </g>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -223,10 +433,9 @@
                 "f3-desc": "Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.",
                 "f4-title": "Gaming Server",
                 "f4-desc": "Dedicated Minecraft server optimized for smooth multiplayer sessions with friends.",
-                "p2-badge": "Advanced CAD & Fabrication",
-                "p2-title": "Parametric 3D Design & Prototyping",
-                "p2-desc": "Development of functional mechanical parts, custom enclosures, and utility mounts using precise parametric modeling. Focused on material optimization (PLA, TPU) and structural assembly via OpenSCAD and FreeCAD.",
-                "p2-tag": "Rapid Prototyping",
+                "p2-badge": "AI-Driven Engineering & CAD",
+                "p2-title": "Local Text-to-CAD Pipeline with OpenSCAD",
+                "p2-desc": "Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.",
                 "footer-rights": "© 2026 • Designed with focus on engineering and automation."
             },
             pt: {
@@ -247,10 +456,9 @@
                 "f3-desc": "Bot autônomo com arquitetura inteligente de 4-way free-tier fallback.",
                 "f4-title": "Servidor de Jogos",
                 "f4-desc": "Servidor de Minecraft dedicado e otimizado para baixa latência entre amigos.",
-                "p2-badge": "CAD & Fabricação Avançada",
-                "p2-title": "Prototipagem & Design 3D Paramétrico",
-                "p2-desc": "Desenvolvimento de peças mecânicas funcionais, gabinetes customizados e suportes utilitários utilizando modelagem paramétrica precisa. Foco em otimização de materiais (PLA, TPU) e encaixes estruturais via OpenSCAD e FreeCAD.",
-                "p2-tag": "Prototipagem Rápida",
+                "p2-badge": "Engenharia & CAD com IA",
+                "p2-title": "Pipeline Text-to-CAD Local com OpenSCAD",
+                "p2-desc": "Fluxo gerador avançado utilizando modelo fundamental local combinado com motor de compilação text-to-CAD de custo zero. Traduz especificações em linguagem natural diretamente em scripts OpenSCAD paramétricos e precisos para prototipagem funcional rápida na Bambu Lab A1 Mini.",
                 "footer-rights": "© 2026 • Projetado com foco em engenharia e automação."
             },
             es: {
@@ -271,10 +479,9 @@
                 "f3-desc": "Bot personal autónomo impulsado por una arquitectura resiliente de fallback de 4 vías.",
                 "f4-title": "Servidor de Juegos",
                 "f4-desc": "Servidor dedicado de Minecraft optimizado para sesiones multijugador fluidas.",
-                "p2-badge": "CAD Avanzado y Fabricación",
-                "p2-title": "Diseño 3D Paramétrico y Prototipado",
-                "p2-desc": "Desarrollo de piezas mecánicas funcionales, carcasas personalizadas y soportes mediante modelado paramétrico preciso. Enfoque en optimización de materiales (PLA, TPU) y ensamblaje estructural vía OpenSCAD y FreeCAD.",
-                "p2-tag": "Prototipado Rápido",
+                "p2-badge": "Ingeniería y CAD con IA",
+                "p2-title": "Pipeline Text-to-CAD Local con OpenSCAD",
+                "p2-desc": "Flujo generativo avanzado que utiliza un modelo fundacional local combinado con un motor de compilación text-to-CAD de costo cero. Traduce lenguaje natural en scripts OpenSCAD paramétricos precisos para prototipado rápido en Bambu Lab A1 Mini.",
                 "footer-rights": "© 2026 • Diseñado con enfoque en ingeniería y automatización."
             }
         };
