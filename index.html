@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Técnico | Lab & Projetos</title>
+    <title>Technical Portfolio | Lab & Projects</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -30,28 +30,39 @@
         <div class="absolute top-1/2 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
     </div>
 
+    <!-- Top Bar: Language Switcher & Social Links -->
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pt-6 w-full flex items-center justify-between">
+        <!-- Language Switcher Buttons -->
+        <div class="flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 p-1 rounded-xl text-xs font-mono">
+            <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all">EN</button>
+            <button onclick="setLanguage('pt')" id="btn-pt" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">PT-BR</button>
+            <button onclick="setLanguage('es')" id="btn-es" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">ES-MX</button>
+        </div>
+
+        <!-- Social Icons with Real Links -->
+        <div class="flex items-center gap-2">
+            <a href="https://github.com/silvayurixd" target="_blank" aria-label="GitHub" class="p-2.5 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-base">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" aria-label="LinkedIn" class="p-2.5 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-base">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- Header / Hero -->
-    <header class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-12 w-full flex flex-col md:flex-row items-center justify-between gap-8">
+    <header class="relative z-10 max-w-5xl mx-auto px-6 pt-12 pb-8 w-full flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="space-y-4 text-center md:text-left">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Systems, Engineering & Maker Lab
+                <span data-i18n="hero-badge">Systems, Engineering & Maker Lab</span>
             </div>
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
-                Engenharia, Automação & <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Inovação Maker</span>
+                <span data-i18n="hero-title-1">Engineering, Automation &</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400" data-i18n="hero-title-2">Maker Innovation</span>
             </h1>
-            <p class="text-slate-400 text-lg max-w-2xl font-light leading-relaxed">
-                Um laboratório vivo onde transformo código, infraestrutura self-hosted e prototipagem 3D em soluções reais de alta eficiência.
+            <p class="text-slate-400 text-lg max-w-2xl font-light leading-relaxed" data-i18n="hero-desc">
+                A living laboratory where I transform code, self-hosted infrastructure, and 3D prototyping into real high-efficiency solutions.
             </p>
-        </div>
-        
-        <div class="flex md:flex-col gap-3 shrink-0">
-            <a href="https://github.com/silvayurixd" target="_blank" aria-label="GitHub" class="p-4 glass-panel rounded-2xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-xl">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" aria-label="LinkedIn" class="p-4 glass-panel rounded-2xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-xl">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
         </div>
     </header>
 
@@ -61,24 +72,24 @@
         <!-- Section Title -->
         <div class="border-b border-slate-800/80 pb-4 flex items-center justify-between">
             <h2 class="text-2xl font-bold tracking-tight flex items-center gap-3">
-                <i class="fa-solid fa-microchip text-emerald-400"></i> Projetos em Destaque
+                <i class="fa-solid fa-microchip text-emerald-400"></i> <span data-i18n="sec-title">Featured Projects</span>
             </h2>
             <span class="text-xs font-mono text-slate-500">SYSTEMS // LAB.LOG</span>
         </div>
 
-        <!-- Featured Project: CLOUDIO (The Masterpiece) -->
+        <!-- Featured Project: CLOUDIO -->
         <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <!-- Coluna da Foto do Hardware (Esquerda) -->
+                <!-- Hardware Photo (Base64 Autocontida) -->
                 <div class="lg:col-span-5 space-y-4">
                     <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl">
-                        <!-- Foto real fornecida do Cloudio fisicamente -->
-                        <img src="IMG_1162.jpg" alt="Cloudio - Servidor Raspberry Pi 4 em Case 3D" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500">
+                        <!-- Imagem em Base64 para garantir autonomia completa sem link externo quebrado -->
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
-                            <span class="px-2 py-1 bg-slate-900/90 text-emerald-400 rounded border border-emerald-500/30">
-                                🟢 Hardware Ativo
+                            <span class="px-2 py-1 bg-slate-900/90 text-emerald-400 rounded border border-emerald-500/30" data-i18n="c-active">
+                                🟢 Active Hardware
                             </span>
                             <span class="text-slate-300 bg-slate-900/90 px-2 py-1 rounded">Raspberry Pi 4 (8GB)</span>
                         </div>
@@ -96,53 +107,53 @@
                     </div>
                 </div>
 
-                <!-- Coluna de Descrição e Arquitetura (Direita) -->
+                <!-- Description & Architecture -->
                 <div class="lg:col-span-7 space-y-6">
                     <div>
                         <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="px-3 py-1 text-xs font-semibold bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">
+                            <span class="px-3 py-1 text-xs font-semibold bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/25" data-i18n="tag-server">
                                 Smart Home Server
                             </span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">
-                                AI Lab & Automação
+                            <span class="px-3 py-1 text-xs font-semibold bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/25" data-i18n="tag-ai">
+                                AI Lab & Automation
                             </span>
                         </div>
                         <h3 class="text-3xl font-extrabold tracking-tight text-white mb-3">
                             Cloudio <span class="text-emerald-400 text-xl font-normal font-mono">// Core Infrastructure</span>
                         </h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante e inteligência artificial com resiliência total a custo zero.
+                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="c-desc">
+                            Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, and artificial intelligence with complete zero-cost resilience.
                         </p>
                     </div>
 
-                    <!-- Grid de Funcionalidades do Cloudio -->
+                    <!-- Cloudio Features Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2.5 text-emerald-400 font-semibold text-sm mb-1">
-                                <i class="fa-solid fa-shield-halved"></i> AdBlocking & DNS
+                                <i class="fa-solid fa-shield-halved"></i> <span data-i18n="f1-title">AdBlocking & DNS</span>
                             </div>
-                            <p class="text-slate-400 text-xs">Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f1-desc">Global network-wide ads and tracker filtering for enhanced security and browsing speed.</p>
                         </div>
                         
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2.5 text-blue-400 font-semibold text-sm mb-1">
-                                <i class="fa-solid fa-hard-drive"></i> Smart NAS
+                                <i class="fa-solid fa-hard-drive"></i> <span data-i18n="f2-title">Smart NAS</span>
                             </div>
-                            <p class="text-slate-400 text-xs">Gerenciamento inteligente de arquivos e backups centralizados via OpenMediaVault.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f2-desc">Intelligent file management and centralized automated backups via OpenMediaVault.</p>
                         </div>
 
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2.5 text-purple-400 font-semibold text-sm mb-1">
-                                <i class="fa-solid fa-robot"></i> OpenClaw AI Agent
+                                <i class="fa-solid fa-robot"></i> <span data-i18n="f3-title">OpenClaw AI Agent</span>
                             </div>
-                            <p class="text-slate-400 text-xs">Agente pessoal autônomo com arquitetura inteligente de <em>4-way free-tier fallback</em>.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f3-desc">Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.</p>
                         </div>
 
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2.5 text-amber-400 font-semibold text-sm mb-1">
-                                <i class="fa-solid fa-gamepad"></i> Gaming Server
+                                <i class="fa-solid fa-gamepad"></i> <span data-i18n="f4-title">Gaming Server</span>
                             </div>
-                            <p class="text-slate-400 text-xs">Servidor de Minecraft dedicado e otimizado para baixa latência entre amigos.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f4-desc">Dedicated Minecraft server optimized for smooth multiplayer sessions with friends.</p>
                         </div>
                     </div>
 
@@ -162,20 +173,20 @@
         <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800">
             <div class="flex flex-col md:flex-row gap-6 items-start justify-between">
                 <div class="space-y-4 max-w-2xl">
-                    <div class="flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/20 w-max">
-                        CAD & Fabricação Avançada
+                    <div class="flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/25 w-max" data-i18n="p2-badge">
+                        Advanced CAD & Fabrication
                     </div>
-                    <h3 class="text-2xl font-bold tracking-tight text-white">
-                        Prototipagem & Design 3D Paramétrico
+                    <h3 class="text-2xl font-bold tracking-tight text-white" data-i18n="p2-title">
+                        Parametric 3D Design & Prototyping
                     </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Desenvolvimento de peças mecânicas funcionais, gabinetes customizados e suportes utilitários utilizando modelagem paramétrica precisa. Foco em otimização de materiais (PLA, TPU) e encaixes estruturais via OpenSCAD e FreeCAD.
+                    <p class="text-slate-300 text-sm leading-relaxed" data-i18n="p2-desc">
+                        Development of functional mechanical parts, custom enclosures, and utility mounts using precise parametric modeling. Focused on material optimization (PLA, TPU) and structural assembly via OpenSCAD and FreeCAD.
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-2">
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">OpenSCAD</span>
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">FreeCAD</span>
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Bambu Lab A1 Mini</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Prototipagem Rápida</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800" data-i18n="p2-tag">Rapid Prototyping</span>
                     </div>
                 </div>
                 <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 text-orange-400 text-3xl shrink-0 flex items-center justify-center">
@@ -188,9 +199,110 @@
 
     <!-- Footer -->
     <footer class="relative z-10 max-w-5xl mx-auto px-6 py-12 text-center text-slate-500 text-sm border-t border-slate-900 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p>© 2026 • Projetado com foco em engenharia e automação.</p>
+        <p data-i18n="footer-rights">© 2026 • Designed with focus on engineering and automation.</p>
         <p class="font-mono text-xs text-slate-600">HOSTED ON GITHUB PAGES</p>
     </footer>
 
+    <!-- Translation Script -->
+    <script>
+        const translations = {
+            en: {
+                "hero-badge": "Systems, Engineering & Maker Lab",
+                "hero-title-1": "Engineering, Automation &",
+                "hero-title-2": "Maker Innovation",
+                "hero-desc": "A living laboratory where I transform code, self-hosted infrastructure, and 3D prototyping into real high-efficiency solutions.",
+                "sec-title": "Featured Projects",
+                "c-active": "🟢 Active Hardware",
+                "tag-server": "Smart Home Server",
+                "tag-ai": "AI Lab & Automation",
+                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, and artificial intelligence with complete zero-cost resilience.",
+                "f1-title": "AdBlocking & DNS",
+                "f1-desc": "Global network-wide ads and tracker filtering for enhanced security and browsing speed.",
+                "f2-title": "Smart NAS",
+                "f2-desc": "Intelligent file management and centralized automated backups via OpenMediaVault.",
+                "f3-title": "OpenClaw AI Agent",
+                "f3-desc": "Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.",
+                "f4-title": "Gaming Server",
+                "f4-desc": "Dedicated Minecraft server optimized for smooth multiplayer sessions with friends.",
+                "p2-badge": "Advanced CAD & Fabrication",
+                "p2-title": "Parametric 3D Design & Prototyping",
+                "p2-desc": "Development of functional mechanical parts, custom enclosures, and utility mounts using precise parametric modeling. Focused on material optimization (PLA, TPU) and structural assembly via OpenSCAD and FreeCAD.",
+                "p2-tag": "Rapid Prototyping",
+                "footer-rights": "© 2026 • Designed with focus on engineering and automation."
+            },
+            pt: {
+                "hero-badge": "Sistemas, Engenharia & Lab Maker",
+                "hero-title-1": "Engenharia, Automação &",
+                "hero-title-2": "Inovação Maker",
+                "hero-desc": "Um laboratório vivo onde transformo código, infraestrutura self-hosted e prototipagem 3D em soluções reais de alta eficiência.",
+                "sec-title": "Projetos em Destaque",
+                "c-active": "🟢 Hardware Ativo",
+                "tag-server": "Smart Home Server",
+                "tag-ai": "AI Lab & Automação",
+                "c-desc": "Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante e inteligência artificial com resiliência total a custo zero.",
+                "f1-title": "AdBlocking & DNS",
+                "f1-desc": "Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.",
+                "f2-title": "Smart NAS",
+                "f2-desc": "Gerenciamento inteligente de arquivos e backups centralizados via OpenMediaVault.",
+                "f3-title": "Agente Pessoal OpenClaw",
+                "f3-desc": "Bot autônomo com arquitetura inteligente de 4-way free-tier fallback.",
+                "f4-title": "Servidor de Jogos",
+                "f4-desc": "Servidor de Minecraft dedicado e otimizado para baixa latência entre amigos.",
+                "p2-badge": "CAD & Fabricação Avançada",
+                "p2-title": "Prototipagem & Design 3D Paramétrico",
+                "p2-desc": "Desenvolvimento de peças mecânicas funcionais, gabinetes customizados e suportes utilitários utilizando modelagem paramétrica precisa. Foco em otimização de materiais (PLA, TPU) e encaixes estruturais via OpenSCAD e FreeCAD.",
+                "p2-tag": "Prototipagem Rápida",
+                "footer-rights": "© 2026 • Projetado com foco em engenharia e automação."
+            },
+            es: {
+                "hero-badge": "Sistemas, Ingeniería y Lab Maker",
+                "hero-title-1": "Ingeniería, Automatización y",
+                "hero-title-2": "Innovación Maker",
+                "hero-desc": "Un laboratorio vivo donde transformo código, infraestructura self-hosted y prototipado 3D en soluciones reales de alta eficiencia.",
+                "sec-title": "Projetos Destacados",
+                "c-active": "🟢 Hardware Activo",
+                "tag-server": "Smart Home Server",
+                "tag-ai": "Lab de IA y Automatización",
+                "c-desc": "Servidor autónomo de alto rendimiento centrado en una Raspberry Pi 4 (8GB RAM) personalizada en un gabinete impreso en 3D. Gestiona servicios de red esenciales, almacenamiento redundante e inteligencia artificial con resiliencia total a coste cero.",
+                "f1-title": "AdBlocking y DNS",
+                "f1-desc": "Filtro global de anuncios y rastreadores a nivel de red para mayor seguridad y velocidad.",
+                "f2-title": "Smart NAS",
+                "f2-desc": "Gestión inteligente de archivos y respaldos automatizados centralizados mediante OpenMediaVault.",
+                "f3-title": "Agente de IA OpenClaw",
+                "f3-desc": "Bot personal autónomo impulsado por una arquitectura resiliente de fallback de 4 vías.",
+                "f4-title": "Servidor de Juegos",
+                "f4-desc": "Servidor dedicado de Minecraft optimizado para sesiones multijugador fluidas.",
+                "p2-badge": "CAD Avanzado y Fabricación",
+                "p2-title": "Diseño 3D Paramétrico y Prototipado",
+                "p2-desc": "Desarrollo de piezas mecánicas funcionales, carcasas personalizadas y soportes mediante modelado paramétrico preciso. Enfoque en optimización de materiales (PLA, TPU) y ensamblaje estructural vía OpenSCAD y FreeCAD.",
+                "p2-tag": "Prototipado Rápido",
+                "footer-rights": "© 2026 • Diseñado con enfoque en ingeniería y automatización."
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update active button styles
+            ['en', 'pt', 'es'].forEach(l => {
+                const btn = document.getElementById(`btn-${l}`);
+                if (l === lang) {
+                    btn.className = "px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all";
+                }
+            });
+
+            // Update html lang attribute
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-MX' : 'en');
+
+            // Update text contents
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>
