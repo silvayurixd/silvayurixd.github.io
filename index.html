@@ -1,542 +1,392 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Portfolio | Lab & Projects</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glow-effect:hover {
-            box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.15);
-        }
-
-        @keyframes flowPulse {
-            0% { stroke-dashoffset: 24; }
-            100% { stroke-dashoffset: 0; }
-        }
-        .animate-flow {
-            stroke-dasharray: 6 6;
-            animation: flowPulse 1.2s linear infinite;
-        }
-
-        @keyframes printHeadSlide {
-            0%   { transform: translateX(0px); }
-            50%  { transform: translateX(110px); }
-            100% { transform: translateX(0px); }
-        }
-        .animate-head {
-            animation: printHeadSlide 3s ease-in-out infinite;
-        }
-
-        @keyframes partGrow {
-            0%, 100% { transform: scaleY(0.7); }
-            50% { transform: scaleY(1); }
-        }
-        .animate-part {
-            transform-origin: bottom;
-            animation: partGrow 2s ease-in-out infinite;
-        }
-
-        @keyframes avatarBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-        .animate-avatar {
-            animation: avatarBounce 3s ease-in-out infinite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020617">
+  <meta name="description" content="Yuri Rabelo — Product Manager / Product Owner working across business, technology, and operations. Product thinking, execution, AI, automation, and systems building.">
+  <meta property="og:title" content="Yuri Rabelo | Product, Systems & Execution">
+  <meta property="og:description" content="Turning complex operational problems into clear priorities, useful products, and scalable systems.">
+  <title>Yuri Rabelo | Product, Systems & Execution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { color-scheme: dark; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .glass-panel { background: rgba(15, 23, 42, .72); backdrop-filter: blur(16px); border: 1px solid rgba(148, 163, 184, .14); }
+    .glow-effect { transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+    .glow-effect:hover { border-color: rgba(52, 211, 153, .38); box-shadow: 0 18px 55px -35px rgba(16, 185, 129, .35); transform: translateY(-2px); }
+    .grid-bg { background-image: linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 88%); }
+    .eyebrow { letter-spacing: .14em; }
+    .section-anchor { scroll-margin-top: 2rem; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #34d399; outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-400 selection:text-slate-950">
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+    <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute inset-0 grid-bg"></div>
+  </div>
 
-    <!-- Background Glows -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-blue-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <!-- Top Bar: Language Flags Switcher & Social Links -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-4 w-full flex items-center justify-between">
-        <!-- Language Switcher Buttons with Flags -->
-        <div class="flex items-center gap-1 bg-slate-900/80 border border-slate-800 p-1 rounded-xl text-sm font-mono">
-            <button onclick="setLanguage('pt')" id="btn-pt" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all shadow-sm" title="Português">🇧🇷</button>
-            <button onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all" title="English">🇺🇸</button>
-            <button onclick="setLanguage('es')" id="btn-es" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all" title="Español">🇲🇽</button>
+  <header class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-5 w-full">
+    <nav class="flex items-center justify-between gap-4" aria-label="Main navigation">
+      <a href="#top" class="font-mono text-sm font-semibold tracking-tight text-white" aria-label="Yuri Rabelo home">YR<span class="text-emerald-400">.</span><span class="text-slate-500 font-normal ml-2 hidden sm:inline">PRODUCT / SYSTEMS</span></a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+        <a href="#work" class="hover:text-emerald-300 transition" data-i18n="nav-work">Selected work</a>
+        <a href="#lab" class="hover:text-emerald-300 transition" data-i18n="nav-lab">Technical lab</a>
+        <a href="#about" class="hover:text-emerald-300 transition" data-i18n="nav-about">About</a>
+        <a href="#contact" class="hover:text-emerald-300 transition" data-i18n="nav-contact">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1 bg-slate-900/90 border border-slate-800 p-1 rounded-xl text-xs font-mono" aria-label="Choose language">
+          <button type="button" onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-lg bg-emerald-400 text-slate-950 font-bold" aria-label="English" aria-pressed="true">EN</button>
+          <button type="button" onclick="setLanguage('pt')" id="btn-pt" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white" aria-label="Português" aria-pressed="false">PT</button>
+          <button type="button" onclick="setLanguage('es')" id="btn-es" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white" aria-label="Español" aria-pressed="false">ES</button>
         </div>
+        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-emerald-300 transition"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-emerald-300 transition"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </nav>
+  </header>
 
-        <!-- Social Icons with Real Links -->
-        <div class="flex items-center gap-2">
-            <a href="https://github.com/silvayurixd" target="_blank" aria-label="GitHub" class="p-2 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-sm">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" aria-label="LinkedIn" class="p-2 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-sm">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
+  <main id="top" class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-12 sm:pt-20 pb-10 w-full">
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono bg-emerald-400/10 text-emerald-300 rounded-full border border-emerald-400/20 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span data-i18n="hero-kicker">PRODUCT MANAGEMENT · OPERATIONS · TECHNOLOGY</span>
         </div>
-    </div>
-
-    <!-- FIRST SECTION: Interactive Intro & Vibe Coding Statement (Compact with Avatar) -->
-    <section class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-6 pb-2 w-full">
-        <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            
-            <!-- Animated Developer Avatar Box -->
-            <div class="lg:col-span-4 flex flex-col items-center justify-center">
-                <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-4 relative overflow-hidden shadow-xl text-center space-y-3">
-                    <div class="absolute top-2.5 left-3 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>
-                        <span class="w-2 h-2 rounded-full bg-yellow-500 inline-block"></span>
-                        <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>
-                    </div>
-                    <span class="text-[9px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                        ● Live Avatar Feed
-                    </span>
-
-                    <!-- Minimalist Dev Avatar SVG -->
-                    <div class="py-2 flex items-center justify-center animate-avatar">
-                        <svg viewBox="0 0 120 120" class="w-24 h-24 drop-shadow-lg">
-                            <!-- Fundo circular do avatar -->
-                            <circle cx="60" cy="60" r="52" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
-                            <!-- Hoodie/Corpo -->
-                            <path d="M 25 105 Q 60 75 95 105 Z" fill="#1e293b"/>
-                            <!-- Cabeça -->
-                            <circle cx="60" cy="50" r="22" fill="#334155"/>
-                            <!-- Cabelo / Topete moderno -->
-                            <path d="M 40 42 Q 50 22 75 35 Q 70 48 40 42 Z" fill="#0f172a"/>
-                            <!-- Óculos / Detalhe tech -->
-                            <rect x="48" y="44" width="24" height="10" rx="3" fill="#090d16" stroke="#10b981" stroke-width="1.5"/>
-                            <!-- Boca / Expressão de fala -->
-                            <path d="M 55 64 Q 60 69 65 64" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" fill="none"/>
-                            <!-- Balão de fala simplificado -->
-                            <rect x="75" y="15" width="38" height="20" rx="5" fill="#10b981" opacity="0.9"/>
-                            <text x="94" y="29" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">HEY!</text>
-                        </svg>
-                    </div>
-
-                    <div class="bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 text-left font-mono text-[11px] text-slate-300">
-                        <span class="text-emerald-400">yuri@lab:~$</span> say <span class="text-amber-300">"Hey, esses aqui são..."</span>
-                    </div>
-                </div>
+        <p class="font-mono text-sm text-slate-400 mb-3" data-i18n="hero-hello">Hi, I’m Yuri Rabelo.</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] max-w-4xl" data-i18n="hero-title">I turn complex business problems into products people can actually use.</h1>
+        <p class="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-3xl" data-i18n="hero-desc">Product Manager / Product Owner with experience across digital products, operations, and international markets. I connect business goals, customer needs, and technical execution to help teams focus on the problems worth solving.</p>
+        <div class="flex flex-wrap gap-2 mt-6 text-xs sm:text-sm font-mono">
+          <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-emerald-300">Product Strategy</span>
+          <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-blue-300">Prioritization & Delivery</span>
+          <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-purple-300">AI & Automation</span>
+          <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-amber-300">International Operations</span>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#work" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-400 text-slate-950 font-bold text-sm hover:bg-emerald-300 transition" data-i18n="hero-cta-work">Explore selected work <i class="fa-solid fa-arrow-down-long"></i></a>
+          <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-700 bg-slate-900/70 text-white font-semibold text-sm hover:border-emerald-400/60 transition"><i class="fa-brands fa-linkedin"></i><span data-i18n="hero-cta-linkedin">Connect on LinkedIn</span></a>
+        </div>
+      </div>
+      <aside class="lg:col-span-4">
+        <div class="glass-panel rounded-3xl p-5 sm:p-6 glow-effect">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+            <span class="font-mono text-xs text-slate-400">YURI_RABELO / PROFILE</span>
+            <span class="font-mono text-[10px] text-emerald-300">PORTFOLIO_V2</span>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="profile-focus-label">Focus</p>
+              <p class="font-semibold" data-i18n="profile-focus">Business outcomes through product execution</p>
             </div>
-
-            <!-- Intro Text & Vibe Coding Philosophy (Zero cost focus) -->
-            <div class="lg:col-span-8 space-y-3 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span data-i18n="hero-badge">Sistemas, Engenharia & Vibe Coding</span>
-                </div>
-                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                    <span data-i18n="intro-speech">"Hey, esses aqui são meus projetos paralelos..."</span>
-                </h1>
-                <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed" data-i18n="intro-desc">
-                    Sou apaixonado por <strong>vibe coding</strong> e automações inteligentes. Meu grande objetivo é construir soluções eficientes gastando <strong>zero ou muito pouco</strong> — utilizando modelos locais (Local LLMs) ou APIs em camadas gratuitas (free-tier). Aqui transformo código, self-hosted e maker lab em soluções reais.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-1.5 pt-1 text-[11px] font-mono text-slate-400">
-                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-emerald-400">#VibeCoding</span>
-                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-blue-400">#ZeroCostStack</span>
-                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-purple-400">#LocalLLM</span>
-                </div>
+            <div>
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="profile-strengths-label">Working style</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="profile-strengths">Structured thinking, pragmatic experimentation, and cross-functional alignment.</p>
             </div>
-
+            <div>
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="profile-edge-label">Technical edge</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="profile-edge">Comfortable going from a user or business problem to workflows, prototypes, systems, and trade-offs.</p>
+            </div>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-800 flex items-center gap-2 text-xs font-mono text-slate-400"><i class="fa-solid fa-location-dot text-emerald-300"></i><span data-i18n="profile-markets">Brazil · Mexico · International teams</span></div>
         </div>
+      </aside>
     </section>
 
-    <!-- Main Content / Projects Grid -->
-    <main class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-2 w-full flex-grow space-y-6">
-        
-        <!-- Section Title -->
-        <div class="border-b border-slate-800/80 pb-2 flex items-center justify-between">
-            <h2 class="text-lg font-bold tracking-tight flex items-center gap-2">
-                <i class="fa-solid fa-microchip text-emerald-400"></i> <span data-i18n="sec-title">Projetos em Destaque</span>
-            </h2>
-            <span class="text-[11px] font-mono text-slate-500">SYSTEMS // LAB.LOG</span>
+    <section id="work" class="section-anchor pt-20 sm:pt-28">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
+        <div>
+          <p class="font-mono text-xs text-emerald-300 mb-2 eyebrow" data-i18n="work-eyebrow">HOW I APPROACH PRODUCT</p>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="work-title">Selected product work</h2>
+          <p class="text-slate-400 text-sm mt-2 max-w-2xl" data-i18n="work-intro">A product portfolio should show how I think, what I chose to do, and what changed—not just what tools I used.</p>
         </div>
+        <span class="font-mono text-[11px] text-slate-500">CASE STUDIES / 01—02</span>
+      </div>
 
-        <!-- Featured Project 1: CLOUDIO -->
-        <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect transition-all duration-300 border border-slate-800 space-y-5">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                
-                <div class="lg:col-span-5 space-y-3">
-                    <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-xl aspect-square flex items-center justify-center">
-                        <img src="cloudio.png" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500" onerror="this.src='cloudio.HEIC';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono z-10">
-                            <span class="px-2 py-1 bg-slate-900/90 text-emerald-400 rounded border border-emerald-500/30" data-i18n="c-active">
-                                🟢 Active Hardware
-                            </span>
-                            <span class="text-slate-300 bg-slate-900/90 px-2 py-1 rounded">Raspberry Pi 4 (8GB)</span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-                        <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800 text-slate-400">
-                            <span class="block text-emerald-400 font-bold">8GB</span> RAM LPDDR4
-                        </div>
-                        <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800 text-slate-400">
-                            <span class="block text-blue-400 font-bold">OpenMedia</span> Vault + OCI
-                        </div>
-                        <div class="bg-slate-900/80 p-2 rounded-xl border border-slate-800 text-slate-400">
-                            <span class="block text-purple-400 font-bold">Tailscale</span> Mesh VPN
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 space-y-4">
-                    <div>
-                        <div class="flex flex-wrap items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/25" data-i18n="tag-server">
-                                Smart Home Server
-                            </span>
-                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/25" data-i18n="tag-ai">
-                                AI Lab & Automation
-                            </span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-1.5">
-                            Cloudio <span class="text-emerald-400 text-base font-normal font-mono">// Core Infrastructure</span>
-                        </h3>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="c-desc">
-                            Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante, bibliotecas de mídia e inteligência artificial com resiliência total a custo zero.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs mb-0.5">
-                                <i class="fa-solid fa-shield-halved"></i> <span data-i18n="f1-title">Pi-hole DNS & AdBlocking</span>
-                            </div>
-                            <p class="text-slate-400 text-[11px]" data-i18n="f1-desc">Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.</p>
-                        </div>
-                        
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-blue-400 font-semibold text-xs mb-0.5">
-                                <i class="fa-solid fa-images"></i> <span data-i18n="f2-title">Immich Smart Photos</span>
-                            </div>
-                            <p class="text-slate-400 text-[11px]" data-i18n="f2-desc">Backup privado de alta performance para fotos e vídeos com indexação por IA.</p>
-                        </div>
-
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-purple-400 font-semibold text-xs mb-0.5">
-                                <i class="fa-solid fa-robot"></i> <span data-i18n="f3-title">Agente Pessoal OpenClaw</span>
-                            </div>
-                            <p class="text-slate-400 text-[11px]" data-i18n="f3-desc">Bot autônomo com arquitetura inteligente de 4-way free-tier fallback.</p>
-                        </div>
-
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-rose-400 font-semibold text-xs mb-0.5">
-                                <i class="fa-solid fa-film"></i> <span data-i18n="f4-title">Plex & Navidrome Mídia</span>
-                            </div>
-                            <p class="text-slate-400 text-[11px]" data-i18n="f4-desc">Serviços centralizados de streaming para coleções pessoais de filmes, séries e músicas.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400 border-t border-slate-800/80 pt-2.5">
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Docker</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Immich</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Pi-hole</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Plex</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Navidrome</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Tailscale</span>
-                    </div>
-                </div>
-
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <article class="glass-panel rounded-3xl p-6 sm:p-7 glow-effect flex flex-col">
+          <div class="flex flex-wrap items-center gap-2 mb-5">
+            <span class="px-2.5 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-semibold" data-i18n="case1-tag">PRODUCT · INTERNATIONAL MARKETS</span>
+            <span class="font-mono text-[10px] text-slate-500">CASE 01</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold leading-snug" data-i18n="case1-title">Scaling digital products across markets</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mt-3" data-i18n="case1-summary">Working across markets means balancing a consistent product direction with local customer needs, operational realities, and stakeholder priorities.</p>
+          <div class="mt-6 space-y-4">
+            <div class="border-l-2 border-blue-400/70 pl-4">
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="problem-label">The challenge</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="case1-problem">Align business goals, local-market needs, and operational constraints without losing focus on the customer or the outcomes the product must deliver.</p>
             </div>
-
-            <!-- Flow SVG -->
-            <div class="pt-3 border-t border-slate-800/80">
-                <div class="text-[11px] font-mono text-slate-400 mb-2.5 flex items-center justify-between">
-                    <span>LIVE SYSTEM ARCHITECTURE FLOW</span>
-                    <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> TAILSCALE MESH ENCRYPTED</span>
-                </div>
-                <div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
-                    <svg viewBox="0 0 800 130" class="w-full min-w-[650px] h-auto text-xs font-mono">
-                        <path d="M 120 65 L 260 65" stroke="#334155" stroke-width="2"/>
-                        <path d="M 120 65 L 260 65" stroke="#10b981" stroke-width="2" class="animate-flow"/>
-
-                        <path d="M 380 65 L 520 15" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 65 L 520 15" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
-
-                        <path d="M 380 65 L 520 48" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 65 L 520 48" stroke="#a855f7" stroke-width="2" class="animate-flow"/>
-
-                        <path d="M 380 65 L 520 81" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 65 L 520 81" stroke="#f43f5e" stroke-width="2" class="animate-flow"/>
-
-                        <path d="M 380 65 L 520 114" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 65 L 520 114" stroke="#f59e0b" stroke-width="2" class="animate-flow"/>
-
-                        <g transform="translate(10, 40)">
-                            <rect width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
-                            <text x="55" y="22" fill="#94a3b8" text-anchor="middle" font-weight="bold">Client Devices</text>
-                            <text x="55" y="38" fill="#64748b" text-anchor="middle">iOS / Mac / Web</text>
-                        </g>
-
-                        <g transform="translate(260, 40)">
-                            <rect width="120" height="50" rx="10" fill="#0f172a" stroke="#10b981"/>
-                            <text x="60" y="22" fill="#34d399" text-anchor="middle" font-weight="bold">Pi-hole & DNS</text>
-                            <text x="60" y="38" fill="#64748b" text-anchor="middle">Tailscale Core</text>
-                        </g>
-
-                        <g transform="translate(520, 0)">
-                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#3b82f6"/>
-                            <text x="85" y="19" fill="#60a5fa" text-anchor="middle" font-weight="bold">Immich (Photos + AI)</text>
-                        </g>
-
-                        <g transform="translate(520, 33)">
-                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#a855f7"/>
-                            <text x="85" y="19" fill="#c084fc" text-anchor="middle" font-weight="bold">OpenClaw AI Agent</text>
-                        </g>
-
-                        <g transform="translate(520, 66)">
-                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#f43f5e"/>
-                            <text x="85" y="19" fill="#fb7185" text-anchor="middle" font-weight="bold">Plex & Navidrome Media</text>
-                        </g>
-
-                        <g transform="translate(520, 99)">
-                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#f59e0b"/>
-                            <text x="85" y="19" fill="#fbbf24" text-anchor="middle" font-weight="bold">Minecraft & OMV NAS</text>
-                        </g>
-                    </svg>
-                </div>
+            <div class="border-l-2 border-emerald-400/70 pl-4">
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="approach-label">Product approach</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="case1-approach">Frame the problem, make trade-offs explicit, align cross-functional stakeholders, and translate priorities into an executable plan.</p>
             </div>
+            <div class="border-l-2 border-purple-400/70 pl-4">
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="outcome-label">What this demonstrates</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="case1-outcome">Product judgment at the intersection of customer experience, business priorities, and operational execution.</p>
+            </div>
+          </div>
+          <p class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-500 leading-relaxed" data-i18n="case1-note">Professional experience: Localiza&Co. Specific initiatives and performance figures can be shared where appropriate and non-confidential.</p>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 sm:p-7 glow-effect flex flex-col">
+          <div class="flex flex-wrap items-center gap-2 mb-5">
+            <span class="px-2.5 py-1 rounded-full bg-purple-400/10 border border-purple-400/20 text-purple-300 text-[11px] font-semibold" data-i18n="case2-tag">OPERATIONS · DIGITAL ENABLEMENT</span>
+            <span class="font-mono text-[10px] text-slate-500">CASE 02</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold leading-snug" data-i18n="case2-title">Turning operational complexity into scalable workflows</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mt-3" data-i18n="case2-summary">Complex operations often hide product opportunities: unclear handoffs, repeated manual work, fragmented information, or processes that become harder to scale as the business grows.</p>
+          <div class="mt-6 space-y-4">
+            <div class="border-l-2 border-blue-400/70 pl-4">
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="problem-label">The challenge</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="case2-problem">Find the underlying bottleneck instead of treating every symptom as a separate request or feature.</p>
+            </div>
+            <div class="border-l-2 border-emerald-400/70 pl-4">
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="approach-label">Product approach</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="case2-approach">Map the workflow, identify the highest-value friction, prioritize an intervention, and coordinate the people needed to deliver and adopt it.</p>
+            </div>
+            <div class="border-l-2 border-purple-400/70 pl-4">
+              <p class="text-xs uppercase eyebrow text-slate-500 mb-1" data-i18n="outcome-label">What this demonstrates</p>
+              <p class="text-sm text-slate-300 leading-relaxed" data-i18n="case2-outcome">Systems thinking, pragmatic prioritization, and a focus on measurable operational outcomes.</p>
+            </div>
+          </div>
+          <p class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-500 leading-relaxed" data-i18n="case2-note">This is a case-study frame for relevant work. Replace the generalized narrative with one specific initiative, your contribution, and verified results before publishing as a completed case.</p>
+        </article>
+      </div>
+      <div class="mt-4 rounded-2xl border border-amber-400/20 bg-amber-400/5 p-4 flex gap-3">
+        <i class="fa-solid fa-circle-info text-amber-300 mt-0.5"></i>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="case-disclaimer">The case narratives above intentionally avoid invented KPIs or confidential details. For the strongest final version, replace generalized descriptions with one real initiative, your specific decisions, and verified outcomes.</p>
+      </div>
+    </section>
+
+    <section id="lab" class="section-anchor pt-20 sm:pt-28">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
+        <div>
+          <p class="font-mono text-xs text-emerald-300 mb-2 eyebrow" data-i18n="lab-eyebrow">BUILD / TEST / LEARN</p>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="lab-title">Technical lab</h2>
+          <p class="text-slate-400 text-sm mt-2 max-w-2xl" data-i18n="lab-intro">Side projects that show how I explore constraints, prototype ideas, and build a practical understanding of technology.</p>
         </div>
+        <span class="font-mono text-[11px] text-slate-500">SYSTEMS / EXPERIMENTS</span>
+      </div>
 
-        <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini -->
-        <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect transition-all duration-300 border border-slate-800 space-y-5">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                
-                <div class="lg:col-span-7 space-y-4">
-                    <div class="space-y-1.5">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/25" data-i18n="p2-badge">
-                                Engenharia & CAD com IA
-                            </span>
-                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/25">
-                                100+ Peças Funcionais
-                            </span>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white" data-i18n="p2-title">
-                            Pipeline Text-to-CAD Local com OpenSCAD
-                        </h3>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="p2-desc">
-                            Fluxo gerador avançado utilizando modelo fundamental local combinado com motor de compilação text-to-CAD de custo zero. Traduz especificações em linguagem natural diretamente em scripts OpenSCAD paramétricos e precisos para prototipagem funcional rápida na Bambu Lab A1 Mini.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px]">
-                            <span class="block text-orange-400 font-bold mb-0.5">Zero-Cost Stack</span>
-                            <span class="text-slate-400">Modelos locais com privacidade absoluta e zero custo de API.</span>
-                        </div>
-                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px]">
-                            <span class="block text-emerald-400 font-bold mb-0.5">Precisão Paramétrica</span>
-                            <span class="text-slate-400">Scripts OpenSCAD gerados sob rigorosas restrições mecânicas.</span>
-                        </div>
-                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px]">
-                            <span class="block text-blue-400 font-bold mb-0.5">Produção Real</span>
-                            <span class="text-slate-400">Mais de 100 gabinetes e suportes utilitários fabricados com sucesso.</span>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400 pt-1">
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">OpenSCAD</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Local LLM</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Text-to-CAD</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Bambu Lab A1 Mini</span>
-                    </div>
-                </div>
-
-                <!-- Visualização Realista Frontal Ortogonal da A1 Mini -->
-                <div class="lg:col-span-5 flex flex-col items-center justify-center">
-                    <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-4 relative overflow-hidden shadow-xl">
-                        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2 border-b border-slate-800/80 pb-2">
-                            <span class="text-orange-400 font-bold flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> BAMBU A1 MINI // REAL-TIME
-                            </span>
-                            <span class="text-emerald-400">PRINTING</span>
-                        </div>
-
-                        <!-- SVG Ortogonal Limpo e Perfeitamente Alinhado -->
-                        <svg viewBox="0 0 320 200" class="w-full h-auto drop-shadow-md">
-                            <rect x="40" y="165" width="240" height="15" rx="3" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-                            <rect x="80" y="145" width="160" height="20" rx="2" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
-                            <rect x="135" y="115" width="50" height="30" rx="2" fill="#f97316" class="animate-part"/>
-                            <rect x="50" y="25" width="22" height="145" rx="2" fill="#0f172a" stroke="#475569" stroke-width="2"/>
-                            <line x1="61" y1="30" x2="61" y2="160" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3"/>
-                            <rect x="60" y="70" width="210" height="14" rx="2" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-
-                            <g class="animate-head">
-                                <rect x="130" y="55" width="40" height="42" rx="4" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-                                <polygon points="145,97 155,97 150,112" fill="#e2e8f0"/>
-                                <line x1="150" y1="112" x2="150" y2="130" stroke="#f97316" stroke-width="2" class="animate-pulse"/>
-                                <circle cx="138" cy="65" r="2.5" fill="#10b981"/>
-                            </g>
-                        </svg>
-
-                        <div class="mt-2 grid grid-cols-2 gap-2 text-center text-[10px] font-mono text-slate-400">
-                            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
-                                HOTEND: <span class="text-orange-400">220°C</span>
-                            </div>
-                            <div class="bg-slate-950 p-1.5 rounded border border-slate-800">
-                                MATERIAL: <span class="text-emerald-400">PLA / TPU</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+      <article class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect mb-5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+          <div class="lg:col-span-5">
+            <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
+              <img src="cloudio.png" alt="Cloudio self-hosted Raspberry Pi server" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500">
+                <i class="fa-solid fa-server text-4xl text-emerald-300"></i>
+                <span class="font-mono text-xs">CLOUDIO / SELF-HOSTED</span>
+              </div>
+              <div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
+                <span class="px-2 py-1 bg-slate-950/90 text-emerald-300 rounded border border-emerald-400/30" data-i18n="cloudio-status">RUNNING SERVICES</span>
+                <span class="text-slate-200 bg-slate-950/90 px-2 py-1 rounded">Raspberry Pi 4 · 8 GB</span>
+              </div>
             </div>
-
-            <!-- Pipeline Flowchart -->
-            <div class="pt-3 border-t border-slate-800/80">
-                <div class="text-[11px] font-mono text-slate-400 mb-2.5 flex items-center justify-between">
-                    <span>ZERO-COST TEXT-TO-CAD COMPILATION PIPELINE</span>
-                    <span class="text-orange-400">PROMPT ➔ PARAMETRIC CODE ➔ FABRICATION</span>
-                </div>
-                <div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
-                    <svg viewBox="0 0 800 100" class="w-full min-w-[650px] h-auto text-xs font-mono">
-                        <path d="M 160 50 L 260 50" stroke="#334155" stroke-width="2"/>
-                        <path d="M 160 50 L 260 50" stroke="#f97316" stroke-width="2" class="animate-flow"/>
-
-                        <path d="M 400 50 L 500 50" stroke="#334155" stroke-width="2"/>
-                        <path d="M 400 50 L 500 50" stroke="#10b981" stroke-width="2" class="animate-flow"/>
-
-                        <path d="M 640 50 L 710 50" stroke="#334155" stroke-width="2"/>
-                        <path d="M 640 50 L 710 50" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
-
-                        <g transform="translate(10, 25)">
-                            <rect width="150" height="50" rx="10" fill="#0f172a" stroke="#ea580c"/>
-                            <text x="75" y="22" fill="#fdba74" text-anchor="middle" font-weight="bold">Natural Language</text>
-                            <text x="75" y="38" fill="#64748b" text-anchor="middle">Part Specifications</text>
-                        </g>
-
-                        <g transform="translate(260, 25)">
-                            <rect width="140" height="50" rx="10" fill="#0f172a" stroke="#f97316"/>
-                            <text x="70" y="22" fill="#fed7aa" text-anchor="middle" font-weight="bold">Local LLM</text>
-                            <text x="70" y="38" fill="#64748b" text-anchor="middle">Zero-Cost Inference</text>
-                        </g>
-
-                        <g transform="translate(500, 25)">
-                            <rect width="140" height="50" rx="10" fill="#0f172a" stroke="#10b981"/>
-                            <text x="70" y="22" fill="#6ee7b7" text-anchor="middle" font-weight="bold">OpenSCAD Engine</text>
-                            <text x="70" y="38" fill="#64748b" text-anchor="middle">Parametric Code</text>
-                        </g>
-
-                        <g transform="translate(710, 25)">
-                            <circle cx="25" cy="25" r="22" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
-                            <text x="25" y="30" fill="#60a5fa" text-anchor="middle" font-size="16">🖨️</text>
-                        </g>
-                    </svg>
-                </div>
+            <div class="grid grid-cols-3 gap-2 mt-3 text-center font-mono text-[10px] sm:text-xs">
+              <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800"><span class="block text-emerald-300 font-bold">Docker</span><span class="text-slate-500">Services</span></div>
+              <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800"><span class="block text-blue-300 font-bold">OMV</span><span class="text-slate-500">Storage</span></div>
+              <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800"><span class="block text-purple-300 font-bold">VPN</span><span class="text-slate-500">Remote access</span></div>
             </div>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-[11px] font-semibold">SELF-HOSTED SYSTEMS</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-semibold">AI & AUTOMATION</span>
+            </div>
+            <h3 class="text-2xl font-bold">Cloudio <span class="block sm:inline text-base font-mono font-normal text-emerald-300">// Personal infrastructure</span></h3>
+            <p class="text-slate-300 text-sm leading-relaxed mt-3" data-i18n="cloudio-desc">A self-hosted environment built around a Raspberry Pi 4 (8 GB RAM), bringing together private photo management, media services, network-level filtering, remote access, and AI-agent experiments.</p>
+            <div class="grid sm:grid-cols-2 gap-3 mt-5">
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-4">
+                <p class="text-sm font-semibold text-emerald-300 mb-1" data-i18n="cloudio-decision-title">Design decisions</p>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="cloudio-decision">Containerize services, organize persistent data on external storage, and balance capability against limited CPU, memory, and boot-disk capacity.</p>
+              </div>
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-4">
+                <p class="text-sm font-semibold text-blue-300 mb-1" data-i18n="cloudio-learning-title">Product relevance</p>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="cloudio-learning">A hands-on exercise in prioritization, reliability trade-offs, user privacy, maintenance cost, and designing around real constraints.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-5 text-[11px] font-mono text-slate-400">
+              <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Docker</span><span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Immich</span><span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">OpenMediaVault</span><span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Pi-hole</span><span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Tailscale</span><span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Plex / Navidrome</span>
+            </div>
+          </div>
         </div>
+      </article>
 
-    </main>
+      <article class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded-full bg-orange-400/10 border border-orange-400/20 text-orange-300 text-[11px] font-semibold" data-i18n="cad-tag">AI-ASSISTED PROTOTYPING</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[11px] font-semibold">OPENSCAD · 3D PRINTING</span>
+            </div>
+            <h3 class="text-2xl font-bold leading-snug" data-i18n="cad-title">From natural-language requirements to physical prototypes</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mt-3" data-i18n="cad-desc">An experimental workflow that turns part requirements into parametric OpenSCAD models, then validates the design through physical prototyping on a Bambu Lab A1 Mini. The interesting part is not generating code alone—it is translating constraints into something that fits and works.</p>
+            <div class="grid sm:grid-cols-3 gap-3 mt-5">
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3"><i class="fa-solid fa-list-check text-orange-300 mb-2"></i><p class="text-xs font-semibold mb-1" data-i18n="cad-step1-title">1. Specify</p><p class="text-[11px] text-slate-400" data-i18n="cad-step1">Dimensions, clearances, fit, and functional constraints.</p></div>
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3"><i class="fa-solid fa-code text-emerald-300 mb-2"></i><p class="text-xs font-semibold mb-1" data-i18n="cad-step2-title">2. Generate</p><p class="text-[11px] text-slate-400" data-i18n="cad-step2">Parametric geometry and editable OpenSCAD code.</p></div>
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3"><i class="fa-solid fa-cube text-blue-300 mb-2"></i><p class="text-xs font-semibold mb-1" data-i18n="cad-step3-title">3. Validate</p><p class="text-[11px] text-slate-400" data-i18n="cad-step3">Print, test fit, learn, and refine the design.</p></div>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl bg-slate-900/90 border border-slate-800 p-5">
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 border-b border-slate-800 pb-3 mb-4"><span class="text-orange-300">REQUIREMENT → PROTOTYPE</span><span>ITERATIVE LOOP</span></div>
+              <div class="space-y-3">
+                <div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-xl bg-orange-400/10 border border-orange-400/20 flex items-center justify-center text-orange-300"><i class="fa-regular fa-comment-dots"></i></div><div><p class="text-sm font-semibold" data-i18n="cad-flow1">Natural-language brief</p><p class="text-xs text-slate-500" data-i18n="cad-flow1-sub">User need + constraints</p></div></div>
+                <div class="ml-5 h-5 border-l border-dashed border-slate-700"></div>
+                <div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-xl bg-purple-400/10 border border-purple-400/20 flex items-center justify-center text-purple-300"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><p class="text-sm font-semibold" data-i18n="cad-flow2">AI-assisted model</p><p class="text-xs text-slate-500" data-i18n="cad-flow2-sub">Parametric OpenSCAD</p></div></div>
+                <div class="ml-5 h-5 border-l border-dashed border-slate-700"></div>
+                <div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-xl bg-blue-400/10 border border-blue-400/20 flex items-center justify-center text-blue-300"><i class="fa-solid fa-print"></i></div><div><p class="text-sm font-semibold" data-i18n="cad-flow3">Physical test</p><p class="text-xs text-slate-500" data-i18n="cad-flow3-sub">Fit, function, iteration</p></div></div>
+              </div>
+              <p class="text-xs text-slate-500 mt-5 pt-4 border-t border-slate-800" data-i18n="cad-note">A practical example of rapid prototyping, feedback loops, and learning through validation.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
 
-    <!-- Footer -->
-    <footer class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-6 text-center text-slate-500 text-xs border-t border-slate-900 w-full flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p data-i18n="footer-rights">© 2026 • Projetado com foco em engenharia e automação.</p>
-        <p class="font-mono text-[10px] text-slate-600">HOSTED ON GITHUB PAGES</p>
-    </footer>
+    <section id="about" class="section-anchor pt-20 sm:pt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-5">
+          <p class="font-mono text-xs text-emerald-300 mb-2 eyebrow" data-i18n="about-eyebrow">BEYOND THE TITLE</p>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="about-title">A product mindset with a builder’s curiosity.</h2>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="text-slate-300 leading-relaxed" data-i18n="about-desc">I enjoy working where business goals meet messy operational reality. My approach is to make the problem explicit, understand the constraints, bring the right people into the decision, and keep delivery connected to the outcome. Building systems outside work keeps my technical judgment grounded: I see the cost of complexity, maintenance, and unclear requirements firsthand.</p>
+          <div class="grid sm:grid-cols-2 gap-3 mt-6">
+            <div class="glass-panel rounded-2xl p-4"><i class="fa-solid fa-compass text-emerald-300 mb-3"></i><h3 class="font-semibold text-sm mb-1" data-i18n="value1-title">Outcome-oriented</h3><p class="text-xs text-slate-400 leading-relaxed" data-i18n="value1-desc">Connect priorities to customer value and business goals—not output for its own sake.</p></div>
+            <div class="glass-panel rounded-2xl p-4"><i class="fa-solid fa-people-arrows-left-right text-blue-300 mb-3"></i><h3 class="font-semibold text-sm mb-1" data-i18n="value2-title">Cross-functional</h3><p class="text-xs text-slate-400 leading-relaxed" data-i18n="value2-desc">Translate between business, operations, design, and engineering.</p></div>
+            <div class="glass-panel rounded-2xl p-4"><i class="fa-solid fa-scale-balanced text-purple-300 mb-3"></i><h3 class="font-semibold text-sm mb-1" data-i18n="value3-title">Pragmatic prioritization</h3><p class="text-xs text-slate-400 leading-relaxed" data-i18n="value3-desc">Make trade-offs visible and focus effort where it can create the most value.</p></div>
+            <div class="glass-panel rounded-2xl p-4"><i class="fa-solid fa-flask text-orange-300 mb-3"></i><h3 class="font-semibold text-sm mb-1" data-i18n="value4-title">Experiment and learn</h3><p class="text-xs text-slate-400 leading-relaxed" data-i18n="value4-desc">Use prototypes and feedback to reduce uncertainty before over-investing.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Translation Script -->
-    <script>
-        const translations = {
-            pt: {
-                "hero-badge": "Sistemas, Engenharia & Vibe Coding",
-                "intro-speech": "\"Hey, esses aqui são meus projetos paralelos...\"",
-                "intro-desc": "Sou apaixonado por vibe coding e automações inteligentes. Meu grande objetivo é construir soluções eficientes gastando zero ou muito pouco — utilizando modelos locais (Local LLMs) ou APIs em camadas gratuitas (free-tier). Aqui transformo código, self-hosted e maker lab em soluções reais.",
-                "sec-title": "Projetos em Destaque",
-                "c-active": "🟢 Hardware Ativo",
-                "tag-server": "Smart Home Server",
-                "tag-ai": "AI Lab & Automação",
-                "c-desc": "Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante, bibliotecas de mídia e inteligência artificial com resiliência total a custo zero.",
-                "f1-title": "Pi-hole DNS & AdBlocking",
-                "f1-desc": "Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.",
-                "f2-title": "Immich Smart Photos",
-                "f2-desc": "Backup privado de alta performance para fotos e vídeos com indexação por IA.",
-                "f3-title": "Agente Pessoal OpenClaw",
-                "f3-desc": "Bot autônomo com arquitetura inteligente de 4-way free-tier fallback.",
-                "f4-title": "Plex & Navidrome Mídia",
-                "f4-desc": "Serviços centralizados de streaming para coleções pessoais de filmes, séries e músicas.",
-                "p2-badge": "Engenharia & CAD com IA",
-                "p2-title": "Pipeline Text-to-CAD Local com OpenSCAD",
-                "p2-desc": "Fluxo gerador avançado utilizando modelo fundamental local combinado com motor de compilação text-to-CAD de custo zero. Traduz especificações em linguagem natural diretamente em scripts OpenSCAD paramétricos e precisos para prototipagem funcional rápida na Bambu Lab A1 Mini.",
-                "footer-rights": "© 2026 • Projetado com foco em engenharia e automação."
-            },
-            en: {
-                "hero-badge": "Systems, Engineering & Vibe Coding",
-                "intro-speech": "\"Hey, these are my side projects...\"",
-                "intro-desc": "I am deeply passionate about vibe coding and smart automations. My main goal is to build efficient solutions spending zero or very little — using local models (Local LLMs) or free-tier API models. Here I transform code, self-hosted infrastructure, and maker lab experiments into real high-efficiency solutions.",
-                "sec-title": "Featured Projects",
-                "c-active": "🟢 Active Hardware",
-                "tag-server": "Smart Home Server",
-                "tag-ai": "AI Lab & Automation",
-                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.",
-                "f1-title": "Pi-hole DNS & AdBlocking",
-                "f1-desc": "Global network-wide ad and tracker filtering for enhanced security and browsing speed.",
-                "f2-title": "Immich Smart Photos",
-                "f2-desc": "Self-hosted high-performance photo and video backup with AI machine learning indexing.",
-                "f3-title": "OpenClaw AI Agent",
-                "f3-desc": "Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.",
-                "f4-title": "Plex & Navidrome Media",
-                "f4-desc": "Centralized streaming services for personal movies, series, and music libraries.",
-                "p2-badge": "AI-Driven Engineering & CAD",
-                "p2-title": "Local Text-to-CAD Pipeline with OpenSCAD",
-                "p2-desc": "Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.",
-                "footer-rights": "© 2026 • Designed with focus on engineering and automation."
-            },
-            es: {
-                "hero-badge": "Sistemas, Ingeniería y Vibe Coding",
-                "intro-speech": "\"Hey, estos son mis proyectos paralelos...\"",
-                "intro-desc": "Me apasiona el vibe coding y las automatizaciones inteligentes. Mi gran objetivo es construir soluciones eficientes gastando cero o muy poco, utilizando modelos locales (Local LLMs) o modelos de API gratuitos (free-tier). Aquí transformo código, infraestructura self-hosted y lab maker en soluciones reales.",
-                "sec-title": "Projetos Destacados",
-                "c-active": "🟢 Hardware Activo",
-                "tag-server": "Smart Home Server",
-                "tag-ai": "Lab de IA y Automatización",
-                "c-desc": "Servidor autónomo de alto rendimiento centrado en una Raspberry Pi 4 (8GB RAM) personalizada en un gabinete impreso en 3D. Gestiona servicios de red esenciales, almacenamiento redundante, bibliotecas multimedia e inteligencia artificial con resiliencia total a coste cero.",
-                "f1-title": "Pi-hole DNS y AdBlocking",
-                "f1-desc": "Filtro global de anuncios y rastreadores a nivel de red para mayor seguridad y velocidad.",
-                "f2-title": "Immich Smart Photos",
-                "f2-desc": "Respaldo privado de fotos y videos de alto rendimiento con indexación por inteligencia artificial.",
-                "f3-title": "Agente de IA OpenClaw",
-                "f3-desc": "Bot personal autónomo impulsado por una arquitectura resiliente de fallback de 4 vías.",
-                "f4-title": "Plex & Navidrome Media",
-                "f4-desc": "Servicios centralizados de streaming para colecciones personales de películas, series y música.",
-                "p2-badge": "Ingeniería y CAD con IA",
-                "p2-title": "Pipeline Text-to-CAD Local con OpenSCAD",
-                "p2-desc": "Flujo generativo avanzado que utiliza un modelo fundacional local combinado con un motor de compilación text-to-CAD de costo cero. Traduce lenguaje natural en scripts OpenSCAD paramétricos precisos para prototipado rápido en Bambu Lab A1 Mini.",
-                "footer-rights": "© 2026 • Diseñado con enfoque en ingeniería y automatización."
-            }
-        };
+    <section id="contact" class="section-anchor pt-20 sm:pt-28">
+      <div class="glass-panel rounded-3xl p-7 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6 glow-effect">
+        <div>
+          <p class="font-mono text-xs text-emerald-300 mb-2 eyebrow" data-i18n="contact-eyebrow">LET’S TALK</p>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="contact-title">Have a product problem worth solving?</h2>
+          <p class="text-slate-400 text-sm mt-3 max-w-2xl" data-i18n="contact-desc">I’m interested in product roles where customer needs, business outcomes, and technical execution come together.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-400 text-slate-950 font-bold text-sm hover:bg-emerald-300 transition"><i class="fa-brands fa-linkedin"></i><span data-i18n="contact-linkedin">Message me on LinkedIn</span></a>
+          <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-700 bg-slate-900/70 text-white font-semibold text-sm hover:border-emerald-400/60 transition"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        function setLanguage(lang) {
-            ['pt', 'en', 'es'].forEach(l => {
-                const btn = document.getElementById(`btn-${l}`);
-                if (l === lang) {
-                    btn.className = "px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all shadow-sm";
-                } else {
-                    btn.className = "px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all";
-                }
-            });
+  <footer class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-7 mt-8 text-slate-500 text-xs border-t border-slate-900 w-full flex flex-col sm:flex-row items-center justify-between gap-3">
+    <p data-i18n="footer">© 2026 Yuri Rabelo · Product thinking, technical curiosity, practical execution.</p>
+    <p class="font-mono text-[10px] text-slate-600">HOSTED ON GITHUB PAGES</p>
+  </footer>
 
-            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-MX' : 'en');
+<script>
+const translations = {
+  en: {
+    "nav-work":"Selected work","nav-lab":"Technical lab","nav-about":"About","nav-contact":"Contact",
+    "hero-kicker":"PRODUCT MANAGEMENT · OPERATIONS · TECHNOLOGY","hero-hello":"Hi, I’m Yuri Rabelo.",
+    "hero-title":"I turn complex business problems into products people can actually use.",
+    "hero-desc":"Product Manager / Product Owner with experience across digital products, operations, and international markets. I connect business goals, customer needs, and technical execution to help teams focus on the problems worth solving.",
+    "hero-cta-work":"Explore selected work","hero-cta-linkedin":"Connect on LinkedIn",
+    "profile-focus-label":"Focus","profile-focus":"Business outcomes through product execution","profile-strengths-label":"Working style","profile-strengths":"Structured thinking, pragmatic experimentation, and cross-functional alignment.","profile-edge-label":"Technical edge","profile-edge":"Comfortable going from a user or business problem to workflows, prototypes, systems, and trade-offs.","profile-markets":"Brazil · Mexico · International teams",
+    "work-eyebrow":"HOW I APPROACH PRODUCT","work-title":"Selected product work","work-intro":"A product portfolio should show how I think, what I chose to do, and what changed—not just what tools I used.",
+    "case1-tag":"PRODUCT · INTERNATIONAL MARKETS","case1-title":"Scaling digital products across markets","case1-summary":"Working across markets means balancing a consistent product direction with local customer needs, operational realities, and stakeholder priorities.",
+    "problem-label":"The challenge","approach-label":"Product approach","outcome-label":"What this demonstrates",
+    "case1-problem":"Align business goals, local-market needs, and operational constraints without losing focus on the customer or the outcomes the product must deliver.","case1-approach":"Frame the problem, make trade-offs explicit, align cross-functional stakeholders, and translate priorities into an executable plan.","case1-outcome":"Product judgment at the intersection of customer experience, business priorities, and operational execution.","case1-note":"Professional experience: Localiza&Co. Specific initiatives and performance figures can be shared where appropriate and non-confidential.",
+    "case2-tag":"OPERATIONS · DIGITAL ENABLEMENT","case2-title":"Turning operational complexity into scalable workflows","case2-summary":"Complex operations often hide product opportunities: unclear handoffs, repeated manual work, fragmented information, or processes that become harder to scale as the business grows.",
+    "case2-problem":"Find the underlying bottleneck instead of treating every symptom as a separate request or feature.","case2-approach":"Map the workflow, identify the highest-value friction, prioritize an intervention, and coordinate the people needed to deliver and adopt it.","case2-outcome":"Systems thinking, pragmatic prioritization, and a focus on measurable operational outcomes.","case2-note":"This is a case-study frame for relevant work. Replace the generalized narrative with one specific initiative, your contribution, and verified results before publishing as a completed case.",
+    "case-disclaimer":"The case narratives above intentionally avoid invented KPIs or confidential details. For the strongest final version, replace generalized descriptions with one real initiative, your specific decisions, and verified outcomes.",
+    "lab-eyebrow":"BUILD / TEST / LEARN","lab-title":"Technical lab","lab-intro":"Side projects that show how I explore constraints, prototype ideas, and build a practical understanding of technology.",
+    "cloudio-status":"RUNNING SERVICES","cloudio-desc":"A self-hosted environment built around a Raspberry Pi 4 (8 GB RAM), bringing together private photo management, media services, network-level filtering, remote access, and AI-agent experiments.",
+    "cloudio-decision-title":"Design decisions","cloudio-decision":"Containerize services, organize persistent data on external storage, and balance capability against limited CPU, memory, and boot-disk capacity.","cloudio-learning-title":"Product relevance","cloudio-learning":"A hands-on exercise in prioritization, reliability trade-offs, user privacy, maintenance cost, and designing around real constraints.",
+    "cad-tag":"AI-ASSISTED PROTOTYPING","cad-title":"From natural-language requirements to physical prototypes","cad-desc":"An experimental workflow that turns part requirements into parametric OpenSCAD models, then validates the design through physical prototyping on a Bambu Lab A1 Mini. The interesting part is not generating code alone—it is translating constraints into something that fits and works.",
+    "cad-step1-title":"1. Specify","cad-step1":"Dimensions, clearances, fit, and functional constraints.","cad-step2-title":"2. Generate","cad-step2":"Parametric geometry and editable OpenSCAD code.","cad-step3-title":"3. Validate","cad-step3":"Print, test fit, learn, and refine the design.","cad-flow1":"Natural-language brief","cad-flow1-sub":"User need + constraints","cad-flow2":"AI-assisted model","cad-flow2-sub":"Parametric OpenSCAD","cad-flow3":"Physical test","cad-flow3-sub":"Fit, function, iteration","cad-note":"A practical example of rapid prototyping, feedback loops, and learning through validation.",
+    "about-eyebrow":"BEYOND THE TITLE","about-title":"A product mindset with a builder’s curiosity.","about-desc":"I enjoy working where business goals meet messy operational reality. My approach is to make the problem explicit, understand the constraints, bring the right people into the decision, and keep delivery connected to the outcome. Building systems outside work keeps my technical judgment grounded: I see the cost of complexity, maintenance, and unclear requirements firsthand.",
+    "value1-title":"Outcome-oriented","value1-desc":"Connect priorities to customer value and business goals—not output for its own sake.","value2-title":"Cross-functional","value2-desc":"Translate between business, operations, design, and engineering.","value3-title":"Pragmatic prioritization","value3-desc":"Make trade-offs visible and focus effort where it can create the most value.","value4-title":"Experiment and learn","value4-desc":"Use prototypes and feedback to reduce uncertainty before over-investing.",
+    "contact-eyebrow":"LET’S TALK","contact-title":"Have a product problem worth solving?","contact-desc":"I’m interested in product roles where customer needs, business outcomes, and technical execution come together.","contact-linkedin":"Message me on LinkedIn","footer":"© 2026 Yuri Rabelo · Product thinking, technical curiosity, practical execution."
+  },
+  pt: {
+    "nav-work":"Cases selecionados","nav-lab":"Laboratório técnico","nav-about":"Sobre","nav-contact":"Contato",
+    "hero-kicker":"GESTÃO DE PRODUTO · OPERAÇÕES · TECNOLOGIA","hero-hello":"Olá, sou Yuri Rabelo.",
+    "hero-title":"Transformo problemas complexos de negócio em produtos que as pessoas conseguem usar de verdade.",
+    "hero-desc":"Product Manager / Product Owner com experiência em produtos digitais, operações e mercados internacionais. Conecto objetivos de negócio, necessidades dos clientes e execução técnica para ajudar times a focar nos problemas que realmente merecem ser resolvidos.",
+    "hero-cta-work":"Explorar projetos","hero-cta-linkedin":"Conectar no LinkedIn",
+    "profile-focus-label":"Foco","profile-focus":"Resultados de negócio por meio da execução de produto","profile-strengths-label":"Forma de trabalhar","profile-strengths":"Pensamento estruturado, experimentação pragmática e alinhamento entre áreas.","profile-edge-label":"Diferencial técnico","profile-edge":"Transito de problemas de usuários e negócio para fluxos, protótipos, sistemas e decisões de trade-off.","profile-markets":"Brasil · México · Times internacionais",
+    "work-eyebrow":"COMO TRABALHO COM PRODUTO","work-title":"Cases de produto selecionados","work-intro":"Um portfólio de produto deve mostrar como penso, quais decisões tomei e o que mudou — não apenas quais ferramentas usei.",
+    "case1-tag":"PRODUTO · MERCADOS INTERNACIONAIS","case1-title":"Escalando produtos digitais entre mercados","case1-summary":"Trabalhar entre mercados exige equilibrar uma direção de produto consistente com necessidades locais dos clientes, realidades operacionais e prioridades de stakeholders.",
+    "problem-label":"O desafio","approach-label":"Abordagem de produto","outcome-label":"O que demonstra",
+    "case1-problem":"Alinhar objetivos de negócio, necessidades de cada mercado e restrições operacionais sem perder o foco no cliente ou nos resultados esperados do produto.","case1-approach":"Estruturar o problema, explicitar trade-offs, alinhar stakeholders de diferentes áreas e traduzir prioridades em um plano executável.","case1-outcome":"Julgamento de produto na interseção entre experiência do cliente, prioridades de negócio e execução operacional.","case1-note":"Experiência profissional: Localiza&Co. Iniciativas específicas e indicadores de desempenho podem ser compartilhados quando apropriado e sem expor informações confidenciais.",
+    "case2-tag":"OPERAÇÕES · TRANSFORMAÇÃO DIGITAL","case2-title":"Transformando complexidade operacional em fluxos escaláveis","case2-summary":"Operações complexas frequentemente escondem oportunidades de produto: transições pouco claras entre equipes, trabalho manual repetido, informação fragmentada ou processos difíceis de escalar.",
+    "case2-problem":"Encontrar o gargalo estrutural em vez de tratar cada sintoma como uma solicitação ou funcionalidade isolada.","case2-approach":"Mapear o fluxo, identificar o atrito de maior valor, priorizar uma intervenção e coordenar as pessoas necessárias para entregar e adotar a solução.","case2-outcome":"Visão sistêmica, priorização pragmática e foco em resultados operacionais mensuráveis.","case2-note":"Este é um modelo de narrativa para trabalhos relevantes. Antes de publicar como case concluído, substitua a descrição genérica por uma iniciativa específica, sua contribuição e resultados verificados.",
+    "case-disclaimer":"As narrativas evitam intencionalmente inventar KPIs ou expor informações confidenciais. Para a versão final, substitua descrições genéricas por uma iniciativa real, suas decisões específicas e resultados comprováveis.",
+    "lab-eyebrow":"CONSTRUIR / TESTAR / APRENDER","lab-title":"Laboratório técnico","lab-intro":"Projetos paralelos que demonstram como exploro restrições, prototipo ideias e desenvolvo uma compreensão prática de tecnologia.",
+    "cloudio-status":"SERVIÇOS EM EXECUÇÃO","cloudio-desc":"Ambiente self-hosted baseado em um Raspberry Pi 4 (8 GB de RAM), reunindo gerenciamento privado de fotos, serviços de mídia, filtragem de rede, acesso remoto e experimentos com agentes de IA.",
+    "cloudio-decision-title":"Decisões de arquitetura","cloudio-decision":"Isolar serviços em containers, organizar dados persistentes em armazenamento externo e equilibrar capacidades com limites de CPU, memória e disco de inicialização.","cloudio-learning-title":"Conexão com produto","cloudio-learning":"Um exercício prático de priorização, trade-offs de confiabilidade, privacidade, custo de manutenção e desenho sob restrições reais.",
+    "cad-tag":"PROTOTIPAGEM COM APOIO DE IA","cad-title":"De requisitos em linguagem natural a protótipos físicos","cad-desc":"Um fluxo experimental que transforma requisitos de peças em modelos paramétricos no OpenSCAD e valida o desenho por meio de prototipagem física na Bambu Lab A1 Mini. O diferencial não é apenas gerar código: é traduzir restrições em algo que encaixa e funciona.",
+    "cad-step1-title":"1. Especificar","cad-step1":"Dimensões, folgas, encaixes e restrições funcionais.","cad-step2-title":"2. Gerar","cad-step2":"Geometria paramétrica e código OpenSCAD editável.","cad-step3-title":"3. Validar","cad-step3":"Imprimir, testar o encaixe, aprender e refinar.","cad-flow1":"Requisito em linguagem natural","cad-flow1-sub":"Necessidade + restrições","cad-flow2":"Modelo com apoio de IA","cad-flow2-sub":"OpenSCAD paramétrico","cad-flow3":"Teste físico","cad-flow3-sub":"Encaixe, função, iteração","cad-note":"Um exemplo prático de prototipagem rápida, ciclos de feedback e aprendizado por validação.",
+    "about-eyebrow":"ALÉM DO CARGO","about-title":"Mentalidade de produto com curiosidade de quem constrói.","about-desc":"Gosto de atuar onde os objetivos de negócio encontram a realidade operacional. Minha abordagem é explicitar o problema, entender as restrições, envolver as pessoas certas nas decisões e conectar a entrega ao resultado. Construir sistemas fora do trabalho mantém meu julgamento técnico próximo da realidade: vejo de perto o custo da complexidade, da manutenção e de requisitos pouco claros.",
+    "value1-title":"Foco em resultados","value1-desc":"Conectar prioridades ao valor para o cliente e aos objetivos de negócio — não apenas produzir entregas.","value2-title":"Colaboração entre áreas","value2-desc":"Traduzir necessidades entre negócio, operações, design e engenharia.","value3-title":"Priorização pragmática","value3-desc":"Explicitar trade-offs e concentrar esforço onde pode gerar mais valor.","value4-title":"Experimentar e aprender","value4-desc":"Usar protótipos e feedback para reduzir incerteza antes de investir demais.",
+    "contact-eyebrow":"VAMOS CONVERSAR","contact-title":"Tem um problema de produto que vale resolver?","contact-desc":"Tenho interesse em posições de produto que conectem necessidades dos clientes, resultados de negócio e execução técnica.","contact-linkedin":"Fale comigo no LinkedIn","footer":"© 2026 Yuri Rabelo · Pensamento de produto, curiosidade técnica e execução prática."
+  },
+  es: {
+    "nav-work":"Casos seleccionados","nav-lab":"Laboratorio técnico","nav-about":"Sobre mí","nav-contact":"Contacto",
+    "hero-kicker":"GESTIÓN DE PRODUCTO · OPERACIONES · TECNOLOGÍA","hero-hello":"Hola, soy Yuri Rabelo.",
+    "hero-title":"Convierto problemas complejos de negocio en productos que las personas realmente pueden usar.",
+    "hero-desc":"Product Manager / Product Owner con experiencia en productos digitales, operaciones y mercados internacionales. Conecto objetivos de negocio, necesidades de clientes y ejecución técnica para ayudar a los equipos a enfocarse en los problemas que vale la pena resolver.",
+    "hero-cta-work":"Ver proyectos","hero-cta-linkedin":"Conectar en LinkedIn",
+    "profile-focus-label":"Enfoque","profile-focus":"Resultados de negocio a través de la ejecución de producto","profile-strengths-label":"Forma de trabajar","profile-strengths":"Pensamiento estructurado, experimentación pragmática y alineación entre áreas.","profile-edge-label":"Ventaja técnica","profile-edge":"Puedo pasar de un problema de usuario o negocio a flujos, prototipos, sistemas y decisiones de compromiso.","profile-markets":"Brasil · México · Equipos internacionales",
+    "work-eyebrow":"CÓMO TRABAJO CON PRODUCTO","work-title":"Casos de producto seleccionados","work-intro":"Un portafolio de producto debe mostrar cómo pienso, qué decisiones tomé y qué cambió, no solo qué herramientas utilicé.",
+    "case1-tag":"PRODUCTO · MERCADOS INTERNACIONALES","case1-title":"Escalar productos digitales entre mercados","case1-summary":"Trabajar entre mercados exige equilibrar una dirección de producto consistente con necesidades locales, realidades operativas y prioridades de los stakeholders.",
+    "problem-label":"El reto","approach-label":"Enfoque de producto","outcome-label":"Qué demuestra",
+    "case1-problem":"Alinear objetivos de negocio, necesidades de cada mercado y restricciones operativas sin perder el foco en el cliente ni en los resultados esperados del producto.","case1-approach":"Definir el problema, hacer explícitas las compensaciones, alinear a los stakeholders y convertir prioridades en un plan ejecutable.","case1-outcome":"Criterio de producto en la intersección entre experiencia del cliente, prioridades de negocio y ejecución operativa.","case1-note":"Experiencia profesional: Localiza&Co. Se pueden compartir iniciativas e indicadores específicos cuando sea apropiado y no confidencial.",
+    "case2-tag":"OPERACIONES · TRANSFORMACIÓN DIGITAL","case2-title":"Convertir la complejidad operativa en flujos escalables","case2-summary":"Las operaciones complejas suelen esconder oportunidades de producto: traspasos poco claros, tareas manuales repetidas, información fragmentada o procesos difíciles de escalar.",
+    "case2-problem":"Encontrar el cuello de botella estructural en lugar de tratar cada síntoma como una solicitud o funcionalidad aislada.","case2-approach":"Mapear el flujo, identificar la fricción de mayor valor, priorizar una intervención y coordinar a las personas necesarias para entregar y adoptar la solución.","case2-outcome":"Pensamiento sistémico, priorización pragmática y foco en resultados operativos medibles.","case2-note":"Este es un marco narrativo para trabajos relevantes. Antes de publicarlo como caso terminado, sustituye la descripción general por una iniciativa concreta, tu contribución y resultados verificados.",
+    "case-disclaimer":"Estas narrativas evitan inventar KPIs o divulgar información confidencial. Para la versión final, sustituye las descripciones generales por una iniciativa real, tus decisiones específicas y resultados verificables.",
+    "lab-eyebrow":"CONSTRUIR / PROBAR / APRENDER","lab-title":"Laboratorio técnico","lab-intro":"Proyectos paralelos que muestran cómo exploro restricciones, prototipo ideas y desarrollo una comprensión práctica de la tecnología.",
+    "cloudio-status":"SERVICIOS EN EJECUCIÓN","cloudio-desc":"Entorno self-hosted basado en una Raspberry Pi 4 (8 GB de RAM), que reúne gestión privada de fotos, servicios multimedia, filtrado de red, acceso remoto y experimentos con agentes de IA.",
+    "cloudio-decision-title":"Decisiones de diseño","cloudio-decision":"Aislar servicios en contenedores, organizar datos persistentes en almacenamiento externo y equilibrar capacidades con límites de CPU, memoria y disco de arranque.","cloudio-learning-title":"Relevancia para producto","cloudio-learning":"Un ejercicio práctico de priorización, compromisos de fiabilidad, privacidad, coste de mantenimiento y diseño bajo restricciones reales.",
+    "cad-tag":"PROTOTIPADO CON APOYO DE IA","cad-title":"De requisitos en lenguaje natural a prototipos físicos","cad-desc":"Flujo experimental que transforma requisitos de piezas en modelos paramétricos de OpenSCAD y valida el diseño mediante prototipos físicos en una Bambu Lab A1 Mini. Lo importante no es solo generar código, sino traducir restricciones en algo que encaje y funcione.",
+    "cad-step1-title":"1. Especificar","cad-step1":"Dimensiones, holguras, ajuste y restricciones funcionales.","cad-step2-title":"2. Generar","cad-step2":"Geometría paramétrica y código OpenSCAD editable.","cad-step3-title":"3. Validar","cad-step3":"Imprimir, probar el ajuste, aprender y refinar.","cad-flow1":"Requisito en lenguaje natural","cad-flow1-sub":"Necesidad + restricciones","cad-flow2":"Modelo asistido por IA","cad-flow2-sub":"OpenSCAD paramétrico","cad-flow3":"Prueba física","cad-flow3-sub":"Ajuste, función, iteración","cad-note":"Un ejemplo práctico de prototipado rápido, ciclos de retroalimentación y aprendizaje mediante validación.",
+    "about-eyebrow":"MÁS ALLÁ DEL CARGO","about-title":"Mentalidad de producto con curiosidad de constructor.","about-desc":"Me gusta trabajar donde los objetivos de negocio se encuentran con la realidad operativa. Mi enfoque es hacer explícito el problema, entender las restricciones, involucrar a las personas adecuadas en las decisiones y conectar la entrega con el resultado. Construir sistemas fuera del trabajo mantiene mi criterio técnico conectado con la realidad: veo de primera mano el coste de la complejidad, el mantenimiento y los requisitos poco claros.",
+    "value1-title":"Orientado a resultados","value1-desc":"Conectar prioridades con el valor para el cliente y los objetivos de negocio, no solo con entregables.","value2-title":"Trabajo transversal","value2-desc":"Traducir necesidades entre negocio, operaciones, diseño e ingeniería.","value3-title":"Priorización pragmática","value3-desc":"Hacer visibles los compromisos y enfocar el esfuerzo donde puede crear más valor.","value4-title":"Experimentar y aprender","value4-desc":"Usar prototipos y feedback para reducir incertidumbre antes de invertir demasiado.",
+    "contact-eyebrow":"HABLEMOS","contact-title":"¿Tienes un problema de producto que valga la pena resolver?","contact-desc":"Me interesan roles de producto que conecten las necesidades del cliente, los resultados de negocio y la ejecución técnica.","contact-linkedin":"Escríbeme en LinkedIn","footer":"© 2026 Yuri Rabelo · Pensamiento de producto, curiosidad técnica y ejecución práctica."
+  }
+};
 
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-        }
-    </script>
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-MX' : 'en');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  ['en','pt','es'].forEach(code => {
+    const btn = document.getElementById(`btn-${code}`);
+    const active = code === lang;
+    btn.className = active
+      ? 'px-2.5 py-1 rounded-lg bg-emerald-400 text-slate-950 font-bold'
+      : 'px-2.5 py-1 rounded-lg text-slate-400 hover:text-white';
+    btn.setAttribute('aria-pressed', String(active));
+  });
+  try { localStorage.setItem('portfolio-language', lang); } catch (_) {}
+}
+try {
+  const savedLanguage = localStorage.getItem('portfolio-language');
+  if (savedLanguage && translations[savedLanguage]) setLanguage(savedLanguage);
+  else setLanguage('en');
+} catch (_) { setLanguage('en'); }
+</script>
 </body>
 </html>
