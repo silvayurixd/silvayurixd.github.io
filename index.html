@@ -31,27 +31,24 @@
             animation: flowPulse 1.2s linear infinite;
         }
 
-        /* 3D Isometric Bambu A1 Mini Print Head Animation */
-        @keyframes a1MiniPrint3D {
-            0%   { transform: translate(0px, 0px); }
-            20%  { transform: translate(50px, -15px); }
-            40%  { transform: translate(90px, 5px); }
-            60%  { transform: translate(40px, 20px); }
-            80%  { transform: translate(15px, 5px); }
-            100% { transform: translate(0px, 0px); }
+        /* Animação limpa e realista do cabeçote no eixo X */
+        @keyframes printHeadSlide {
+            0%   { transform: translateX(0px); }
+            50%  { transform: translateX(110px); }
+            100% { transform: translateX(0px); }
         }
-        .animate-nozzle-3d {
-            animation: a1MiniPrint3D 3.5s ease-in-out infinite;
+        .animate-head {
+            animation: printHeadSlide 3s ease-in-out infinite;
         }
 
-        /* 3D Part Layer Extrusion Growth Animation */
-        @keyframes layerExtrude3D {
-            0%, 100% { transform: scaleY(0.85); opacity: 0.8; }
-            50% { transform: scaleY(1.05); opacity: 1; }
+        /* Crescimento suave da peça impressa */
+        @keyframes partGrow {
+            0%, 100% { transform: scaleY(0.7); }
+            50% { transform: scaleY(1); }
         }
-        .animate-extrude {
+        .animate-part {
             transform-origin: bottom;
-            animation: layerExtrude3D 2s ease-in-out infinite;
+            animation: partGrow 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -112,10 +109,9 @@
         <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <!-- Hardware Photo (Square & Centered) -->
                 <div class="lg:col-span-5 space-y-3">
                     <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl aspect-square flex items-center justify-center">
-                        <img src="cloudio.png" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500" onerror="this.src='cloudio.HEIC';">
+                        <img src="cloudio.jpg" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500" onerror="this.src='cloudio.HEIC';">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 pointer-events-none"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono z-10">
                             <span class="px-2 py-1 bg-slate-900/90 text-emerald-400 rounded border border-emerald-500/30" data-i18n="c-active">
@@ -137,7 +133,6 @@
                     </div>
                 </div>
 
-                <!-- Description & Architecture -->
                 <div class="lg:col-span-7 space-y-5">
                     <div>
                         <div class="flex flex-wrap items-center gap-2.5 mb-2.5">
@@ -156,7 +151,6 @@
                         </p>
                     </div>
 
-                    <!-- Cloudio Features Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs sm:text-sm mb-1">
@@ -173,7 +167,7 @@
                         </div>
 
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-purple-400 font-semibold text-xs sm:text-sm mb-1">
+                            <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-1">
                                 <i class="fa-solid fa-robot"></i> <span data-i18n="f3-title">OpenClaw AI Agent</span>
                             </div>
                             <p class="text-slate-400 text-xs" data-i18n="f3-desc">Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.</p>
@@ -187,7 +181,6 @@
                         </div>
                     </div>
 
-                    <!-- Tech Stack Tags -->
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-3">
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Docker</span>
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Immich</span>
@@ -200,7 +193,7 @@
 
             </div>
 
-            <!-- Animated Cloudio Network Architecture SVG Flow -->
+            <!-- Flow SVG -->
             <div class="pt-4 border-t border-slate-800/80">
                 <div class="text-xs font-mono text-slate-400 mb-3 flex items-center justify-between">
                     <span>LIVE SYSTEM ARCHITECTURE FLOW</span>
@@ -259,7 +252,7 @@
             </div>
         </div>
 
-        <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini (3D Isometric Realistic Animation) -->
+        <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini (Realista & Alinhado) -->
         <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
@@ -304,50 +297,44 @@
                     </div>
                 </div>
 
-                <!-- Realistic 3D Isometric Bambu Lab A1 Mini Visualizer -->
+                <!-- Nova Visualização Realista Frontal Ortogonal da A1 Mini -->
                 <div class="lg:col-span-5 flex flex-col items-center justify-center">
                     <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-2xl">
                         <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 border-b border-slate-800/80 pb-2">
                             <span class="text-orange-400 font-bold flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> 3D ISOMETRIC A1 MINI
+                                <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> BAMBU A1 MINI // REAL-TIME
                             </span>
-                            <span class="text-emerald-400">EXTRUDING // 0.4mm</span>
+                            <span class="text-emerald-400">PRINTING</span>
                         </div>
 
-                        <!-- 3D Isometric SVG Animation -->
-                        <svg viewBox="0 0 320 220" class="w-full h-auto drop-shadow-lg">
-                            <!-- Base Platform / Enclosure Floor -->
-                            <path d="M 40 160 L 160 195 L 280 160 L 160 125 Z" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+                        <!-- SVG Ortogonal Limpo e Perfeitamente Alinhado -->
+                        <svg viewBox="0 0 320 200" class="w-full h-auto drop-shadow-md">
+                            <!-- Base Inferior / Gabinete -->
+                            <rect x="40" y="165" width="240" height="15" rx="3" fill="#1e293b" stroke="#334155" stroke-width="2"/>
                             
-                            <!-- Heated Print Bed (Perspective) -->
-                            <path d="M 80 145 L 160 170 L 240 145 L 160 120 Z" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+                            <!-- Mesa Aquecida (Bed) -->
+                            <rect x="80" y="145" width="160" height="20" rx="2" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
 
-                            <!-- Growing 3D Printed Part (Layer Animation) -->
-                            <g class="animate-extrude">
-                                <path d="M 140 138 L 160 144 L 180 138 L 160 132 Z" fill="#f97316"/>
-                                <path d="M 140 138 L 160 144 L 160 130 L 140 124 Z" fill="#c2410c"/>
-                                <path d="M 180 138 L 160 144 L 160 130 L 180 124 Z" fill="#ea580c"/>
-                            </g>
+                            <!-- Peça Sendo Impressa (Crescendo no centro) -->
+                            <rect x="135" y="115" width="50" height="30" rx="2" fill="#f97316" class="animate-part"/>
 
-                            <!-- Vertical Cantilever Z Tower (3D Box effect) -->
-                            <path d="M 60 40 L 80 46 L 80 155 L 60 149 Z" fill="#1e293b" stroke="#64748b"/>
-                            <path d="M 80 46 L 95 38 L 95 147 L 80 155 Z" fill="#0f172a" stroke="#475569"/>
-                            <!-- Z Screw Line -->
-                            <line x1="87" y1="42" x2="87" y2="151" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3"/>
+                            <!-- Torre Vertical Z (Lado Esquerdo) -->
+                            <rect x="50" y="25" width="22" height="145" rx="2" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+                            <line x1="61" y1="30" x2="61" y2="160" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3"/>
 
-                            <!-- X-Axis Crossbeam -->
-                            <path d="M 75 90 L 245 70 L 245 85 L 75 105 Z" fill="#334158" stroke="#64748b"/>
+                            <!-- Braço Transversal Eixo X -->
+                            <rect x="60" y="70" width="210" height="14" rx="2" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
 
-                            <!-- Moving 3D Extruder Toolhead Assembly -->
-                            <g class="animate-nozzle-3d">
-                                <!-- Toolhead 3D Box -->
-                                <path d="M 140 70 L 175 66 L 175 96 L 140 100 Z" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-                                <path d="M 175 66 L 190 73 L 190 103 L 175 96 Z" fill="#1e293b" stroke="#ea580c" stroke-width="1.5"/>
-                                <!-- Hotend Tip & Filament Glow -->
-                                <polygon points="155,100 165,100 160,115" fill="#e2e8f0"/>
-                                <line x1="160" y1="115" x2="160" y2="132" stroke="#f97316" stroke-width="2.5" class="animate-pulse"/>
-                                <!-- Active LED -->
-                                <circle cx="150" cy="78" r="2.5" fill="#10b981"/>
+                            <!-- Cabeçote Extrusor Deslizando com Suavidade -->
+                            <g class="animate-head">
+                                <!-- Corpo do Toolhead -->
+                                <rect x="130" y="55" width="40" height="42" rx="4" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
+                                <!-- Bico Hotend -->
+                                <polygon points="145,97 155,97 150,112" fill="#e2e8f0"/>
+                                <!-- Linha de Filamento Extrudado -->
+                                <line x1="150" y1="112" x2="150" y2="130" stroke="#f97316" stroke-width="2" class="animate-pulse"/>
+                                <!-- LED de Status -->
+                                <circle cx="138" cy="65" r="2.5" fill="#10b981"/>
                             </g>
                         </svg>
 
@@ -364,7 +351,7 @@
 
             </div>
 
-            <!-- Text-to-CAD Pipeline Flowchart -->
+            <!-- Pipeline Flowchart -->
             <div class="pt-4 border-t border-slate-800/80">
                 <div class="text-xs font-mono text-slate-400 mb-3 flex items-center justify-between">
                     <span>ZERO-COST TEXT-TO-CAD COMPILATION PIPELINE</span>
@@ -428,7 +415,7 @@
                 "c-active": "🟢 Active Hardware",
                 "tag-server": "Smart Home Server",
                 "tag-ai": "AI Lab & Automation",
-                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.",
+                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case[cite: 1]. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.",
                 "f1-title": "Pi-hole DNS & AdBlocking",
                 "f1-desc": "Global network-wide ad and tracker filtering for enhanced security and browsing speed.",
                 "f2-title": "Immich Smart Photos",
@@ -451,7 +438,7 @@
                 "c-active": "🟢 Hardware Ativo",
                 "tag-server": "Smart Home Server",
                 "tag-ai": "AI Lab & Automação",
-                "c-desc": "Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante, bibliotecas de mídia e inteligência artificial com resiliência total a custo zero.",
+                "c-desc": "Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D[cite: 1]. Gerencia serviços essenciais de rede, armazenamento redundante, bibliotecas de mídia e inteligência artificial com resiliência total a custo zero.",
                 "f1-title": "Pi-hole DNS & AdBlocking",
                 "f1-desc": "Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.",
                 "f2-title": "Immich Smart Photos",
@@ -474,7 +461,7 @@
                 "c-active": "🟢 Hardware Activo",
                 "tag-server": "Smart Home Server",
                 "tag-ai": "Lab de IA y Automatización",
-                "c-desc": "Servidor autónomo de alto rendimiento centrado en una Raspberry Pi 4 (8GB RAM) personalizada en un gabinete impreso en 3D. Gestiona servicios de red esenciales, almacenamiento redundante, bibliotecas multimedia e inteligencia artificial con resiliencia total a coste cero.",
+                "c-desc": "Servidor autónomo de alto rendimiento centrado en una Raspberry Pi 4 (8GB RAM) personalizada en un gabinete impreso en 3D[cite: 1]. Gestiona servicios de red esenciales, almacenamiento redundante, bibliotecas multimedia e inteligencia artificial con resiliencia total a coste cero.",
                 "f1-title": "Pi-hole DNS y AdBlocking",
                 "f1-desc": "Filtro global de anuncios y rastreadores a nivel de red para mayor seguridad y velocidad.",
                 "f2-title": "Immich Smart Photos",
@@ -482,7 +469,7 @@
                 "f3-title": "Agente de IA OpenClaw",
                 "f3-desc": "Bot personal autónomo impulsado por una arquitectura resiliente de fallback de 4 vías.",
                 "f4-title": "Plex & Navidrome Media",
-                "f4-desc": "Servicios centralizados de streaming para coleções personales de películas, series y música.",
+                "f4-desc": "Servicios centralizados de streaming para colecciones personales de películas, series y música.",
                 "p2-badge": "Ingeniería y CAD con IA",
                 "p2-title": "Pipeline Text-to-CAD Local con OpenSCAD",
                 "p2-desc": "Flujo generativo avanzado que utiliza un modelo fundacional local combinado con un motor de compilación text-to-CAD de costo cero. Traduce lenguaje natural en scripts OpenSCAD paramétricos precisos para prototipado rápido en Bambu Lab A1 Mini.",
