@@ -1,6 +1,5 @@
-```html
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,8 +50,8 @@
         }
 
         @keyframes wavePulse {
-            0%, 100% { height: 12px; }
-            50% { height: 36px; }
+            0%, 100% { height: 8px; }
+            50% { height: 24px; }
         }
         .wave-bar {
             animation: wavePulse 1.2s ease-in-out infinite;
@@ -71,41 +70,43 @@
         <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-blue-500/10 rounded-full blur-3xl"></div>
     </div>
 
-    <!-- Top Bar: Language Switcher & Social Links -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-6 w-full flex items-center justify-between">
-        <div class="flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 p-1 rounded-xl text-xs font-mono">
-            <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all">EN</button>
-            <button onclick="setLanguage('pt')" id="btn-pt" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">PT-BR</button>
-            <button onclick="setLanguage('es')" id="btn-es" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">ES-MX</button>
+    <!-- Top Bar: Language Flags Switcher & Social Links -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-4 w-full flex items-center justify-between">
+        <!-- Language Switcher Buttons with Flags -->
+        <div class="flex items-center gap-1 bg-slate-900/80 border border-slate-800 p-1 rounded-xl text-sm font-mono">
+            <button onclick="setLanguage('pt')" id="btn-pt" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all shadow-sm" title="Português">🇧🇷</button>
+            <button onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all" title="English">🇺🇸</button>
+            <button onclick="setLanguage('es')" id="btn-es" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all" title="Español">🇲🇽</button>
         </div>
 
+        <!-- Social Icons with Real Links -->
         <div class="flex items-center gap-2">
-            <a href="https://github.com/silvayurixd" target="_blank" aria-label="GitHub" class="p-2.5 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-base">
+            <a href="https://github.com/silvayurixd" target="_blank" aria-label="GitHub" class="p-2 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-sm">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" aria-label="LinkedIn" class="p-2.5 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-base">
+            <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" aria-label="LinkedIn" class="p-2 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-sm">
                 <i class="fa-brands fa-linkedin"></i>
             </a>
         </div>
     </div>
 
-    <!-- FIRST SECTION: Interactive Intro & Vibe Coding Statement -->
-    <section class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-10 pb-6 w-full">
-        <div class="glass-panel rounded-3xl p-6 sm:p-10 glow-effect border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <!-- FIRST SECTION: Interactive Intro & Vibe Coding Statement (Compact) -->
+    <section class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-6 pb-2 w-full">
+        <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
-            <!-- Intro Video / Audio Visualizer Box -->
-            <div class="lg:col-span-5 flex flex-col items-center justify-center">
-                <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 relative overflow-hidden shadow-2xl text-center space-y-4">
-                    <div class="absolute top-3 left-3 flex items-center gap-1.5">
-                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span>
+            <!-- Intro Visualizer Box -->
+            <div class="lg:col-span-4 flex flex-col items-center justify-center">
+                <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-4 relative overflow-hidden shadow-xl text-center space-y-3">
+                    <div class="absolute top-2.5 left-3 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-2 h-2 rounded-full bg-yellow-500 inline-block"></span>
+                        <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>
                     </div>
-                    <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                    <span class="text-[9px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                         ● Live Intro Feed
                     </span>
 
-                    <div class="py-6 flex items-center justify-center gap-1.5">
+                    <div class="py-3 flex items-center justify-center gap-1.5">
                         <div class="w-1.5 bg-emerald-400 rounded-full wave-bar"></div>
                         <div class="w-1.5 bg-cyan-400 rounded-full wave-bar"></div>
                         <div class="w-1.5 bg-emerald-400 rounded-full wave-bar"></div>
@@ -113,28 +114,28 @@
                         <div class="w-1.5 bg-emerald-400 rounded-full wave-bar"></div>
                     </div>
 
-                    <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/80 text-left font-mono text-xs text-slate-300">
-                        <span class="text-emerald-400">yuri@lab:~$</span> say <span class="text-amber-300">"Hey, esses aqui são meus projetos paralelos..."</span>
+                    <div class="bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 text-left font-mono text-[11px] text-slate-300">
+                        <span class="text-emerald-400">yuri@lab:~$</span> say <span class="text-amber-300">"Hey, esses aqui são..."</span>
                     </div>
                 </div>
             </div>
 
             <!-- Intro Text & Vibe Coding Philosophy -->
-            <div class="lg:col-span-7 space-y-4 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span data-i18n="hero-badge">Systems, Engineering & Vibe Coding</span>
+            <div class="lg:col-span-8 space-y-3 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span data-i18n="hero-badge">Sistemas, Engenharia & Vibe Coding</span>
                 </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
                     <span data-i18n="intro-speech">"Hey, esses aqui são meus projetos paralelos..."</span>
                 </h1>
-                <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed" data-i18n="intro-desc">
+                <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed" data-i18n="intro-desc">
                     Sou apaixonado por <strong>vibe coding</strong> e automações inteligentes — aplicando essa mesma agilidade e visão de produto em desafios corporativos complexos (como integrações críticas com o <strong>SAT</strong> na empresa). Aqui transformo código, self-hosted e maker lab em soluções reais.
                 </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-2 pt-2 text-xs font-mono text-slate-400">
-                    <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-emerald-400">#VibeCoding</span>
-                    <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-blue-400">#ProductManagement</span>
-                    <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-purple-400">#FullStackMaker</span>
+                <div class="flex flex-wrap justify-center md:justify-start gap-1.5 pt-1 text-[11px] font-mono text-slate-400">
+                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-emerald-400">#VibeCoding</span>
+                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-blue-400">#ProductManagement</span>
+                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-purple-400">#FullStackMaker</span>
                 </div>
             </div>
 
@@ -142,22 +143,22 @@
     </section>
 
     <!-- Main Content / Projects Grid -->
-    <main class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-4 w-full flex-grow space-y-8">
+    <main class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-2 w-full flex-grow space-y-6">
         
         <!-- Section Title -->
-        <div class="border-b border-slate-800/80 pb-3 flex items-center justify-between">
-            <h2 class="text-xl font-bold tracking-tight flex items-center gap-2.5">
-                <i class="fa-solid fa-microchip text-emerald-400"></i> <span data-i18n="sec-title">Featured Projects</span>
+        <div class="border-b border-slate-800/80 pb-2 flex items-center justify-between">
+            <h2 class="text-lg font-bold tracking-tight flex items-center gap-2">
+                <i class="fa-solid fa-microchip text-emerald-400"></i> <span data-i18n="sec-title">Projetos em Destaque</span>
             </h2>
-            <span class="text-xs font-mono text-slate-500">SYSTEMS // LAB.LOG</span>
+            <span class="text-[11px] font-mono text-slate-500">SYSTEMS // LAB.LOG</span>
         </div>
 
         <!-- Featured Project 1: CLOUDIO -->
-        <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect transition-all duration-300 border border-slate-800 space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 
                 <div class="lg:col-span-5 space-y-3">
-                    <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-2xl aspect-square flex items-center justify-center">
+                    <div class="relative group overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900 shadow-xl aspect-square flex items-center justify-center">
                         <img src="cloudio.png" alt="Cloudio - Raspberry Pi 4 Server" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500" onerror="this.src='cloudio.HEIC';">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 pointer-events-none"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono z-10">
@@ -180,73 +181,73 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 space-y-5">
+                <div class="lg:col-span-7 space-y-4">
                     <div>
-                        <div class="flex flex-wrap items-center gap-2.5 mb-2.5">
-                            <span class="px-3 py-1 text-xs font-semibold bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/25" data-i18n="tag-server">
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/25" data-i18n="tag-server">
                                 Smart Home Server
                             </span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/25" data-i18n="tag-ai">
+                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/25" data-i18n="tag-ai">
                                 AI Lab & Automation
                             </span>
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">
-                            Cloudio <span class="text-emerald-400 text-lg font-normal font-mono">// Core Infrastructure</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mb-1.5">
+                            Cloudio <span class="text-emerald-400 text-base font-normal font-mono">// Core Infrastructure</span>
                         </h3>
-                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="c-desc">
-                            Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="c-desc">
+                            Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante, bibliotecas de mídia e inteligência artificial com resiliência total a custo zero.
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs sm:text-sm mb-1">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                            <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs mb-0.5">
                                 <i class="fa-solid fa-shield-halved"></i> <span data-i18n="f1-title">Pi-hole DNS & AdBlocking</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f1-desc">Global network-wide ad and tracker filtering for enhanced security and browsing speed.</p>
+                            <p class="text-slate-400 text-[11px]" data-i18n="f1-desc">Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.</p>
                         </div>
                         
-                        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-blue-400 font-semibold text-xs sm:text-sm mb-1">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                            <div class="flex items-center gap-2 text-blue-400 font-semibold text-xs mb-0.5">
                                 <i class="fa-solid fa-images"></i> <span data-i18n="f2-title">Immich Smart Photos</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f2-desc">Self-hosted high-performance photo and video backup with AI machine learning indexing.</p>
+                            <p class="text-slate-400 text-[11px]" data-i18n="f2-desc">Backup privado de alta performance para fotos e vídeos com indexação por IA.</p>
                         </div>
 
-                        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-purple-400 font-semibold text-xs sm:text-sm mb-1">
-                                <i class="fa-solid fa-robot"></i> <span data-i18n="f3-title">OpenClaw AI Agent</span>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                            <div class="flex items-center gap-2 text-purple-400 font-semibold text-xs mb-0.5">
+                                <i class="fa-solid fa-robot"></i> <span data-i18n="f3-title">Agente Pessoal OpenClaw</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f3-desc">Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.</p>
+                            <p class="text-slate-400 text-[11px]" data-i18n="f3-desc">Bot autônomo com arquitetura inteligente de 4-way free-tier fallback.</p>
                         </div>
 
-                        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-rose-400 font-semibold text-xs sm:text-sm mb-1">
-                                <i class="fa-solid fa-film"></i> <span data-i18n="f4-title">Plex & Navidrome Media</span>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                            <div class="flex items-center gap-2 text-rose-400 font-semibold text-xs mb-0.5">
+                                <i class="fa-solid fa-film"></i> <span data-i18n="f4-title">Plex & Navidrome Mídia</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f4-desc">Centralized streaming services for personal movies, series, and music libraries.</p>
+                            <p class="text-slate-400 text-[11px]" data-i18n="f4-desc">Serviços centralizados de streaming para coleções pessoais de filmes, séries e músicas.</p>
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-3">
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Docker</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Immich</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Pi-hole</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Plex</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Navidrome</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Tailscale</span>
+                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400 border-t border-slate-800/80 pt-2.5">
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Docker</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Immich</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Pi-hole</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Plex</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Navidrome</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Tailscale</span>
                     </div>
                 </div>
 
             </div>
 
             <!-- Flow SVG -->
-            <div class="pt-4 border-t border-slate-800/80">
-                <div class="text-xs font-mono text-slate-400 mb-3 flex items-center justify-between">
+            <div class="pt-3 border-t border-slate-800/80">
+                <div class="text-[11px] font-mono text-slate-400 mb-2.5 flex items-center justify-between">
                     <span>LIVE SYSTEM ARCHITECTURE FLOW</span>
                     <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> TAILSCALE MESH ENCRYPTED</span>
                 </div>
-                <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
+                <div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
                     <svg viewBox="0 0 800 130" class="w-full min-w-[650px] h-auto text-xs font-mono">
                         <path d="M 120 65 L 260 65" stroke="#334155" stroke-width="2"/>
                         <path d="M 120 65 L 260 65" stroke="#10b981" stroke-width="2" class="animate-flow"/>
@@ -300,54 +301,54 @@
         </div>
 
         <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini -->
-        <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect transition-all duration-300 border border-slate-800 space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 
-                <div class="lg:col-span-7 space-y-5">
-                    <div class="space-y-2">
-                        <div class="flex flex-wrap items-center gap-2.5">
-                            <span class="px-3 py-1 text-xs font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/25" data-i18n="p2-badge">
-                                AI-Driven Engineering & CAD
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="space-y-1.5">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/25" data-i18n="p2-badge">
+                                Engenharia & CAD com IA
                             </span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/25">
-                                100+ Functional Parts Built
+                            <span class="px-2.5 py-0.5 text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/25">
+                                100+ Peças Funcionais
                             </span>
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white" data-i18n="p2-title">
-                            Local Text-to-CAD Pipeline with OpenSCAD
+                        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white" data-i18n="p2-title">
+                            Pipeline Text-to-CAD Local com OpenSCAD
                         </h3>
-                        <p class="text-slate-300 text-sm leading-relaxed" data-i18n="p2-desc">
-                            Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="p2-desc">
+                            Fluxo gerador avançado utilizando modelo fundamental local combinado com motor de compilação text-to-CAD de custo zero. Traduz especificações em linguagem natural diretamente em scripts OpenSCAD paramétricos e precisos para prototipagem funcional rápida na Bambu Lab A1 Mini.
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
-                            <span class="block text-orange-400 font-bold mb-1">Zero-Cost Stack</span>
-                            <span class="text-slate-400">Local foundational models running with absolute privacy and zero API overhead.</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px]">
+                            <span class="block text-orange-400 font-bold mb-0.5">Zero-Cost Stack</span>
+                            <span class="text-slate-400">Modelos locais com privacidade absoluta e zero custo de API.</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
-                            <span class="block text-emerald-400 font-bold mb-1">Parametric Precision</span>
-                            <span class="text-slate-400">OpenSCAD code compilation tailored for exact mechanical constraints and tolerances.</span>
+                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px]">
+                            <span class="block text-emerald-400 font-bold mb-0.5">Precisão Paramétrica</span>
+                            <span class="text-slate-400">Scripts OpenSCAD gerados sob rigorosas restrições mecânicas.</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
-                            <span class="block text-blue-400 font-bold mb-1">Production Proven</span>
-                            <span class="text-slate-400">Over 100 custom utility components, enclosures, and orthotics successfully fabricated.</span>
+                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px]">
+                            <span class="block text-blue-400 font-bold mb-0.5">Produção Real</span>
+                            <span class="text-slate-400">Mais de 100 gabinetes e suportes utilitários fabricados com sucesso.</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 pt-1">
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">OpenSCAD</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Local LLM</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Text-to-CAD</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Bambu Lab A1 Mini</span>
+                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400 pt-1">
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">OpenSCAD</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Local LLM</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Text-to-CAD</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Bambu Lab A1 Mini</span>
                     </div>
                 </div>
 
                 <!-- Visualização Realista Frontal Ortogonal da A1 Mini -->
                 <div class="lg:col-span-5 flex flex-col items-center justify-center">
-                    <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-2xl">
-                        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 border-b border-slate-800/80 pb-2">
+                    <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-4 relative overflow-hidden shadow-xl">
+                        <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2 border-b border-slate-800/80 pb-2">
                             <span class="text-orange-400 font-bold flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> BAMBU A1 MINI // REAL-TIME
                             </span>
@@ -385,12 +386,12 @@
             </div>
 
             <!-- Pipeline Flowchart -->
-            <div class="pt-4 border-t border-slate-800/80">
-                <div class="text-xs font-mono text-slate-400 mb-3 flex items-center justify-between">
+            <div class="pt-3 border-t border-slate-800/80">
+                <div class="text-[11px] font-mono text-slate-400 mb-2.5 flex items-center justify-between">
                     <span>ZERO-COST TEXT-TO-CAD COMPILATION PIPELINE</span>
                     <span class="text-orange-400">PROMPT ➔ PARAMETRIC CODE ➔ FABRICATION</span>
                 </div>
-                <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
+                <div class="p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
                     <svg viewBox="0 0 800 100" class="w-full min-w-[650px] h-auto text-xs font-mono">
                         <path d="M 160 50 L 260 50" stroke="#334155" stroke-width="2"/>
                         <path d="M 160 50 L 260 50" stroke="#f97316" stroke-width="2" class="animate-flow"/>
@@ -431,36 +432,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-8 text-center text-slate-500 text-sm border-t border-slate-900 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p data-i18n="footer-rights">© 2026 • Designed with focus on engineering and automation.</p>
-        <p class="font-mono text-xs text-slate-600">HOSTED ON GITHUB PAGES</p>
+    <footer class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-6 text-center text-slate-500 text-xs border-t border-slate-900 w-full flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p data-i18n="footer-rights">© 2026 • Projetado com foco em engenharia e automação.</p>
+        <p class="font-mono text-[10px] text-slate-600">HOSTED ON GITHUB PAGES</p>
     </footer>
 
     <!-- Translation Script -->
     <script>
         const translations = {
-            en: {
-                "hero-badge": "Systems, Engineering & Vibe Coding",
-                "intro-speech": "\"Hey, these are my side projects...\"",
-                "intro-desc": "I am deeply passionate about vibe coding and smart automations — applying this exact agility and product vision to complex corporate challenges (such as critical integrations with SAT at work). Here I transform code, self-hosted infrastructure, and maker lab experiments into real high-efficiency solutions.",
-                "sec-title": "Featured Projects",
-                "c-active": "🟢 Active Hardware",
-                "tag-server": "Smart Home Server",
-                "tag-ai": "AI Lab & Automation",
-                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.",
-                "f1-title": "Pi-hole DNS & AdBlocking",
-                "f1-desc": "Global network-wide ad and tracker filtering for enhanced security and browsing speed.",
-                "f2-title": "Immich Smart Photos",
-                "f2-desc": "Self-hosted high-performance photo and video backup with AI machine learning indexing.",
-                "f3-title": "OpenClaw AI Agent",
-                "f3-desc": "Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.",
-                "f4-title": "Plex & Navidrome Media",
-                "f4-desc": "Centralized streaming services for personal movies, series, and music libraries.",
-                "p2-badge": "AI-Driven Engineering & CAD",
-                "p2-title": "Local Text-to-CAD Pipeline with OpenSCAD",
-                "p2-desc": "Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.",
-                "footer-rights": "© 2026 • Designed with focus on engineering and automation."
-            },
             pt: {
                 "hero-badge": "Sistemas, Engenharia & Vibe Coding",
                 "intro-speech": "\"Hey, esses aqui são meus projetos paralelos...\"",
@@ -482,6 +461,28 @@
                 "p2-title": "Pipeline Text-to-CAD Local com OpenSCAD",
                 "p2-desc": "Fluxo gerador avançado utilizando modelo fundamental local combinado com motor de compilação text-to-CAD de custo zero. Traduz especificações em linguagem natural diretamente em scripts OpenSCAD paramétricos e precisos para prototipagem funcional rápida na Bambu Lab A1 Mini.",
                 "footer-rights": "© 2026 • Projetado com foco em engenharia e automação."
+            },
+            en: {
+                "hero-badge": "Systems, Engineering & Vibe Coding",
+                "intro-speech": "\"Hey, these are my side projects...\"",
+                "intro-desc": "I am deeply passionate about vibe coding and smart automations — applying this exact agility and product vision to complex corporate challenges (such as critical integrations with SAT at work). Here I transform code, self-hosted infrastructure, and maker lab experiments into real high-efficiency solutions.",
+                "sec-title": "Featured Projects",
+                "c-active": "🟢 Active Hardware",
+                "tag-server": "Smart Home Server",
+                "tag-ai": "AI Lab & Automation",
+                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.",
+                "f1-title": "Pi-hole DNS & AdBlocking",
+                "f1-desc": "Global network-wide ad and tracker filtering for enhanced security and browsing speed.",
+                "f2-title": "Immich Smart Photos",
+                "f2-desc": "Self-hosted high-performance photo and video backup with AI machine learning indexing.",
+                "f3-title": "OpenClaw AI Agent",
+                "f3-desc": "Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.",
+                "f4-title": "Plex & Navidrome Media",
+                "f4-desc": "Centralized streaming services for personal movies, series, and music libraries.",
+                "p2-badge": "AI-Driven Engineering & CAD",
+                "p2-title": "Local Text-to-CAD Pipeline with OpenSCAD",
+                "p2-desc": "Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.",
+                "footer-rights": "© 2026 • Designed with focus on engineering and automation."
             },
             es: {
                 "hero-badge": "Sistemas, Ingeniería y Vibe Coding",
@@ -508,12 +509,12 @@
         };
 
         function setLanguage(lang) {
-            ['en', 'pt', 'es'].forEach(l => {
+            ['pt', 'en', 'es'].forEach(l => {
                 const btn = document.getElementById(`btn-${l}`);
                 if (l === lang) {
-                    btn.className = "px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all";
+                    btn.className = "px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all shadow-sm";
                 } else {
-                    btn.className = "px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all";
+                    btn.className = "px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition-all";
                 }
             });
 
@@ -530,5 +531,3 @@
     </script>
 </body>
 </html>
-
-```
