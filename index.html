@@ -49,17 +49,13 @@
             animation: partGrow 2s ease-in-out infinite;
         }
 
-        @keyframes wavePulse {
-            0%, 100% { height: 8px; }
-            50% { height: 24px; }
+        @keyframes avatarBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
-        .wave-bar {
-            animation: wavePulse 1.2s ease-in-out infinite;
+        .animate-avatar {
+            animation: avatarBounce 3s ease-in-out infinite;
         }
-        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
-        .wave-bar:nth-child(4) { animation-delay: 0.6s; }
-        .wave-bar:nth-child(5) { animation-delay: 0.3s; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
@@ -90,11 +86,11 @@
         </div>
     </div>
 
-    <!-- FIRST SECTION: Interactive Intro & Vibe Coding Statement (Compact) -->
+    <!-- FIRST SECTION: Interactive Intro & Vibe Coding Statement (Compact with Avatar) -->
     <section class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-6 pb-2 w-full">
         <div class="glass-panel rounded-3xl p-5 sm:p-7 glow-effect border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
-            <!-- Intro Visualizer Box -->
+            <!-- Animated Developer Avatar Box -->
             <div class="lg:col-span-4 flex flex-col items-center justify-center">
                 <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-4 relative overflow-hidden shadow-xl text-center space-y-3">
                     <div class="absolute top-2.5 left-3 flex items-center gap-1.5">
@@ -103,15 +99,28 @@
                         <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>
                     </div>
                     <span class="text-[9px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                        ● Live Intro Feed
+                        ● Live Avatar Feed
                     </span>
 
-                    <div class="py-3 flex items-center justify-center gap-1.5">
-                        <div class="w-1.5 bg-emerald-400 rounded-full wave-bar"></div>
-                        <div class="w-1.5 bg-cyan-400 rounded-full wave-bar"></div>
-                        <div class="w-1.5 bg-emerald-400 rounded-full wave-bar"></div>
-                        <div class="w-1.5 bg-blue-400 rounded-full wave-bar"></div>
-                        <div class="w-1.5 bg-emerald-400 rounded-full wave-bar"></div>
+                    <!-- Minimalist Dev Avatar SVG -->
+                    <div class="py-2 flex items-center justify-center animate-avatar">
+                        <svg viewBox="0 0 120 120" class="w-24 h-24 drop-shadow-lg">
+                            <!-- Fundo circular do avatar -->
+                            <circle cx="60" cy="60" r="52" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                            <!-- Hoodie/Corpo -->
+                            <path d="M 25 105 Q 60 75 95 105 Z" fill="#1e293b"/>
+                            <!-- Cabeça -->
+                            <circle cx="60" cy="50" r="22" fill="#334155"/>
+                            <!-- Cabelo / Topete moderno -->
+                            <path d="M 40 42 Q 50 22 75 35 Q 70 48 40 42 Z" fill="#0f172a"/>
+                            <!-- Óculos / Detalhe tech -->
+                            <rect x="48" y="44" width="24" height="10" rx="3" fill="#090d16" stroke="#10b981" stroke-width="1.5"/>
+                            <!-- Boca / Expressão de fala -->
+                            <path d="M 55 64 Q 60 69 65 64" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" fill="none"/>
+                            <!-- Balão de fala simplificado -->
+                            <rect x="75" y="15" width="38" height="20" rx="5" fill="#10b981" opacity="0.9"/>
+                            <text x="94" y="29" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">HEY!</text>
+                        </svg>
                     </div>
 
                     <div class="bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 text-left font-mono text-[11px] text-slate-300">
@@ -120,7 +129,7 @@
                 </div>
             </div>
 
-            <!-- Intro Text & Vibe Coding Philosophy -->
+            <!-- Intro Text & Vibe Coding Philosophy (Zero cost focus) -->
             <div class="lg:col-span-8 space-y-3 text-center md:text-left">
                 <div class="inline-flex items-center gap-2 px-2.5 py-0.5 text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -130,12 +139,12 @@
                     <span data-i18n="intro-speech">"Hey, esses aqui são meus projetos paralelos..."</span>
                 </h1>
                 <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed" data-i18n="intro-desc">
-                    Sou apaixonado por <strong>vibe coding</strong> e automações inteligentes — aplicando essa mesma agilidade e visão de produto em desafios corporativos complexos (como integrações críticas com o <strong>SAT</strong> na empresa). Aqui transformo código, self-hosted e maker lab em soluções reais.
+                    Sou apaixonado por <strong>vibe coding</strong> e automações inteligentes. Meu grande objetivo é construir soluções eficientes gastando <strong>zero ou muito pouco</strong> — utilizando modelos locais (Local LLMs) ou APIs em camadas gratuitas (free-tier). Aqui transformo código, self-hosted e maker lab em soluções reais.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-1.5 pt-1 text-[11px] font-mono text-slate-400">
                     <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-emerald-400">#VibeCoding</span>
-                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-blue-400">#ProductManagement</span>
-                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-purple-400">#FullStackMaker</span>
+                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-blue-400">#ZeroCostStack</span>
+                    <span class="px-2.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-purple-400">#LocalLLM</span>
                 </div>
             </div>
 
@@ -443,7 +452,7 @@
             pt: {
                 "hero-badge": "Sistemas, Engenharia & Vibe Coding",
                 "intro-speech": "\"Hey, esses aqui são meus projetos paralelos...\"",
-                "intro-desc": "Sou apaixonado por vibe coding e automações inteligentes — aplicando essa mesma agilidade e visão de produto em desafios corporativos complexos (como integrações críticas com o SAT na empresa). Aqui transformo código, self-hosted e maker lab em soluções reais.",
+                "intro-desc": "Sou apaixonado por vibe coding e automações inteligentes. Meu grande objetivo é construir soluções eficientes gastando zero ou muito pouco — utilizando modelos locais (Local LLMs) ou APIs em camadas gratuitas (free-tier). Aqui transformo código, self-hosted e maker lab em soluções reais.",
                 "sec-title": "Projetos em Destaque",
                 "c-active": "🟢 Hardware Ativo",
                 "tag-server": "Smart Home Server",
@@ -465,7 +474,7 @@
             en: {
                 "hero-badge": "Systems, Engineering & Vibe Coding",
                 "intro-speech": "\"Hey, these are my side projects...\"",
-                "intro-desc": "I am deeply passionate about vibe coding and smart automations — applying this exact agility and product vision to complex corporate challenges (such as critical integrations with SAT at work). Here I transform code, self-hosted infrastructure, and maker lab experiments into real high-efficiency solutions.",
+                "intro-desc": "I am deeply passionate about vibe coding and smart automations. My main goal is to build efficient solutions spending zero or very little — using local models (Local LLMs) or free-tier API models. Here I transform code, self-hosted infrastructure, and maker lab experiments into real high-efficiency solutions.",
                 "sec-title": "Featured Projects",
                 "c-active": "🟢 Active Hardware",
                 "tag-server": "Smart Home Server",
@@ -487,7 +496,7 @@
             es: {
                 "hero-badge": "Sistemas, Ingeniería y Vibe Coding",
                 "intro-speech": "\"Hey, estos son mis proyectos paralelos...\"",
-                "intro-desc": "Me apasiona el vibe coding y las automatizaciones inteligentes, aplicando esta misma agilidad y visión de producto en retos corporativos complejos (como integraciones críticas con el SAT en la empresa). Aquí transformo código, infraestructura self-hosted y lab maker en soluciones reales.",
+                "intro-desc": "Me apasiona el vibe coding y las automatizaciones inteligentes. Mi gran objetivo es construir soluciones eficientes gastando cero o muy poco, utilizando modelos locales (Local LLMs) o modelos de API gratuitos (free-tier). Aquí transformo código, infraestructura self-hosted y lab maker en soluciones reales.",
                 "sec-title": "Projetos Destacados",
                 "c-active": "🟢 Hardware Activo",
                 "tag-server": "Smart Home Server",
