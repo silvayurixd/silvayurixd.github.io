@@ -22,7 +22,6 @@
             box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.15);
         }
 
-        /* Continuous Pulse Animation for Flow Nodes */
         @keyframes flowPulse {
             0% { stroke-dashoffset: 24; }
             100% { stroke-dashoffset: 0; }
@@ -32,25 +31,27 @@
             animation: flowPulse 1.2s linear infinite;
         }
 
-        /* Bambu Lab A1 Mini Nozzle Animation */
-        @keyframes printHeadMove {
-            0% { transform: translate(0px, 0px); }
-            25% { transform: translate(50px, -10px); }
-            50% { transform: translate(100px, 0px); }
-            75% { transform: translate(30px, -20px); }
+        /* 3D Isometric Bambu A1 Mini Print Head Animation */
+        @keyframes a1MiniPrint3D {
+            0%   { transform: translate(0px, 0px); }
+            20%  { transform: translate(50px, -15px); }
+            40%  { transform: translate(90px, 5px); }
+            60%  { transform: translate(40px, 20px); }
+            80%  { transform: translate(15px, 5px); }
             100% { transform: translate(0px, 0px); }
         }
-        .animate-nozzle {
-            animation: printHeadMove 4s ease-in-out infinite;
+        .animate-nozzle-3d {
+            animation: a1MiniPrint3D 3.5s ease-in-out infinite;
         }
 
-        /* 3D Bed Print Layer Glow */
-        @keyframes layerGrow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.9; }
+        /* 3D Part Layer Extrusion Growth Animation */
+        @keyframes layerExtrude3D {
+            0%, 100% { transform: scaleY(0.85); opacity: 0.8; }
+            50% { transform: scaleY(1.05); opacity: 1; }
         }
-        .animate-layer {
-            animation: layerGrow 2s ease-in-out infinite;
+        .animate-extrude {
+            transform-origin: bottom;
+            animation: layerExtrude3D 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -64,14 +65,12 @@
 
     <!-- Top Bar: Language Switcher & Social Links -->
     <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-6 w-full flex items-center justify-between">
-        <!-- Language Switcher Buttons -->
         <div class="flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 p-1 rounded-xl text-xs font-mono">
             <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all">EN</button>
             <button onclick="setLanguage('pt')" id="btn-pt" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">PT-BR</button>
             <button onclick="setLanguage('es')" id="btn-es" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">ES-MX</button>
         </div>
 
-        <!-- Social Icons -->
         <div class="flex items-center gap-2">
             <a href="https://github.com/silvayurixd" target="_blank" aria-label="GitHub" class="p-2.5 glass-panel rounded-xl hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-base">
                 <i class="fa-brands fa-github"></i>
@@ -153,7 +152,7 @@
                             Cloudio <span class="text-emerald-400 text-lg font-normal font-mono">// Core Infrastructure</span>
                         </h3>
                         <p class="text-slate-300 text-sm leading-relaxed" data-i18n="c-desc">
-                            Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case[cite: 1]. Manages essential network services, redundant storage, and artificial intelligence with complete zero-cost resilience.
+                            Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case[cite: 1]. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.
                         </p>
                     </div>
 
@@ -161,16 +160,16 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs sm:text-sm mb-1">
-                                <i class="fa-solid fa-shield-halved"></i> <span data-i18n="f1-title">AdBlocking & DNS</span>
+                                <i class="fa-solid fa-shield-halved"></i> <span data-i18n="f1-title">Pi-hole DNS & AdBlocking</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f1-desc">Global network-wide ads and tracker filtering for enhanced security and browsing speed.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f1-desc">Global network-wide ad and tracker filtering for enhanced security and browsing speed.</p>
                         </div>
                         
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                             <div class="flex items-center gap-2 text-blue-400 font-semibold text-xs sm:text-sm mb-1">
-                                <i class="fa-solid fa-hard-drive"></i> <span data-i18n="f2-title">Smart NAS</span>
+                                <i class="fa-solid fa-images"></i> <span data-i18n="f2-title">Immich Smart Photos</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f2-desc">Intelligent file management and centralized automated backups via OpenMediaVault.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f2-desc">Self-hosted high-performance photo and video backup with AI machine learning indexing.</p>
                         </div>
 
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
@@ -181,19 +180,21 @@
                         </div>
 
                         <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                            <div class="flex items-center gap-2 text-amber-400 font-semibold text-xs sm:text-sm mb-1">
-                                <i class="fa-solid fa-gamepad"></i> <span data-i18n="f4-title">Gaming Server</span>
+                            <div class="flex items-center gap-2 text-rose-400 font-semibold text-xs sm:text-sm mb-1">
+                                <i class="fa-solid fa-film"></i> <span data-i18n="f4-title">Plex & Navidrome Media</span>
                             </div>
-                            <p class="text-slate-400 text-xs" data-i18n="f4-desc">Dedicated Minecraft server optimized for smooth multiplayer sessions with friends.</p>
+                            <p class="text-slate-400 text-xs" data-i18n="f4-desc">Centralized streaming services for personal movies, series, and music libraries.</p>
                         </div>
                     </div>
 
                     <!-- Tech Stack Tags -->
                     <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 pt-3">
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Docker</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">OpenMediaVault</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Immich</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Pi-hole</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Plex</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Navidrome</span>
                         <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Tailscale</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Linux ARM64</span>
                     </div>
                 </div>
 
@@ -206,61 +207,62 @@
                     <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> TAILSCALE MESH ENCRYPTED</span>
                 </div>
                 <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
-                    <svg viewBox="0 0 800 120" class="w-full min-w-[650px] h-auto text-xs font-mono">
-                        <!-- Connectors with Flow Lines -->
-                        <path d="M 120 60 L 260 60" stroke="#334155" stroke-width="2"/>
-                        <path d="M 120 60 L 260 60" stroke="#10b981" stroke-width="2" class="animate-flow"/>
+                    <svg viewBox="0 0 800 130" class="w-full min-w-[650px] h-auto text-xs font-mono">
+                        <path d="M 120 65 L 260 65" stroke="#334155" stroke-width="2"/>
+                        <path d="M 120 65 L 260 65" stroke="#10b981" stroke-width="2" class="animate-flow"/>
 
-                        <path d="M 380 60 L 520 25" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 60 L 520 25" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
+                        <path d="M 380 65 L 520 15" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 65 L 520 15" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
 
-                        <path d="M 380 60 L 520 60" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 60 L 520 60" stroke="#a855f7" stroke-width="2" class="animate-flow"/>
+                        <path d="M 380 65 L 520 48" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 65 L 520 48" stroke="#a855f7" stroke-width="2" class="animate-flow"/>
 
-                        <path d="M 380 60 L 520 95" stroke="#334155" stroke-width="2"/>
-                        <path d="M 380 60 L 520 95" stroke="#f59e0b" stroke-width="2" class="animate-flow"/>
+                        <path d="M 380 65 L 520 81" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 65 L 520 81" stroke="#f43f5e" stroke-width="2" class="animate-flow"/>
 
-                        <!-- Node 1: Incoming Traffic -->
-                        <g transform="translate(10, 35)">
+                        <path d="M 380 65 L 520 114" stroke="#334155" stroke-width="2"/>
+                        <path d="M 380 65 L 520 114" stroke="#f59e0b" stroke-width="2" class="animate-flow"/>
+
+                        <g transform="translate(10, 40)">
                             <rect width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
                             <text x="55" y="22" fill="#94a3b8" text-anchor="middle" font-weight="bold">Client Devices</text>
                             <text x="55" y="38" fill="#64748b" text-anchor="middle">iOS / Mac / Web</text>
                         </g>
 
-                        <!-- Node 2: Gateway & DNS -->
-                        <g transform="translate(260, 35)">
+                        <g transform="translate(260, 40)">
                             <rect width="120" height="50" rx="10" fill="#0f172a" stroke="#10b981"/>
-                            <text x="60" y="22" fill="#34d399" text-anchor="middle" font-weight="bold">AdBlock & DNS</text>
+                            <text x="60" y="22" fill="#34d399" text-anchor="middle" font-weight="bold">Pi-hole & DNS</text>
                             <text x="60" y="38" fill="#64748b" text-anchor="middle">Tailscale Core</text>
                         </g>
 
-                        <!-- Node 3A: OMV NAS -->
-                        <g transform="translate(520, 5)">
-                            <rect width="150" height="40" rx="8" fill="#0f172a" stroke="#3b82f6"/>
-                            <text x="75" y="24" fill="#60a5fa" text-anchor="middle" font-weight="bold">Smart NAS (OMV)</text>
+                        <g transform="translate(520, 0)">
+                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#3b82f6"/>
+                            <text x="85" y="19" fill="#60a5fa" text-anchor="middle" font-weight="bold">Immich (Photos + AI)</text>
                         </g>
 
-                        <!-- Node 3B: OpenClaw AI -->
-                        <g transform="translate(520, 40)">
-                            <rect width="250" height="40" rx="8" fill="#0f172a" stroke="#a855f7"/>
-                            <text x="125" y="24" fill="#c084fc" text-anchor="middle" font-weight="bold">OpenClaw Agent (4-Way Fallback)</text>
+                        <g transform="translate(520, 33)">
+                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#a855f7"/>
+                            <text x="85" y="19" fill="#c084fc" text-anchor="middle" font-weight="bold">OpenClaw AI Agent</text>
                         </g>
 
-                        <!-- Node 3C: Minecraft -->
-                        <g transform="translate(520, 75)">
-                            <rect width="150" height="40" rx="8" fill="#0f172a" stroke="#f59e0b"/>
-                            <text x="75" y="24" fill="#fbbf24" text-anchor="middle" font-weight="bold">Minecraft Server</text>
+                        <g transform="translate(520, 66)">
+                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#f43f5e"/>
+                            <text x="85" y="19" fill="#fb7185" text-anchor="middle" font-weight="bold">Plex & Navidrome Media</text>
+                        </g>
+
+                        <g transform="translate(520, 99)">
+                            <rect width="170" height="28" rx="6" fill="#0f172a" stroke="#f59e0b"/>
+                            <text x="85" y="19" fill="#fbbf24" text-anchor="middle" font-weight="bold">Minecraft & OMV NAS</text>
                         </g>
                     </svg>
                 </div>
             </div>
         </div>
 
-        <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini -->
+        <!-- Featured Project 2: AI Text-to-CAD & Bambu Lab A1 Mini (3D Isometric Realistic Animation) -->
         <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect transition-all duration-300 border border-slate-800 space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <!-- Text Content & CAD Specs -->
                 <div class="lg:col-span-7 space-y-5">
                     <div class="space-y-2">
                         <div class="flex flex-wrap items-center gap-2.5">
@@ -302,43 +304,50 @@
                     </div>
                 </div>
 
-                <!-- Animated Interactive Bambu Lab A1 Mini Visualizer -->
+                <!-- Realistic 3D Isometric Bambu Lab A1 Mini Visualizer -->
                 <div class="lg:col-span-5 flex flex-col items-center justify-center">
                     <div class="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-2xl">
                         <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2 border-b border-slate-800/80 pb-2">
                             <span class="text-orange-400 font-bold flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> BAMBU A1 MINI
+                                <span class="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span> 3D ISOMETRIC A1 MINI
                             </span>
-                            <span class="text-emerald-400">PRINTING // 180mm/s</span>
+                            <span class="text-emerald-400">EXTRUDING // 0.4mm</span>
                         </div>
 
-                        <!-- Vector SVG Animation of Bambu Lab A1 Mini -->
-                        <svg viewBox="0 0 300 220" class="w-full h-auto">
-                            <!-- Printer Frame & Base -->
-                            <rect x="30" y="180" width="240" height="20" rx="4" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-                            <!-- Cantilever Z-Axis Pillar -->
-                            <rect x="45" y="30" width="22" height="150" rx="3" fill="#0f172a" stroke="#475569" stroke-width="2"/>
-                            <!-- Z-Axis Screw Line -->
-                            <line x1="56" y1="35" x2="56" y2="175" stroke="#f97316" stroke-width="2" stroke-dasharray="2 2"/>
+                        <!-- 3D Isometric SVG Animation -->
+                        <svg viewBox="0 0 320 220" class="w-full h-auto drop-shadow-lg">
+                            <!-- Base Platform / Enclosure Floor -->
+                            <path d="M 40 160 L 160 195 L 280 160 L 160 125 Z" fill="#0f172a" stroke="#334155" stroke-width="2"/>
                             
-                            <!-- Heated Print Bed -->
-                            <rect x="80" y="165" width="160" height="12" rx="2" fill="#334155" stroke="#64748b"/>
-                            <!-- Printed Part Layers (Glowing) -->
-                            <path d="M 120 165 L 200 165 L 180 135 L 140 135 Z" fill="#f97316" class="animate-layer"/>
+                            <!-- Heated Print Bed (Perspective) -->
+                            <path d="M 80 145 L 160 170 L 240 145 L 160 120 Z" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
 
-                            <!-- X-Axis Arm Moving Rail -->
-                            <rect x="40" y="80" width="210" height="14" rx="2" fill="#1e293b" stroke="#475569"/>
+                            <!-- Growing 3D Printed Part (Layer Animation) -->
+                            <g class="animate-extrude">
+                                <path d="M 140 138 L 160 144 L 180 138 L 160 132 Z" fill="#f97316"/>
+                                <path d="M 140 138 L 160 144 L 160 130 L 140 124 Z" fill="#c2410c"/>
+                                <path d="M 180 138 L 160 144 L 160 130 L 180 124 Z" fill="#ea580c"/>
+                            </g>
 
-                            <!-- Moving Extruder Toolhead Assembly -->
-                            <g class="animate-nozzle">
-                                <!-- Toolhead Body -->
-                                <rect x="95" y="65" width="40" height="40" rx="4" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
-                                <!-- Hotend Nozzle Tip -->
-                                <polygon points="110,105 120,105 115,115" fill="#e2e8f0"/>
-                                <!-- Filament Glow Line -->
-                                <line x1="115" y1="115" x2="115" y2="135" stroke="#f97316" stroke-width="2" class="animate-pulse"/>
-                                <!-- Toolhead Status LED -->
-                                <circle cx="103" cy="73" r="2" fill="#10b981"/>
+                            <!-- Vertical Cantilever Z Tower (3D Box effect) -->
+                            <path d="M 60 40 L 80 46 L 80 155 L 60 149 Z" fill="#1e293b" stroke="#64748b"/>
+                            <path d="M 80 46 L 95 38 L 95 147 L 80 155 Z" fill="#0f172a" stroke="#475569"/>
+                            <!-- Z Screw Line -->
+                            <line x1="87" y1="42" x2="87" y2="151" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3"/>
+
+                            <!-- X-Axis Crossbeam -->
+                            <path d="M 75 90 L 245 70 L 245 85 L 75 105 Z" fill="#334158" stroke="#64748b"/>
+
+                            <!-- Moving 3D Extruder Toolhead Assembly -->
+                            <g class="animate-nozzle-3d">
+                                <!-- Toolhead 3D Box -->
+                                <path d="M 140 70 L 175 66 L 175 96 L 140 100 Z" fill="#0f172a" stroke="#f97316" stroke-width="2"/>
+                                <path d="M 175 66 L 190 73 L 190 103 L 175 96 Z" fill="#1e293b" stroke="#ea580c" stroke-width="1.5"/>
+                                <!-- Hotend Tip & Filament Glow -->
+                                <polygon points="155,100 165,100 160,115" fill="#e2e8f0"/>
+                                <line x1="160" y1="115" x2="160" y2="132" stroke="#f97316" stroke-width="2.5" class="animate-pulse"/>
+                                <!-- Active LED -->
+                                <circle cx="150" cy="78" r="2.5" fill="#10b981"/>
                             </g>
                         </svg>
 
@@ -363,7 +372,6 @@
                 </div>
                 <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800/80 overflow-x-auto">
                     <svg viewBox="0 0 800 100" class="w-full min-w-[650px] h-auto text-xs font-mono">
-                        <!-- Connectors -->
                         <path d="M 160 50 L 260 50" stroke="#334155" stroke-width="2"/>
                         <path d="M 160 50 L 260 50" stroke="#f97316" stroke-width="2" class="animate-flow"/>
 
@@ -373,28 +381,24 @@
                         <path d="M 640 50 L 710 50" stroke="#334155" stroke-width="2"/>
                         <path d="M 640 50 L 710 50" stroke="#3b82f6" stroke-width="2" class="animate-flow"/>
 
-                        <!-- Step 1: Natural Language -->
                         <g transform="translate(10, 25)">
                             <rect width="150" height="50" rx="10" fill="#0f172a" stroke="#ea580c"/>
                             <text x="75" y="22" fill="#fdba74" text-anchor="middle" font-weight="bold">Natural Language</text>
                             <text x="75" y="38" fill="#64748b" text-anchor="middle">Part Specifications</text>
                         </g>
 
-                        <!-- Step 2: Local LLM -->
                         <g transform="translate(260, 25)">
                             <rect width="140" height="50" rx="10" fill="#0f172a" stroke="#f97316"/>
                             <text x="70" y="22" fill="#fed7aa" text-anchor="middle" font-weight="bold">Local LLM</text>
                             <text x="70" y="38" fill="#64748b" text-anchor="middle">Zero-Cost Inference</text>
                         </g>
 
-                        <!-- Step 3: OpenSCAD Script -->
                         <g transform="translate(500, 25)">
                             <rect width="140" height="50" rx="10" fill="#0f172a" stroke="#10b981"/>
                             <text x="70" y="22" fill="#6ee7b7" text-anchor="middle" font-weight="bold">OpenSCAD Engine</text>
                             <text x="70" y="38" fill="#64748b" text-anchor="middle">Parametric Code</text>
                         </g>
 
-                        <!-- Step 4: Physical Part -->
                         <g transform="translate(710, 25)">
                             <circle cx="25" cy="25" r="22" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
                             <text x="25" y="30" fill="#60a5fa" text-anchor="middle" font-size="16">🖨️</text>
@@ -424,15 +428,15 @@
                 "c-active": "🟢 Active Hardware",
                 "tag-server": "Smart Home Server",
                 "tag-ai": "AI Lab & Automation",
-                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, and artificial intelligence with complete zero-cost resilience.",
-                "f1-title": "AdBlocking & DNS",
-                "f1-desc": "Global network-wide ads and tracker filtering for enhanced security and browsing speed.",
-                "f2-title": "Smart NAS",
-                "f2-desc": "Intelligent file management and centralized automated backups via OpenMediaVault.",
+                "c-desc": "Autonomous high-performance home server centered on a Raspberry Pi 4 (8GB RAM) customized inside a 3D-printed case. Manages essential network services, redundant storage, media libraries, and artificial intelligence with complete zero-cost resilience.",
+                "f1-title": "Pi-hole DNS & AdBlocking",
+                "f1-desc": "Global network-wide ad and tracker filtering for enhanced security and browsing speed.",
+                "f2-title": "Immich Smart Photos",
+                "f2-desc": "Self-hosted high-performance photo and video backup with AI machine learning indexing.",
                 "f3-title": "OpenClaw AI Agent",
                 "f3-desc": "Autonomous personal bot powered by a resilient 4-way free-tier fallback architecture.",
-                "f4-title": "Gaming Server",
-                "f4-desc": "Dedicated Minecraft server optimized for smooth multiplayer sessions with friends.",
+                "f4-title": "Plex & Navidrome Media",
+                "f4-desc": "Centralized streaming services for personal movies, series, and music libraries.",
                 "p2-badge": "AI-Driven Engineering & CAD",
                 "p2-title": "Local Text-to-CAD Pipeline with OpenSCAD",
                 "p2-desc": "Advanced generative workflow utilizing a local foundational model combined with a zero-cost text-to-CAD compilation engine. Translates natural language specs directly into precise, parametric OpenSCAD scripts for rapid functional prototyping on a Bambu Lab A1 Mini.",
@@ -447,15 +451,15 @@
                 "c-active": "🟢 Hardware Ativo",
                 "tag-server": "Smart Home Server",
                 "tag-ai": "AI Lab & Automação",
-                "c-desc": "Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante e inteligência artificial com resiliência total a custo zero.",
-                "f1-title": "AdBlocking & DNS",
+                "c-desc": "Servidor autônomo de alta performance centralizado em um Raspberry Pi 4 (8GB RAM) customizado com case impresso em 3D. Gerencia serviços essenciais de rede, armazenamento redundante, bibliotecas de mídia e inteligência artificial com resiliência total a custo zero.",
+                "f1-title": "Pi-hole DNS & AdBlocking",
                 "f1-desc": "Filtro global de propagandas e rastreadores em nível de rede para segurança e velocidade.",
-                "f2-title": "Smart NAS",
-                "f2-desc": "Gerenciamento inteligente de arquivos e backups centralizados via OpenMediaVault.",
+                "f2-title": "Immich Smart Photos",
+                "f2-desc": "Backup privado de alta performance para fotos e vídeos com indexação por IA.",
                 "f3-title": "Agente Pessoal OpenClaw",
                 "f3-desc": "Bot autônomo com arquitetura inteligente de 4-way free-tier fallback.",
-                "f4-title": "Servidor de Jogos",
-                "f4-desc": "Servidor de Minecraft dedicado e otimizado para baixa latência entre amigos.",
+                "f4-title": "Plex & Navidrome Mídia",
+                "f4-desc": "Serviços centralizados de streaming para coleções pessoais de filmes, séries e músicas.",
                 "p2-badge": "Engenharia & CAD com IA",
                 "p2-title": "Pipeline Text-to-CAD Local com OpenSCAD",
                 "p2-desc": "Fluxo gerador avançado utilizando modelo fundamental local combinado com motor de compilação text-to-CAD de custo zero. Traduz especificações em linguagem natural diretamente em scripts OpenSCAD paramétricos e precisos para prototipagem funcional rápida na Bambu Lab A1 Mini.",
@@ -466,19 +470,19 @@
                 "hero-title-1": "Ingeniería, Automatización y",
                 "hero-title-2": "Innovación Maker",
                 "hero-desc": "Un laboratorio vivo donde transformo código, infraestructura self-hosted y prototipado 3D en soluciones reales de alta eficiencia.",
-                "sec-title": "Proyectos Destacados",
+                "sec-title": "Projetos Destacados",
                 "c-active": "🟢 Hardware Activo",
                 "tag-server": "Smart Home Server",
                 "tag-ai": "Lab de IA y Automatización",
-                "c-desc": "Servidor autónomo de alto rendimiento centrado en una Raspberry Pi 4 (8GB RAM) personalizada en un gabinete impreso en 3D. Gestiona servicios de red esenciales, almacenamiento redundante e inteligencia artificial con resiliencia total a coste cero.",
-                "f1-title": "AdBlocking y DNS",
+                "c-desc": "Servidor autónomo de alto rendimiento centrado en una Raspberry Pi 4 (8GB RAM) personalizada en un gabinete impreso en 3D. Gestiona servicios de red esenciales, almacenamiento redundante, bibliotecas multimedia e inteligencia artificial con resiliencia total a coste cero.",
+                "f1-title": "Pi-hole DNS y AdBlocking",
                 "f1-desc": "Filtro global de anuncios y rastreadores a nivel de red para mayor seguridad y velocidad.",
-                "f2-title": "Smart NAS",
-                "f2-desc": "Gestión inteligente de archivos y respaldos automatizados centralizados mediante OpenMediaVault.",
+                "f2-title": "Immich Smart Photos",
+                "f2-desc": "Respaldo privado de fotos y videos de alto rendimiento con indexación por inteligencia artificial.",
                 "f3-title": "Agente de IA OpenClaw",
                 "f3-desc": "Bot personal autónomo impulsado por una arquitectura resiliente de fallback de 4 vías.",
-                "f4-title": "Servidor de Juegos",
-                "f4-desc": "Servidor dedicado de Minecraft optimizado para sesiones multijugador fluidas.",
+                "f4-title": "Plex & Navidrome Media",
+                "f4-desc": "Servicios centralizados de streaming para coleções personales de películas, series y música.",
                 "p2-badge": "Ingeniería y CAD con IA",
                 "p2-title": "Pipeline Text-to-CAD Local con OpenSCAD",
                 "p2-desc": "Flujo generativo avanzado que utiliza un modelo fundacional local combinado con un motor de compilación text-to-CAD de costo cero. Traduce lenguaje natural en scripts OpenSCAD paramétricos precisos para prototipado rápido en Bambu Lab A1 Mini.",
