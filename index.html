@@ -17,26 +17,26 @@
     .font-mono { font-family: 'JetBrains Mono', monospace; }
     .glass-panel { background: rgba(15, 23, 42, .72); backdrop-filter: blur(16px); border: 1px solid rgba(148, 163, 184, .14); }
     .glow-effect { transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
-    .glow-effect:hover { border-color: rgba(52, 211, 153, .38); box-shadow: 0 18px 55px -35px rgba(16, 185, 129, .35); transform: translateY(-2px); }
+    .glow-effect:hover { border-color: rgba(249, 115, 22, .38); box-shadow: 0 18px 55px -35px rgba(249, 115, 22, .35); transform: translateY(-2px); }
     .grid-bg { background-image: linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 88%); }
     .eyebrow { letter-spacing: .14em; }
-    a:focus-visible, button:focus-visible { outline: 2px solid #34d399; outline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #f97316; outline-offset: 4px; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-400 selection:text-slate-950">
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-orange-500 selection:text-slate-950">
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-    <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-orange-500/10 rounded-full blur-3xl"></div>
     <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-blue-500/10 rounded-full blur-3xl"></div>
     <div class="absolute inset-0 grid-bg"></div>
   </div>
 
-  <!-- Header Simplificado -->
+  <!-- Header -->
   <header class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 pt-6 w-full">
     <nav class="flex items-center justify-between gap-4">
-      <a href="#top" class="font-mono text-sm font-semibold tracking-tight text-white">YR<span class="text-emerald-400">.</span><span class="text-slate-500 font-normal ml-2 hidden sm:inline">BUILDER PORTFOLIO</span></a>
+      <a href="#top" class="font-mono text-sm font-semibold tracking-tight text-white">YR<span class="text-orange-500">.</span><span class="text-slate-500 font-normal ml-2 hidden sm:inline">BUILDER PORTFOLIO</span></a>
       <div class="flex items-center gap-3">
-        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-emerald-300 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-emerald-300 transition" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-orange-400 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-orange-400 transition" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
       </div>
     </nav>
   </header>
@@ -44,8 +44,8 @@
   <main id="top" class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-12 w-full">
     <!-- Hero Compacto -->
     <section class="mb-16">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono bg-emerald-400/10 text-emerald-300 rounded-full border border-emerald-400/20 mb-4">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/20 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
         <span>PRODUCT MANAGEMENT & SYSTEMS</span>
       </div>
       <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">Yuri Rabelo</h1>
@@ -58,16 +58,25 @@
     <!-- Seção Principal de Projetos -->
     <section class="space-y-10">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h2 class="font-mono text-xs text-emerald-300 eyebrow uppercase">Projetos em Destaque</h2>
+        <h2 class="font-mono text-xs text-orange-400 eyebrow uppercase">Projetos em Destaque</h2>
         <span class="font-mono text-[11px] text-slate-500">LAB & INFRA</span>
       </div>
 
       <!-- PROJETO 1: O Fazedor -->
       <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-5">
+            <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
+              <img src="fazedor.png" alt="O Fazedor - Workflow Text-to-CAD" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500 bg-slate-900 p-4 text-center">
+                <i class="fa-solid fa-cube text-4xl text-orange-400"></i>
+                <span class="font-mono text-xs">FAZEDOR / TEXT-TO-CAD</span>
+              </div>
+            </div>
+          </div>
           <div class="lg:col-span-7 space-y-4">
             <div class="flex flex-wrap items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-orange-400/10 border border-orange-400/20 text-orange-300 text-[11px] font-semibold">TEXT-TO-CAD Workflow</span>
+              <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">TEXT-TO-CAD Workflow</span>
               <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[11px] font-semibold">Bambu Lab A1 Mini</span>
             </div>
             <h3 class="text-2xl font-bold">O Fazedor <span class="text-base font-mono font-normal text-slate-400">// Prompt-to-Print Engine</span></h3>
@@ -76,38 +85,16 @@
             </p>
             <div class="grid sm:grid-cols-3 gap-3 pt-2">
               <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
-                <p class="text-xs font-semibold text-orange-300 mb-1">1. Especificação</p>
-                <p class="text-[11px] text-slate-400">Entrada de parâmetros, tolerâncias e encaixes via prompt.</p>
+                <p class="text-xs font-semibold text-orange-400 mb-1">1. Especificação</p>
+                <p class="text-[11px] text-slate-400">Entrada de parâmetros e tolerâncias via prompt[cite: 1].</p>
               </div>
               <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
-                <p class="text-xs font-semibold text-emerald-300 mb-1">2. Código CAD</p>
-                <p class="text-[11px] text-slate-400">Geração dinâmica de scripts OpenSCAD paramétricos.</p>
+                <p class="text-xs font-semibold text-blue-400 mb-1">2. Código CAD</p>
+                <p class="text-[11px] text-slate-400">Geração de scripts OpenSCAD paramétricos[cite: 1].</p>
               </div>
               <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
-                <p class="text-xs font-semibold text-blue-300 mb-1">3. Validação</p>
-                <p class="text-[11px] text-slate-400">Prototipagem física rápida e teste de ajuste dimensional.</p>
-              </div>
-            </div>
-          </div>
-          <div class="lg:col-span-5 bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-3 font-mono text-xs">
-            <div class="text-slate-400 border-b border-slate-800 pb-2 flex justify-between">
-              <span>WORKFLOW</span>
-              <span class="text-orange-300">FAZEDOR_PIPELINE</span>
-            </div>
-            <div class="space-y-2 text-slate-300">
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-terminal text-orange-400"></i>
-                <span>Prompt ("Suporte de parede VESA 75")</span>
-              </div>
-              <div class="text-center text-slate-600">↓</div>
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-code text-purple-400"></i>
-                <span>Geração de script .scad</span>
-              </div>
-              <div class="text-center text-slate-600">↓</div>
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-cube text-emerald-400"></i>
-                <span>Render STL & Envio p/ Impressora</span>
+                <p class="text-xs font-semibold text-amber-400 mb-1">3. Validação</p>
+                <p class="text-[11px] text-slate-400">Prototipagem física rápida e teste de ajuste[cite: 1].</p>
               </div>
             </div>
           </div>
@@ -116,15 +103,24 @@
 
       <!-- PROJETO 2: Cloudio -->
       <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-5">
+            <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
+              <img src="cloudio.png" alt="Cloudio self-hosted Raspberry Pi server" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500 bg-slate-900 p-4 text-center">
+                <i class="fa-solid fa-server text-4xl text-orange-400"></i>
+                <span class="font-mono text-xs">CLOUDIO / SELF-HOSTED</span>
+              </div>
+            </div>
+          </div>
           <div class="lg:col-span-7 space-y-4">
             <div class="flex flex-wrap items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-300 text-[11px] font-semibold">SELF-HOSTED INFRA</span>
-              <span class="px-2.5 py-1 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-300 text-[11px] font-semibold">HOMELAB</span>
+              <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">SELF-HOSTED INFRA</span>
+              <span class="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-semibold">HOMELAB</span>
             </div>
-            <h3 class="text-2xl font-bold">Cloudio <span class="text-base font-mono font-normal text-emerald-300">// Private Cloud System</span></h3>
+            <h3 class="text-2xl font-bold">Cloudio <span class="text-base font-mono font-normal text-orange-400">// Private Cloud System</span></h3>
             <p class="text-slate-300 text-sm leading-relaxed">
-              Servidor residencial privado rodando em um Raspberry Pi 4 (8 GB RAM). Concentra gestão segura de arquivos e fotos, bloqueio de redes indesejadas, servidor de mídia local e suporte a testes de agentes de IA locais.
+              Servidor residencial privado rodando em um Raspberry Pi 4 (8 GB RAM)[cite: 1]. Concentra gestão segura de arquivos e fotos, bloqueio de redes indesejadas, servidor de mídia local e suporte a testes de agentes de IA locais[cite: 1].
             </p>
             <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400 pt-2">
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Docker</span>
@@ -133,18 +129,6 @@
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Pi-hole</span>
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Tailscale</span>
             </div>
-          </div>
-          <div class="lg:col-span-5 bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
-            <div class="text-xs font-mono text-slate-400 border-b border-slate-800 pb-2 mb-3 flex justify-between">
-              <span>HARDWARE SPEC</span>
-              <span class="text-emerald-400">ONLINE</span>
-            </div>
-            <ul class="text-xs space-y-2 text-slate-300">
-              <li class="flex justify-between"><span>Host:</span><span class="font-mono text-slate-400">Raspberry Pi 4B</span></li>
-              <li class="flex justify-between"><span>RAM:</span><span class="font-mono text-slate-400">8 GB SDRAM</span></li>
-              <li class="flex justify-between"><span>Storage:</span><span class="font-mono text-slate-400">External Persistent Storage</span></li>
-              <li class="flex justify-between"><span>Acesso Remoto:</span><span class="font-mono text-slate-400">Mesh VPN (Tailscale)</span></li>
-            </ul>
           </div>
         </div>
       </article>
@@ -157,7 +141,7 @@
           <h2 class="text-xl font-bold">Vamos conversar?</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Aberto a trocas de ideias sobre produto, automações e projetos técnicos.</p>
         </div>
-        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-emerald-400 text-slate-950 font-bold text-xs hover:bg-emerald-300 transition shrink-0">
+        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs hover:bg-orange-400 transition shrink-0">
           Contato via LinkedIn
         </a>
       </div>
