@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#020617">
-  <meta name="description" content="Yuri Rabelo — Product Manager & Builder. Projetos em infraestrutura self-hosted, automação e hardware.">
+  <meta name="description" content="Yuri Rabelo — Product Manager & Builder. Projects in self-hosted infrastructure, automation, and hardware.">
   <title>Yuri Rabelo | Product & Systems Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,11 +30,19 @@
     <div class="absolute inset-0 grid-bg"></div>
   </div>
 
-  <!-- Header -->
+  <!-- Header com Seletor de Idiomas (EN, PT, ES) -->
   <header class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 pt-6 w-full">
     <nav class="flex items-center justify-between gap-4">
       <a href="#top" class="font-mono text-sm font-semibold tracking-tight text-white">YR<span class="text-orange-500">.</span><span class="text-slate-500 font-normal ml-2 hidden sm:inline">BUILDER PORTFOLIO</span></a>
+      
       <div class="flex items-center gap-3">
+        <!-- Seletor de Idiomas: EN, PT, ES -->
+        <div class="flex items-center gap-1 bg-slate-900/90 border border-slate-800 p-1 rounded-xl text-xs font-mono" aria-label="Choose language">
+          <button type="button" onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-lg bg-orange-500 text-slate-950 font-bold" aria-pressed="true">EN</button>
+          <button type="button" onclick="setLanguage('pt')" id="btn-pt" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white" aria-pressed="false">PT</button>
+          <button type="button" onclick="setLanguage('es')" id="btn-es" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white" aria-pressed="false">ES</button>
+        </div>
+
         <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-orange-400 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center glass-panel rounded-xl hover:text-orange-400 transition" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
       </div>
@@ -46,64 +54,24 @@
     <section class="mb-16">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/20 mb-4">
         <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-        <span>PRODUCT MANAGEMENT & SYSTEMS</span>
+        <span data-i18n="hero-kicker">PRODUCT MANAGEMENT & SYSTEMS</span>
       </div>
       <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">Yuri Rabelo</h1>
-      <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
-        Product Manager focado em transformar complexidade operacional e técnica em fluxos funcionais.
-        Abaixo estão os projetos onde exploro infraestrutura, automação de prototipagem e integração entre hardware e software.
+      <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl" data-i18n="hero-desc">
+        Product Manager focused on turning operational and technical complexity into functional workflows. Below are selected initiatives exploring self-hosted infrastructure, prototyping automation, and hardware-software integration.
       </p>
     </section>
 
     <!-- Seção Principal de Projetos -->
     <section class="space-y-10">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h2 class="font-mono text-xs text-orange-400 eyebrow uppercase">Projetos em Destaque</h2>
+        <h2 class="font-mono text-xs text-orange-400 eyebrow uppercase" data-i18n="section-title">Featured Projects</h2>
         <span class="font-mono text-[11px] text-slate-500">LAB & INFRA</span>
       </div>
 
-      <!-- PROJETO 1: O Fazedor -->
+      <!-- PROJETO 1: Cloudio (AGORA EM PRIMEIRO LUGAR) -->
       <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          <div class="lg:col-span-5">
-            <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
-              <img src="fazedor.png" alt="O Fazedor - Workflow Text-to-CAD" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500 bg-slate-900 p-4 text-center">
-                <i class="fa-solid fa-cube text-4xl text-orange-400"></i>
-                <span class="font-mono text-xs">FAZEDOR / TEXT-TO-CAD</span>
-              </div>
-            </div>
-          </div>
-          <div class="lg:col-span-7 space-y-4">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">TEXT-TO-CAD Workflow</span>
-              <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[11px] font-semibold">Bambu Lab A1 Mini</span>
-            </div>
-            <h3 class="text-2xl font-bold">O Fazedor <span class="text-base font-mono font-normal text-slate-400">// Prompt-to-Print Engine</span></h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Aplicação experimental que transforma requisitos descritos em linguagem natural diretamente em modelos paramétricos editáveis (OpenSCAD) e prontos para fatiamento e impressão 3D.
-            </p>
-            <div class="grid sm:grid-cols-3 gap-3 pt-2">
-              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
-                <p class="text-xs font-semibold text-orange-400 mb-1">1. Especificação</p>
-                <p class="text-[11px] text-slate-400">Entrada de parâmetros e tolerâncias via prompt[cite: 1].</p>
-              </div>
-              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
-                <p class="text-xs font-semibold text-blue-400 mb-1">2. Código CAD</p>
-                <p class="text-[11px] text-slate-400">Geração de scripts OpenSCAD paramétricos[cite: 1].</p>
-              </div>
-              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
-                <p class="text-xs font-semibold text-amber-400 mb-1">3. Validação</p>
-                <p class="text-[11px] text-slate-400">Prototipagem física rápida e teste de ajuste[cite: 1].</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJETO 2: Cloudio -->
-      <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           <div class="lg:col-span-5">
             <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
               <img src="cloudio.png" alt="Cloudio self-hosted Raspberry Pi server" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -119,15 +87,65 @@
               <span class="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-semibold">HOMELAB</span>
             </div>
             <h3 class="text-2xl font-bold">Cloudio <span class="text-base font-mono font-normal text-orange-400">// Private Cloud System</span></h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Servidor residencial privado rodando em um Raspberry Pi 4 (8 GB RAM)[cite: 1]. Concentra gestão segura de arquivos e fotos, bloqueio de redes indesejadas, servidor de mídia local e suporte a testes de agentes de IA locais[cite: 1].
+            <p class="text-slate-300 text-sm leading-relaxed" data-i18n="cloudio-desc">
+              Self-hosted private server powered by a Raspberry Pi 4 (8 GB RAM) managing private photo backups, network-level ad blocking, media services, and local AI experiments[cite: 1].
             </p>
-            <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400 pt-2">
+
+            <!-- Evoluções Planejadas -->
+            <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-4 space-y-2">
+              <p class="text-xs font-mono font-semibold text-orange-400 uppercase tracking-wider" data-i18n="cloudio-roadmap-title">⚡ Planned Evolutions</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                <li data-i18n="cloudio-r1"><strong class="text-white">Storage Redundancy:</strong> Automated offsite and RAID backup routines for resilient data recovery.</li>
+                <li data-i18n="cloudio-r2"><strong class="text-white">24/7 Audio Transcription:</strong> Continuous local audio capture and processing engine.</li>
+                <li data-i18n="cloudio-r3"><strong class="text-white">Autonomous Quadruped Robot:</strong> Integration with a 4-legged robot powered by 12 actuators for spatial tasks.</li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400 pt-1">
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Docker</span>
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Immich</span>
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">OpenMediaVault</span>
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Pi-hole</span>
               <span class="px-2 py-1 rounded bg-slate-900 border border-slate-800">Tailscale</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJETO 2: O Fazedor -->
+      <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-5">
+            <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
+              <img src="fazedor.png" alt="O Fazedor - Workflow Text-to-CAD" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500 bg-slate-900 p-4 text-center">
+                <i class="fa-solid fa-cube text-4xl text-orange-400"></i>
+                <span class="font-mono text-xs">FAZEDOR / TEXT-TO-CAD</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">TEXT-TO-CAD Workflow</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[11px] font-semibold">Bambu Lab A1 Mini</span>
+            </div>
+            <h3 class="text-2xl font-bold">O Fazedor <span class="text-base font-mono font-normal text-slate-400">// Prompt-to-Print Engine</span></h3>
+            <p class="text-slate-300 text-sm leading-relaxed" data-i18n="fazedor-desc">
+              An experimental pipeline turning natural language briefs into parametric OpenSCAD models ready for 3D slicing[cite: 1]. To ensure zero cost and high availability, it implements a smart fallback strategy querying multiple free-tier LLM providers sequentially until code compilation succeeds[cite: 1].
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3 pt-2">
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
+                <p class="text-xs font-semibold text-orange-400 mb-1" data-i18n="fazedor-s1-title">1. Natural Brief</p>
+                <p class="text-[11px] text-slate-400" data-i18n="fazedor-s1-desc">Dimensions, tolerances, and functional requirements via prompt[cite: 1].</p>
+              </div>
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
+                <p class="text-xs font-semibold text-blue-400 mb-1" data-i18n="fazedor-s2-title">2. Free LLM Fallback</p>
+                <p class="text-[11px] text-slate-400" data-i18n="fazedor-s2-desc">Multi-provider redundancy loop generating valid OpenSCAD code[cite: 1].</p>
+              </div>
+              <div class="rounded-xl bg-slate-900/70 border border-slate-800 p-3">
+                <p class="text-xs font-semibold text-amber-400 mb-1" data-i18n="fazedor-s3-title">3. Physical Print</p>
+                <p class="text-[11px] text-slate-400" data-i18n="fazedor-s3-desc">Automated slicing and physical validation on Bambu Lab printer[cite: 1].</p>
+              </div>
             </div>
           </div>
         </div>
@@ -138,11 +156,11 @@
     <section class="mt-16">
       <div class="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
         <div>
-          <h2 class="text-xl font-bold">Vamos conversar?</h2>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1">Aberto a trocas de ideias sobre produto, automações e projetos técnicos.</p>
+          <h2 class="text-xl font-bold" data-i18n="contact-title">Let's connect</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="contact-desc">Open for discussions around digital products, AI workflows, and technical systems.</p>
         </div>
-        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs hover:bg-orange-400 transition shrink-0">
-          Contato via LinkedIn
+        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs hover:bg-orange-400 transition shrink-0" data-i18n="contact-btn">
+          Connect on LinkedIn
         </a>
       </div>
     </section>
@@ -152,5 +170,96 @@
     <p>© 2026 Yuri Rabelo</p>
     <p class="font-mono text-[10px]">GITHUB PAGES</p>
   </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "hero-kicker": "PRODUCT MANAGEMENT & SYSTEMS",
+        "hero-desc": "Product Manager focused on turning operational and technical complexity into functional workflows. Below are selected initiatives exploring self-hosted infrastructure, prototyping automation, and hardware-software integration.",
+        "section-title": "Featured Projects",
+        "fazedor-desc": "An experimental pipeline turning natural language briefs into parametric OpenSCAD models ready for 3D slicing. To ensure zero cost and high availability, it implements a smart fallback strategy querying multiple free-tier LLM providers sequentially until code compilation succeeds.",
+        "fazedor-s1-title": "1. Natural Brief",
+        "fazedor-s1-desc": "Dimensions, tolerances, and functional requirements via prompt.",
+        "fazedor-s2-title": "2. Free LLM Fallback",
+        "fazedor-s2-desc": "Multi-provider redundancy loop generating valid OpenSCAD code.",
+        "fazedor-s3-title": "3. Physical Print",
+        "fazedor-s3-desc": "Automated slicing and physical validation on Bambu Lab printer.",
+        "cloudio-desc": "Self-hosted private server powered by a Raspberry Pi 4 (8 GB RAM) managing private photo backups, network-level ad blocking, media services, and local AI experiments.",
+        "cloudio-roadmap-title": "⚡ Planned Evolutions",
+        "cloudio-r1": "<strong class=\"text-white\">Storage Redundancy:</strong> Automated offsite and RAID backup routines for resilient data recovery.",
+        "cloudio-r2": "<strong class=\"text-white\">24/7 Audio Transcription:</strong> Continuous local audio capture and processing engine.",
+        "cloudio-r3": "<strong class=\"text-white\">Autonomous Quadruped Robot:</strong> Integration with a 4-legged robot powered by 12 actuators for spatial tasks.",
+        "contact-title": "Let's connect",
+        "contact-desc": "Open for discussions around digital products, AI workflows, and technical systems.",
+        "contact-btn": "Connect on LinkedIn"
+      },
+      pt: {
+        "hero-kicker": "GESTÃO DE PRODUTO & SISTEMAS",
+        "hero-desc": "Product Manager focado em transformar complexidade operacional e técnica em fluxos funcionais. Abaixo estão iniciativas explorando infraestrutura privada, automação de prototipagem e integração entre hardware e software.",
+        "section-title": "Projetos em Destaque",
+        "fazedor-desc": "Pipeline experimental que transforma briefs em linguagem natural em modelos paramétricos OpenSCAD para impressão 3D. Para garantir custo zero e alta disponibilidade, implementa redundância com fallback em múltiplos provedores de LLMs gratuitos até obter compilação válida.",
+        "fazedor-s1-title": "1. Brief Natural",
+        "fazedor-s1-desc": "Dimensões, tolerâncias e requisitos funcionais via prompt.",
+        "fazedor-s2-title": "2. Fallback de IA",
+        "fazedor-s2-desc": "Loop redundante em LLMs gratuitas para gerar código CAD válido.",
+        "fazedor-s3-title": "3. Impressão Física",
+        "fazedor-s3-desc": "Fatiamento automático e validação em impressora Bambu Lab.",
+        "cloudio-desc": "Servidor residencial rodando em Raspberry Pi 4 (8 GB RAM) para backup privado de fotos, bloqueio de anúncios na rede, serviços de mídia e experimentos com IA.",
+        "cloudio-roadmap-title": "⚡ Evoluções Planejadas",
+        "cloudio-r1": "<strong class=\"text-white\">Redundância de Armazenamento:</strong> Rotinas automáticas de backup externo e RAID para recuperação resiliente.",
+        "cloudio-r2": "<strong class=\"text-white\">Transcrição de Áudio 24/7:</strong> Motor contínuo de captura e processamento local de áudio.",
+        "cloudio-r3": "<strong class=\"text-white\">Robô Quadrúpede Autônomo:</strong> Integração com robô de 4 patas e 12 atuadores para tarefas espaciais.",
+        "contact-title": "Vamos conversar?",
+        "contact-desc": "Aberto a conversas sobre produtos digitais, fluxos de IA e arquitetura de sistemas.",
+        "contact-btn": "Contato via LinkedIn"
+      },
+      es: {
+        "hero-kicker": "GESTIÓN DE PRODUCTO Y SISTEMAS",
+        "hero-desc": "Product Manager enfocado en transformar la complejidad operativa y técnica en flujos funcionales. A continuación se muestran iniciativas que exploran infraestructura privada, automatización de prototipos e integración hardware-software.",
+        "section-title": "Proyectos Destacados",
+        "fazedor-desc": "Pipeline experimental que transforma solicitudes en lenguaje natural en modelos paramétricos de OpenSCAD. Para garantizar costo cero y alta disponibilidad, utiliza una estratégia de fallback consultando múltiples LLM gratuitas secuencialmente.",
+        "fazedor-s1-title": "1. Requisitos",
+        "fazedor-s1-desc": "Dimensiones, tolerancias y funciones descritas por prompt.",
+        "fazedor-s2-title": "2. Fallback de IA",
+        "fazedor-s2-desc": "Bucle de redundancia entre proveedores para código CAD válido.",
+        "fazedor-s3-title": "3. Impresión Física",
+        "fazedor-s3-desc": "Laminado y validación física en impresora Bambu Lab.",
+        "cloudio-desc": "Servidor privado en Raspberry Pi 4 (8 GB RAM) para copias de seguridad de fotos, bloqueo de publicidad, servicios multimedia y pruebas con IA.",
+        "cloudio-roadmap-title": "⚡ Evoluciones Planificadas",
+        "cloudio-r1": "<strong class=\"text-white\">Redundancia de Almacenamiento:</strong> Rutinas de copia de seguridad externas y RAID para resiliencia.",
+        "cloudio-r2": "<strong class=\"text-white\">Transcripción de Audio 24/7:</strong> Motor continuo de captura y procesamiento local de audio.",
+        "cloudio-r3": "<strong class=\"text-white\">Robot Cuadrúpedo Autónomo:</strong> Integración con un robot de 4 patas y 12 actuadores para tareas espaciales.",
+        "contact-title": "¿Hablamos?",
+        "contact-desc": "Abierto a intercambiar ideas sobre productos digitales, flujos de IA y sistemas técnicos.",
+        "contact-btn": "Conectar en LinkedIn"
+      }
+    };
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-MX' : 'en');
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      ['en','pt','es'].forEach(code => {
+        const btn = document.getElementById(`btn-${code}`);
+        const active = code === lang;
+        btn.className = active
+          ? 'px-2.5 py-1 rounded-lg bg-orange-500 text-slate-950 font-bold'
+          : 'px-2.5 py-1 rounded-lg text-slate-400 hover:text-white';
+        btn.setAttribute('aria-pressed', String(active));
+      });
+      try { localStorage.setItem('portfolio-lang', lang); } catch (_) {}
+    }
+
+    try {
+      const savedLang = localStorage.getItem('portfolio-lang');
+      if (savedLang && translations[savedLang]) setLanguage(savedLang);
+      else setLanguage('en');
+    } catch (_) { setLanguage('en'); }
+  </script>
 </body>
 </html>
