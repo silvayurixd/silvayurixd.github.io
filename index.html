@@ -36,7 +36,6 @@
       <a href="#top" class="font-mono text-sm font-semibold tracking-tight text-white">YR<span class="text-orange-500">.</span><span class="text-slate-500 font-normal ml-2 hidden sm:inline">BUILDER PORTFOLIO</span></a>
       
       <div class="flex items-center gap-3">
-        <!-- Seletor de Idiomas -->
         <div class="flex items-center gap-1 bg-slate-900/90 border border-slate-800 p-1 rounded-xl text-xs font-mono" aria-label="Choose language">
           <button type="button" onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-lg bg-orange-500 text-slate-950 font-bold" aria-pressed="true">EN</button>
           <button type="button" onclick="setLanguage('pt')" id="btn-pt" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white" aria-pressed="false">PT</button>
@@ -51,7 +50,7 @@
 
   <main id="top" class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-12 w-full">
     <!-- Hero Compacto -->
-    <section class="mb-16">
+    <section class="mb-12">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono bg-orange-500/10 text-orange-400 rounded-full border border-orange-500/20 mb-4">
         <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
         <span data-i18n="hero-kicker">PRODUCT MANAGEMENT & SYSTEMS</span>
@@ -60,6 +59,22 @@
       <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl" data-i18n="hero-desc">
         Product Manager focused on turning operational and technical complexity into functional workflows. Below are selected initiatives exploring self-hosted infrastructure, prototyping automation, and hardware-software integration.
       </p>
+    </section>
+
+    <!-- 3 Pilares de Produto (Product Pillars) -->
+    <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="glass-panel p-4 rounded-2xl border border-slate-800">
+        <div class="text-orange-400 font-mono text-xs font-semibold mb-1" data-i18n="p1-title">01. PRAGMATIC AI</div>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p1-desc">Designing resilient workflows with fallback strategies to reduce costs and avoid single-point dependencies.</p>
+      </div>
+      <div class="glass-panel p-4 rounded-2xl border border-slate-800">
+        <div class="text-blue-400 font-mono text-xs font-semibold mb-1" data-i18n="p2-title">02. SYSTEMS THINKING</div>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p2-desc">Building hardware and software environments focused on maintainability, privacy, and infrastructure control.</p>
+      </div>
+      <div class="glass-panel p-4 rounded-2xl border border-slate-800">
+        <div class="text-amber-400 font-mono text-xs font-semibold mb-1" data-i18n="p3-title">03. FAST VALIDATION</div>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="p3-desc">Leveraging rapid physical and digital prototyping to test hypotheses before over-investing resources.</p>
+      </div>
     </section>
 
     <!-- Seção Principal de Projetos -->
@@ -73,11 +88,10 @@
       <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          <!-- Lado Esquerdo: Imagem + Desenho de Arquitetura -->
+          <!-- Lado Esquerdo: Imagem + Arquitetura -->
           <div class="lg:col-span-5 space-y-4">
-            <!-- Imagem do Hardware -->
             <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
-              <img src="cloudio.png" alt="Cloudio self-hosted Raspberry Pi server" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="cloudio.png" loading="lazy" alt="Cloudio self-hosted Raspberry Pi server" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500 bg-slate-900 p-4 text-center">
                 <i class="fa-solid fa-server text-4xl text-orange-400"></i>
                 <span class="font-mono text-xs">CLOUDIO / SELF-HOSTED</span>
@@ -88,55 +102,38 @@
             <div class="rounded-2xl border border-slate-800 bg-slate-950/80 p-4 space-y-3">
               <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
                 <span class="font-mono text-[11px] text-orange-400 font-semibold" data-i18n="arch-title">SYSTEM ARCHITECTURE</span>
-                <span class="font-mono text-[9px] text-slate-500">V2.4 / HOMELAB</span>
+                <span class="font-mono text-[9px] text-emerald-400 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> ONLINE
+                </span>
               </div>
               
-              <!-- Desenho do Diagrama -->
               <div class="w-full">
                 <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto text-slate-300">
-                  <!-- Acesso Externo / Clientes -->
                   <g>
                     <rect x="10" y="20" width="75" height="40" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
                     <text x="47" y="38" fill="#e2e8f0" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">Clients</text>
                     <text x="47" y="50" fill="#94a3b8" font-size="7" font-family="monospace" text-anchor="middle">Mobile / Web</text>
                   </g>
-
-                  <!-- Seta Entrando na VPN -->
                   <path d="M 85 40 L 115 40" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3 3"/>
                   <polygon points="118,40 113,37 113,43" fill="#f97316"/>
-
-                  <!-- Tailscale VPN Layer -->
                   <g>
                     <rect x="120" y="15" width="80" height="50" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
                     <text x="160" y="36" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle" font-weight="bold">Tailscale</text>
                     <text x="160" y="48" fill="#94a3b8" font-size="7" font-family="monospace" text-anchor="middle">Secure Mesh VPN</text>
                   </g>
-
-                  <!-- Conexão para a Infra Local -->
                   <path d="M 160 65 L 160 88" stroke="#38bdf8" stroke-width="1.5"/>
                   <polygon points="160,91 157,86 163,86" fill="#38bdf8"/>
-
-                  <!-- Bloco Principal do Host (Docker / Pi 4) -->
                   <rect x="10" y="92" width="300" height="98" rx="10" fill="#090d16" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.6"/>
                   <text x="25" y="108" fill="#f97316" font-size="9" font-family="monospace" font-weight="bold">RASPBERRY PI 4 (8GB RAM) / DOCKER ENGINE</text>
-
-                  <!-- Containers / Servicos -->
-                  <!-- Immich -->
                   <rect x="20" y="120" width="80" height="32" rx="6" fill="#1e293b" stroke="#475569"/>
                   <text x="60" y="135" fill="#f8fafc" font-size="8" font-family="monospace" text-anchor="middle" font-weight="bold">Immich</text>
                   <text x="60" y="145" fill="#64748b" font-size="6.5" font-family="monospace" text-anchor="middle">Photos & Backup</text>
-
-                  <!-- Pi-hole -->
                   <rect x="110" y="120" width="80" height="32" rx="6" fill="#1e293b" stroke="#475569"/>
                   <text x="150" y="135" fill="#f8fafc" font-size="8" font-family="monospace" text-anchor="middle" font-weight="bold">Pi-hole</text>
                   <text x="150" y="145" fill="#64748b" font-size="6.5" font-family="monospace" text-anchor="middle">DNS & AdBlock</text>
-
-                  <!-- OMV / Storage -->
                   <rect x="200" y="120" width="100" height="32" rx="6" fill="#1e293b" stroke="#475569"/>
                   <text x="250" y="135" fill="#f8fafc" font-size="8" font-family="monospace" text-anchor="middle" font-weight="bold">OpenMediaVault</text>
                   <text x="250" y="145" fill="#64748b" font-size="6.5" font-family="monospace" text-anchor="middle">Storage & NAS</text>
-
-                  <!-- Futuro: IA / Robótica -->
                   <rect x="20" y="158" width="280" height="22" rx="5" fill="#18181b" stroke="#a1a1aa" stroke-dasharray="2 2"/>
                   <text x="160" y="172" fill="#e4e4e7" font-size="7.5" font-family="monospace" text-anchor="middle">Local AI Agents · 24/7 Audio · Quadruped Robotics</text>
                 </svg>
@@ -144,11 +141,16 @@
             </div>
           </div>
 
-          <!-- Lado Direito: Descrição + Roadmap -->
+          <!-- Lado Direito: Descrição -->
           <div class="lg:col-span-7 space-y-4">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">SELF-HOSTED INFRA</span>
-              <span class="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-semibold">HOMELAB</span>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex gap-2">
+                <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">SELF-HOSTED INFRA</span>
+                <span class="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[11px] font-semibold">HOMELAB</span>
+              </div>
+              <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-slate-400 hover:text-orange-400 transition flex items-center gap-1">
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
             </div>
             <h3 class="text-2xl font-bold">Cloudio <span class="text-base font-mono font-normal text-orange-400">// Private Cloud System</span></h3>
             <p class="text-slate-300 text-sm leading-relaxed" data-i18n="cloudio-desc">
@@ -179,19 +181,41 @@
       <!-- PROJETO 2: O Fazedor -->
       <article class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          <div class="lg:col-span-5">
+          <div class="lg:col-span-5 space-y-3">
             <div class="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 aspect-[4/3]">
-              <img src="fazedor.png" alt="O Fazedor - Workflow Text-to-CAD" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="fazedor.png" loading="lazy" alt="O Fazedor - Workflow Text-to-CAD" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="hidden absolute inset-0 items-center justify-center flex-col gap-3 text-slate-500 bg-slate-900 p-4 text-center">
                 <i class="fa-solid fa-cube text-4xl text-orange-400"></i>
                 <span class="font-mono text-xs">FAZEDOR / TEXT-TO-CAD</span>
               </div>
             </div>
+
+            <!-- Métricas Rápidas do Fazedor -->
+            <div class="grid grid-cols-3 gap-2 font-mono text-[10px] text-center">
+              <div class="bg-slate-900/80 border border-slate-800 p-2 rounded-xl">
+                <span class="block text-slate-400">COST</span>
+                <span class="text-emerald-400 font-bold">$0.00 / free</span>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-800 p-2 rounded-xl">
+                <span class="block text-slate-400">FALLBACK</span>
+                <span class="text-orange-400 font-bold">3 LLMs</span>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-800 p-2 rounded-xl">
+                <span class="block text-slate-400">TIME</span>
+                <span class="text-blue-400 font-bold">~4s avg</span>
+              </div>
+            </div>
           </div>
+
           <div class="lg:col-span-7 space-y-4">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">TEXT-TO-CAD Workflow</span>
-              <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[11px] font-semibold">Bambu Lab A1 Mini</span>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex gap-2">
+                <span class="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[11px] font-semibold">TEXT-TO-CAD Workflow</span>
+                <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[11px] font-semibold">Bambu Lab A1 Mini</span>
+              </div>
+              <a href="https://github.com/silvayurixd" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-slate-400 hover:text-orange-400 transition flex items-center gap-1">
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
             </div>
             <h3 class="text-2xl font-bold">O Fazedor <span class="text-base font-mono font-normal text-slate-400">// Prompt-to-Print Engine</span></h3>
             <p class="text-slate-300 text-sm leading-relaxed" data-i18n="fazedor-desc">
@@ -216,30 +240,150 @@
       </article>
     </section>
 
-    <!-- Contato Simplificado -->
+    <!-- Contato Simplificado com Copiar E-mail -->
     <section class="mt-16">
       <div class="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
         <div>
           <h2 class="text-xl font-bold" data-i18n="contact-title">Let's connect</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="contact-desc">Open for discussions around digital products, AI workflows, and technical systems.</p>
         </div>
-        <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs hover:bg-orange-400 transition shrink-0" data-i18n="contact-btn">
-          Connect on LinkedIn
-        </a>
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
+          <button type="button" onclick="copyEmail()" id="btn-email" class="px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-200 font-semibold text-xs hover:border-orange-400 transition flex items-center gap-2">
+            <i class="fa-regular fa-copy"></i> <span id="email-btn-text" data-i18n="contact-copy">Copy Email</span>
+          </button>
+          <a href="https://www.linkedin.com/in/yuri-rabelo/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs hover:bg-orange-400 transition shrink-0" data-i18n="contact-btn">
+            Connect on LinkedIn
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 py-6 text-slate-500 text-xs border-t border-slate-900 flex justify-between items-center">
-    <p>© 2026 Yuri Rabelo</p>
-    <p class="font-mono text-[10px]">GITHUB PAGES</p>
+  <!-- Rodapé com Livro Aleatório -->
+  <footer class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 py-6 text-slate-500 text-xs border-t border-slate-900 space-y-3">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p>© 2026 Yuri Rabelo</p>
+      <!-- Bloco de Livro Atual -->
+      <p class="font-mono text-[11px] text-slate-400 flex items-center gap-2 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800">
+        <i class="fa-solid fa-book-open text-orange-400"></i> 
+        <span><strong class="text-slate-300" data-i18n="reading-label">Currently reading:</strong> <span id="random-book" class="text-orange-300">...</span></span>
+      </p>
+      <p class="font-mono text-[10px]">HOSTED ON GITHUB PAGES</p>
+    </div>
   </footer>
 
   <script>
+    // Lista de livros para o sorteio dinâmico
+    const bookList = [
+      "Inspired - Marty Cagan",
+      "Elon Musk - Walter Isaacson",
+      "The Innovators - Walter Isaacson",
+      "The Hard Thing About Hard Things - Ben Horowitz",
+      "Silmarillion - J.R.R. Tolkien",
+      "Essentialism - Greg McKeown",
+      "Bernie Ecclestone - Terry Lovell",
+      "A Bíblia Sagrada",
+      "Extreme Ownership - Jocko Willink",
+      "Dream Big - Cristiane Correa",
+      "Harry Potter e a Câmara Secreta - J.K. Rowling",
+      "Empowered - Marty Cagan",
+      "Transformed - Marty Cagan",
+      "Steve Jobs - Walter Isaacson",
+      "Think and Grow Rich - Napoleon Hill",
+      "The Little Book That Beats the Market - Joel Greenblatt",
+      "Harry Potter e o Prisioneiro de Azkaban - J.K. Rowling",
+      "Build - Tony Fadell",
+      "Where Good Ideas Come From - Steven Johnson",
+      "Harry Potter e o Cálice de Fogo - J.K. Rowling",
+      "Good to Great - Jim Collins",
+      "1984 - George Orwell",
+      "O Capital no Século XXI - Thomas Piketty",
+      "Digital Minimalism - Cal Newport",
+      "Harry Potter e a Ordem da Fênix - J.K. Rowling",
+      "7 Habits of Highly Effective People - Stephen Covey",
+      "O Verdadeiro Poder - Vicente Falconi",
+      "Cadaver Exquisito - Agustina Bazterrica",
+      "Dobre Seus Lucros - Bob Fifer",
+      "So Good They Can't Ignore You - Cal Newport",
+      "The Machine That Changed the World - James Womack",
+      "Intelligent Investor - Benjamin Graham",
+      "Oportunidades Disfarçadas - Carlos Domingos",
+      "The Goal - Eliyahu M. Goldratt",
+      "Storytelling - Adilson Xavier",
+      "Damodaran on Valuation - Aswath Damodaran",
+      "Pricing and Revenue Optimization - Robert L. Phillips",
+      "The Achievement Habit - Bernard Roth",
+      "Thinking in Systems - Donella H. Meadows",
+      "Wired to Care - Dev Patnaik",
+      "Zero to One - Peter Thiel",
+      "Scrum: The Art of Doing Twice the Work in Half the Time - Jeff Sutherland",
+      "Creative Confidence - Tom Kelley",
+      "Design Thinking - Nigel Cross",
+      "Designing Your Life - Bill Burnett",
+      "Drive: The Surprising Truth About What Motivates Us - Daniel H. Pink",
+      "Insight Out - Tina Seelig",
+      "Medici Money - Tim Parks",
+      "Mindset: The New Psychology of Success - Carol S. Dweck",
+      "Rich Dad Poor Dad - Robert Kiyosaki",
+      "Scaling Up Excellence - Huggy Rao",
+      "How to Avoid a Climate Disaster - Bill Gates",
+      "The Tipping Point - Malcolm Gladwell",
+      "Pitch Anything - Oren Klaff",
+      "Storytelling with Data - Cole Nussbaumer Knaflic",
+      "Influence: Science and Practice - Robert B. Cialdini",
+      "Common Stocks and Uncommon Profits - Philip Arthur Fisher",
+      "Mastering the Market Cycle - Howard Marks",
+      "The Most Important Thing - Howard Marks",
+      "The Little Book of Common Sense Investing - John C. Bogle",
+      "Warren Buffett and the Interpretation of Financial Statements - David Clark",
+      "Secrets of the Millionaire Mind - T. Harv Eker",
+      "The Richest Man in Babylon - George C. Clason",
+      "Who Moved My Cheese? - Spencer Johnson",
+      "High Output Management - Andrew S. Grove",
+      "Only the Paranoid Survive - Andrew S. Grove",
+      "How to Stop Worrying and Start Living - Dale Carnegie",
+      "How to Win Friends and Influence People - Dale Carnegie",
+      "Captivate - Vanessa Van Edwards",
+      "Getting Things Done - David Allen",
+      "How to Become a Straight-A Student - Cal Newport",
+      "Lean Inception - Paulo Caroli",
+      "Pre-Suasion - Robert Cialdini",
+      "Expert Secrets - Russell Brunson",
+      "Ready, Fire, Aim - Michael Masterson",
+      "Wooden on Leadership - John Wooden",
+      "The Bezos Letters - Steve Anderson",
+      "The Sales Acceleration Formula - Mark Roberge",
+      "Predictable Revenue - Aaron Ross",
+      "The Motive - Patrick Lencioni",
+      "$100M Offers - Alex Hormosi"
+    ];
+
+    // Sorteia um livro aleatório ao carregar a página
+    function loadRandomBook() {
+      const randomIndex = Math.floor(Math.random() * bookList.length);
+      document.getElementById('random-book').textContent = bookList[randomIndex];
+    }
+
+    // Copiar e-mail com feedback no botão
+    function copyEmail() {
+      const email = "silvayuri.xd@gmail.com"; // Substitua pelo seu e-mail preferido
+      navigator.clipboard.writeText(email);
+      const btnText = document.getElementById('email-btn-text');
+      const originalText = btnText.textContent;
+      btnText.textContent = "Copied!";
+      setTimeout(() => { btnText.textContent = originalText; }, 2000);
+    }
+
     const translations = {
       en: {
         "hero-kicker": "PRODUCT MANAGEMENT & SYSTEMS",
         "hero-desc": "Product Manager focused on turning operational and technical complexity into functional workflows. Below are selected initiatives exploring self-hosted infrastructure, prototyping automation, and hardware-software integration.",
+        "p1-title": "01. PRAGMATIC AI",
+        "p1-desc": "Designing resilient workflows with fallback strategies to reduce costs and avoid single-point dependencies.",
+        "p2-title": "02. SYSTEMS THINKING",
+        "p2-desc": "Building hardware and software environments focused on maintainability, privacy, and infrastructure control.",
+        "p3-title": "03. FAST VALIDATION",
+        "p3-desc": "Leveraging rapid physical and digital prototyping to test hypotheses before over-investing resources.",
         "section-title": "Featured Projects",
         "arch-title": "SYSTEM ARCHITECTURE",
         "fazedor-desc": "An experimental pipeline turning natural language briefs into parametric OpenSCAD models ready for 3D slicing. To ensure zero cost and high availability, it implements a smart fallback strategy querying multiple free-tier LLM providers sequentially until code compilation succeeds.",
@@ -256,11 +400,19 @@
         "cloudio-r3": "<strong class=\"text-white\">Autonomous Quadruped Robot:</strong> Integration with a 4-legged robot powered by 12 actuators for spatial tasks.",
         "contact-title": "Let's connect",
         "contact-desc": "Open for discussions around digital products, AI workflows, and technical systems.",
-        "contact-btn": "Connect on LinkedIn"
+        "contact-copy": "Copy Email",
+        "contact-btn": "Connect on LinkedIn",
+        "reading-label": "Currently reading:"
       },
       pt: {
         "hero-kicker": "GESTÃO DE PRODUTO & SISTEMAS",
         "hero-desc": "Product Manager focado em transformar complexidade operacional e técnica em fluxos funcionais. Abaixo estão iniciativas explorando infraestrutura privada, automação de prototipagem e integração entre hardware e software.",
+        "p1-title": "01. IA PRAGMÁTICA",
+        "p1-desc": "Desenho de fluxos resilientes com fallback para reduzir custos e evitar dependência de fornecedor único.",
+        "p2-title": "02. VISÃO SISTÊMICA",
+        "p2-desc": "Construção de ambientes de hardware e software focados em manutenibilidade, privacidade e controle.",
+        "p3-title": "03. VALIDAÇÃO RÁPIDA",
+        "p3-desc": "Prototipagem física e digital para testar hipóteses rapidamente antes de investir recursos excessivos.",
         "section-title": "Projetos em Destaque",
         "arch-title": "ARQUITETURA DO SISTEMA",
         "fazedor-desc": "Pipeline experimental que transforma briefs em linguagem natural em modelos paramétricos OpenSCAD para impressão 3D. Para garantir custo zero e alta disponibilidade, implementa redundância com fallback em múltiplos provedores de LLMs gratuitos até obter compilação válida.",
@@ -277,11 +429,19 @@
         "cloudio-r3": "<strong class=\"text-white\">Robô Quadrúpede Autônomo:</strong> Integração com robô de 4 patas e 12 atuadores para tarefas espaciais.",
         "contact-title": "Vamos conversar?",
         "contact-desc": "Aberto a conversas sobre produtos digitais, fluxos de IA e arquitetura de sistemas.",
-        "contact-btn": "Contato via LinkedIn"
+        "contact-copy": "Copiar E-mail",
+        "contact-btn": "Contato via LinkedIn",
+        "reading-label": "Lendo atualmente:"
       },
       es: {
         "hero-kicker": "GESTIÓN DE PRODUCTO Y SISTEMAS",
         "hero-desc": "Product Manager enfocado en transformar la complejidad operativa y técnica en flujos funcionales. A continuación se muestran iniciativas que exploran infraestructura privada, automatización de prototipos e integración hardware-software.",
+        "p1-title": "01. IA PRAGMÁTICA",
+        "p1-desc": "Diseño de flujos con estrategias de fallback para reducir costos y evitar dependencias de un solo proveedor.",
+        "p2-title": "02. PENSAMIENTO SISTÉMICO",
+        "p2-desc": "Construcción de entornos orientados a la mantenibilidad, privacidad y control total de la infraestructura.",
+        "p3-title": "03. VALIDACIÓN RÁPIDA",
+        "p3-desc": "Uso de prototipos físicos y digitales para probar hipótesis antes de realizar grandes inversiones.",
         "section-title": "Proyectos Destacados",
         "arch-title": "ARQUITECTURA DEL SISTEMA",
         "fazedor-desc": "Pipeline experimental que transforma solicitudes en lenguaje natural en modelos paramétricos de OpenSCAD. Para garantizar costo cero y alta disponibilidad, utiliza una estratégia de fallback consultando múltiples LLM gratuitas secuencialmente.",
@@ -298,7 +458,9 @@
         "cloudio-r3": "<strong class=\"text-white\">Robot Cuadrúpedo Autónomo:</strong> Integración con un robot de 4 patas y 12 actuadores para tareas espaciales.",
         "contact-title": "¿Hablamos?",
         "contact-desc": "Abierto a intercambiar ideas sobre productos digitales, flujos de IA y sistemas técnicos.",
-        "contact-btn": "Conectar en LinkedIn"
+        "contact-copy": "Copiar Correo",
+        "contact-btn": "Conectar en LinkedIn",
+        "reading-label": "Leyendo actualmente:"
       }
     };
 
@@ -322,11 +484,15 @@
       try { localStorage.setItem('portfolio-lang', lang); } catch (_) {}
     }
 
-    try {
-      const savedLang = localStorage.getItem('portfolio-lang');
-      if (savedLang && translations[savedLang]) setLanguage(savedLang);
-      else setLanguage('en');
-    } catch (_) { setLanguage('en'); }
+    // Inicialização ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      loadRandomBook();
+      try {
+        const savedLang = localStorage.getItem('portfolio-lang');
+        if (savedLang && translations[savedLang]) setLanguage(savedLang);
+        else setLanguage('en');
+      } catch (_) { setLanguage('en'); }
+    });
   </script>
 </body>
 </html>
